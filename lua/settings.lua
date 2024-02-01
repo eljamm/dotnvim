@@ -6,7 +6,7 @@ vim.wo.relativenumber = true
 
 -- Highlight the text line of the cursor
 vim.o.cursorline = true
-vim.o.cursorlineopt = 'line'
+vim.o.cursorlineopt = "line"
 
 -- Number of spaces that a <Tab> in the file counts for
 vim.o.tabstop = 4
