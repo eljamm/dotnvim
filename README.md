@@ -36,4 +36,4 @@ $ ln -s ~/.config/nvim-chad/custom ~/.config/nvim/lua/custom
 $ ln -s ~/.config/nvim-chad/after ~/.config/nvim/after
 ```
 
-Alternatively, you can use a program for managing your dotfiles, like [dotbot](https://github.com/anishathalye/dotbot) or [chezmoi](https://www.chezmoi.io/)and make those programs link this repo to the NvChad config.
+Alternatively, you can use a program for managing your dotfiles, like [dotbot](https://github.com/anishathalye/dotbot) or [chezmoi](https://www.chezmoi.io/) and make those programs link this repo to the NvChad config.
