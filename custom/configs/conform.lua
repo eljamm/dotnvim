@@ -17,6 +17,8 @@ local options = {
     },
 
     gdscript = { "gdformat" },
+
+    nix = { "nixpkgs_fmt" },
   },
 
   format_on_save = {
