@@ -96,14 +96,10 @@ local function nvimtree_attach(bufnr)
 
   -- custom mappings
   vim.keymap.set("n", "?", api.tree.toggle_help, opts "Help")
-  vim.keymap.set("n", "o", function()
+  vim.keymap.set("n", "O", function()
     api.node.open.edit()
     api.tree.focus()
   end, opts "Open")
-  vim.keymap.set("n", "O", function()
-    api.node.open.edit()
-    api.tree.close()
-  end, opts "Open and Edit")
 end
 
 -- git support in nvimtree

@@ -1,4 +1,5 @@
 ---@type MappingsTable
+---@class MappingsTable
 local M = {}
 
 -- Map keys for multiple modes

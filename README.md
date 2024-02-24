@@ -7,7 +7,7 @@ My [NvChad](https://github.com/NvChad/NvChad) config, built on top of the defaul
 - [better-escape.nvim](https://github.com/max397574/better-escape.nvim): Escape from insert mode without delay when typing 
 - [conform.nvim](https://github.com/stevearc/conform.nvim): Lightweight yet powerful formatter plugin for Neovim
 - [alpha-nvim](https://github.com/goolord/alpha-nvim): Lua-powered greeter like vim-startify / dashboard-nvim 
-- [neovim-session-manager](https://github.com/Shatur/neovim-session-manager): Simple wrapper around :mksession
+- [persistence.nvim](https://github.com/folke/persistence.nvim): Simple session management for Neovim
 - [crates.nvim](https://github.com/saecki/crates.nvim): Helps managing Rust crates.io dependencies
 - [rustaceanvim](https://github.com/mrcjkb/rustaceanvim): Supercharge your Rust experience in Neovim!
 - [nvim-dap](https://github.com/mfussenegger/nvim-dap) (WIP): Debug Adapter Protocol client implementation for Neovim
