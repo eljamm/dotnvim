@@ -101,6 +101,18 @@ local plugins = {
   },
 
   {
+    "lvimuser/lsp-inlayhints.nvim",
+    enabled = false,
+    module = "lsp-inlayhints",
+    config = true,
+    opts = {
+      inlay_hints = {
+        highlight = "Comment",
+      },
+    },
+  },
+
+  {
     "mfussenegger/nvim-dap",
     enabled = false,
     init = function()
