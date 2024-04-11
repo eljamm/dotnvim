@@ -12,6 +12,7 @@ local servers = {
   "clangd",
   "typst_lsp",
   "jedi_language_server",
+  "nil_ls",
 }
 
 for _, lsp in ipairs(servers) do
