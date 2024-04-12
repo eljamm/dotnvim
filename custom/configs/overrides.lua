@@ -84,31 +84,19 @@ M.mason_dap = {
   },
 }
 
-local function nvimtree_attach(bufnr)
-  local api = require "nvim-tree.api"
-
-  local function opts(desc)
-    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-  end
-
-  -- default mappings
-  api.config.mappings.default_on_attach(bufnr)
-
-  -- custom mappings
-  vim.keymap.set("n", "?", api.tree.toggle_help, opts "Help")
-  vim.keymap.set("n", "O", function()
-    api.node.open.edit()
-    api.tree.focus()
-  end, opts "Open")
-end
-
--- git support in nvimtree
 M.nvimtree = {
+  -- adaptive width
+  view = {
+    width = {
+      min = 30,
+      max = require("custom.configs.nvimtree").get_view_width_max,
+    },
+  },
+  -- git support in nvimtree
   git = {
     enable = true,
     ignore = false,
   },
-
   renderer = {
     highlight_git = true,
     icons = {
@@ -119,7 +107,7 @@ M.nvimtree = {
   },
 
   -- override keybindings
-  on_attach = nvimtree_attach,
+  on_attach = require("custom.configs.nvimtree").nvimtree_attach,
 }
 
 -- enable crates in nvim-cmp
