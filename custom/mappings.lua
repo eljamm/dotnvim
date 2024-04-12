@@ -277,6 +277,13 @@ M.trouble = {
     ["<leader>ts"] = { "<cmd>Trouble symbols toggle focus=false<cr>", "Symbols (Trouble)" },
   },
 }
+
+M.overseer = {
+  plugin = true,
+
+  n = {
+    ["<leader>or"] = { "<cmd>OverseerRun<cr>", "Select and Run Tasks" },
+    ["<leader>ot"] = { "<cmd>OverseerToggle<cr>", "Open Task List" },
   },
 }
 

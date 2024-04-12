@@ -171,6 +171,16 @@ local plugins = {
   },
 
   {
+    "stevearc/overseer.nvim",
+    enabled = false,
+    event = "LspAttach",
+    config = function()
+      require "custom.configs.overseer"
+      require("core.utils").load_mappings "overseer"
+    end,
+  },
+
+  {
     "ggandor/leap.nvim",
     lazy = false,
     dependencies = {
@@ -196,6 +206,7 @@ local plugins = {
 
   {
     "folke/noice.nvim",
+    enabled = false,
     event = "VeryLazy",
     opts = require("custom.configs.noice").opts,
     dependencies = {
