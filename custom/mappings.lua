@@ -27,7 +27,7 @@ M.general = {
       function()
         require("conform").format()
       end,
-      "formatting",
+      "Format Buffers",
     },
 
     ["<leader>ll"] = { "<cmd>Lazy<cr>", "Open Lazy" },
@@ -269,12 +269,14 @@ M.trouble = {
   plugin = true,
 
   n = {
-    ["<leader>tt"] = { "<cmd>TroubleToggle<cr>", "Toggle Diagnostics Window" },
-    ["<leader>tw"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Toggle Worspace Diagnostics" },
-    ["<leader>td"] = { "<cmd>TroubleToggle document_diagnostics<cr>", "Toggle Document Diagnostics" },
-    ["<leader>tq"] = { "<cmd>TroubleToggle quickfix<cr>", "Toggle Quickfix Window" },
-    ["<leader>tl"] = { "<cmd>TroubleToggle loclist<cr>", "Toggle Loclist Window" },
-    ["gr"] = { "<cmd>TroubleToggle lsp_references<cr>", "Toggle LSP References" },
+    ["<leader>tt"] = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer Diagnostics (Trouble)" },
+    ["<leader>tT"] = { "<cmd>Trouble diagnostics toggle<cr>", "Diagnostics (Trouble)" },
+    ["<leader>tQ"] = { "<cmd>Trouble qflist toggle<cr>", "Quickfix List (Trouble)" },
+    ["<leader>tL"] = { "<cmd>Trouble loclist toggle<cr>", "Location List (Trouble)" },
+    ["<leader>tl"] = { "<cmd>Trouble loclist toggle<cr>", "LSP Definitions / references / ... (Trouble)" },
+    ["<leader>ts"] = { "<cmd>Trouble symbols toggle focus=false<cr>", "Symbols (Trouble)" },
+  },
+}
   },
 }
 

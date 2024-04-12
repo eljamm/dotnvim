@@ -164,6 +164,7 @@ local plugins = {
 
   {
     "folke/trouble.nvim",
+    branch = "dev", -- IMPORTANT!
     ft = { "qf" },
     module = "trouble",
     dependencies = { "nvim-tree/nvim-web-devicons" },
