@@ -1,4 +1,4 @@
-local theme_colors = require('catppuccin.palettes').get_palette(vim.g.catppuccin_flavor) or {}
+local cl = require('catppuccin.palettes').get_palette(vim.g.catppuccin_flavor) or {}
 
 -- FIX:
 -- TODO:
@@ -22,11 +22,11 @@ return {
       -- signs: configure signs for some keywords individually
       FIX = { icon = ' ', color = 'error', alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' }, signs = true },
       TODO = { icon = ' ', color = 'info' },
-      HACK = { icon = ' ', color = theme_colors.peach or 'warning' },
+      HACK = { icon = ' ', color = cl.peach or 'warning' },
       WARN = { icon = ' ', color = 'warning', alt = { 'WARNING', 'XXX' } },
-      PERF = { icon = '󰅒 ', color = theme_colors.mauve or 'test', alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
-      NOTE = { icon = '󰍨 ', color = theme_colors.green or 'hint', alt = { 'INFO' } },
-      TEST = { icon = '󰒡 ', color = theme_colors.rosewater or 'test', alt = { 'TESTING', 'PASSED', 'FAILED' } },
+      PERF = { icon = '󰅒 ', color = cl.mauve or 'test', alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
+      NOTE = { icon = '󰍨 ', color = cl.green or 'hint', alt = { 'INFO' } },
+      TEST = { icon = '󰒡 ', color = cl.rosewater or 'test', alt = { 'TESTING', 'PASSED', 'FAILED', 'WIP' } },
     },
   },
 }
