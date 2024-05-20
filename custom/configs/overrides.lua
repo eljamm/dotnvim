@@ -42,6 +42,8 @@ M.treesitter = {
 }
 
 M.mason = {
+  PATH = "append",
+
   ensure_installed = {
     "tree-sitter-cli",
 
@@ -73,6 +75,9 @@ M.mason = {
 
     -- shell
     "shfmt",
+
+    -- typesetting
+    "typst-lsp",
   },
 }
 

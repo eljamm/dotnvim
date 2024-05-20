@@ -3,6 +3,9 @@ local autocmd = vim.api.nvim_create_autocmd
 --- Default to relative numbers
 vim.opt.relativenumber = true
 
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 10
+
 --- Toggle formatting on save
 vim.api.nvim_create_user_command("FormatDisable", function(args)
   if args.bang then
