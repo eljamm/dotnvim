@@ -717,7 +717,7 @@ require('lazy').setup({
           settings = {
             ['nil'] = {
               formatting = {
-                command = { 'nixpkgs-fmt' },
+                command = { 'nixfmt' },
               },
               nix = {
                 flake = {
@@ -836,7 +836,8 @@ require('lazy').setup({
 
         gdscript = { 'gdformat' },
 
-        nix = { 'nixpkgs_fmt' },
+        -- nix = { 'nixpkgs_fmt' },
+        nix = { 'nixfmt' },
 
         rust = { 'rustfmt' },
 
