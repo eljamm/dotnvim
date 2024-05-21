@@ -743,6 +743,7 @@ require('lazy').setup({
         'typst_lsp',
         'jedi_language_server',
         'gdscript',
+        'bashls',
       }
 
       require('mason').setup()
