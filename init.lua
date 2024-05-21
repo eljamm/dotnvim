@@ -845,6 +845,11 @@ require('lazy').setup({
         -- Fix common misspellings in source code on all filetypes
         ['*'] = { 'codespell' },
       },
+      formatters = {
+        shfmt = {
+          prepend_args = { '-i', '4' },
+        },
+      },
     },
   },
 
