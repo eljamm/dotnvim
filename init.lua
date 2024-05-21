@@ -703,6 +703,11 @@ require('lazy').setup({
             },
           },
         },
+
+        hls = {
+          capabilities = capabilities,
+          filetypes = { 'haskell', 'lhaskell', 'cabal' },
+        },
       }
 
       local default_servers = {
