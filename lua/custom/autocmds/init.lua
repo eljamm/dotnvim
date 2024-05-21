@@ -32,21 +32,3 @@ autocmd({ 'User' }, {
     exec_autocmds('User', { pattern = 'SessionSavePre' })
   end,
 })
-
---- Enable inline LSP hinting (nvim >= 0.10)
-if vim.fn.has 'nvim-0.10' == 1 then
-  autocmd('LspAttach', {
-    desc = 'Enable inlay hints',
-    callback = function(event)
-      local id = vim.tbl_get(event, 'data', 'client_id')
-      local client = id and vim.lsp.get_client_by_id(id)
-      if client == nil or not client.supports_method 'textDocument/inlayHint' then
-        return
-      end
-
-      -- warning: this api is not stable yet
-      -- vim.lsp.inlay_hint.enable(event.buf, true)
-      vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
-    end,
-  })
-end
