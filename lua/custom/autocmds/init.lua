@@ -4,6 +4,14 @@ local usercmd = vim.api.nvim_create_user_command
 
 local exec_autocmds = vim.api.nvim_exec_autocmds
 
+--- Trigger `autoread` when files change on disk
+-- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+-- https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  command = "if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif",
+  pattern = '*',
+})
+
 --- Conform: Enable/Disable formatting on save
 usercmd('FormatEnable', function()
   vim.b.disable_autoformat = false
