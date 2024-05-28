@@ -33,7 +33,7 @@ return {
     {
       '<C-f>',
       '<CMD>Neotree toggle position=current<CR>',
-      mode = { 'n', 'x', 't' },
+      mode = { 'n', 'x' },
       desc = 'Toggle [F]ull NeoTree',
       nowait = true,
     },
