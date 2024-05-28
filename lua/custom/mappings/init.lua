@@ -22,13 +22,7 @@ map('n', '<leader>mm', '<cmd>Mason<cr>', { desc = 'Open Mason' })
 
 map('i', '<C-v>', '<esc>p', { desc = 'Paste Clipboard' })
 map('n', '<C-c>', '<cmd> %y+ <CR>', { desc = 'Copy File to [C]lipboard' })
-map(
-  'n',
-  '<leader>cp',
-  ":call setreg('+', expand('%:.') .. ':' .. line('.'))<CR>",
-  { desc = '[C]opy File [P]ath to Clipboard' }
-)
-map('n', '<leader>gp', ':e <C-r>+<CR>', { desc = '[G]o to [P]ath from Clipboard' })
+
 map({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w "++p"<cr><esc>', { desc = 'Save File' })
 map(
   { 'i', 'x', 'n', 's' },
@@ -36,6 +30,20 @@ map(
   '<cmd>wa "++p"<cr><esc>',
   { desc = 'Save All Files' }
 )
+
+map(
+  'n',
+  '<leader>cr',
+  "<cmd>let @+ = expand('%:~:.')<cr><cmd>echo 'Copied path:' @+<cr>",
+  { desc = '[C]opy [R]elative Path to Clipboard' }
+)
+map(
+  'n',
+  '<leader>cp',
+  "<cmd>let @+ = expand('%:p')<cr><cmd>echo 'Copied path:' @+<cr>",
+  { desc = '[C]opy Full [P]ath to Clipboard' }
+)
+map('n', '<leader>gp', ':e <C-r>+<CR>', { desc = '[G]o to [P]ath from Clipboard' })
 
 map('v', '>', '>gv', { desc = 'Indent Right' })
 map('v', '<', '<gv', { desc = 'Indent Left' })
