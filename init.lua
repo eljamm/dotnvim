@@ -846,8 +846,8 @@ require('lazy').setup({
 
         rust = { 'rustfmt' },
 
-        -- Fix common misspellings in source code on all filetypes
-        ['*'] = { 'codespell' },
+        -- -- Fix common misspellings in source code on all filetypes
+        -- ['*'] = { 'codespell' },
       },
       formatters = {
         shfmt = {
