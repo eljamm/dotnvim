@@ -17,10 +17,10 @@ map({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true
 -- map('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = 'Move Up' })
 
 -- Resize window using <ctrl> arrow keys
-map('n', '<C-Up>', '<cmd>resize +2<cr>', { desc = 'Increase Window Height' })
-map('n', '<C-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease Window Height' })
-map('n', '<C-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
-map('n', '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
+map({ 'n', 't' }, '<C-Up>', '<cmd>resize +2<cr>', { desc = 'Increase Window Height' })
+map({ 'n', 't' }, '<C-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease Window Height' })
+map({ 'n', 't' }, '<C-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
+map({ 'n', 't' }, '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
 
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
