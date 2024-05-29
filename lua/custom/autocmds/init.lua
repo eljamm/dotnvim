@@ -19,6 +19,7 @@ usercmd('FormatEnable', function()
 end, {
   desc = 'Re-enable autoformat-on-save',
 })
+--
 usercmd('FormatDisable', function(args)
   if args.bang then
     -- FormatDisable! will disable formatting just for this buffer
@@ -53,6 +54,7 @@ autocmd('WinEnter', {
   end,
   desc = 'Disable focus autoresize for BufType',
 })
+--
 autocmd('FileType', {
   group = augroup('FocusDisable', { clear = true }),
   callback = function(_)
