@@ -40,3 +40,27 @@ autocmd({ 'User' }, {
     exec_autocmds('User', { pattern = 'SessionSavePre' })
   end,
 })
+
+--- Focus: disable for certain buffer and file types
+autocmd('WinEnter', {
+  group = augroup('FocusDisable', { clear = true }),
+  callback = function(_)
+    local ignore_buftypes = { 'nofile', 'prompt', 'popup' }
+
+    if vim.tbl_contains(ignore_buftypes, vim.bo.buftype) then
+      vim.b.focus_disable = true
+    end
+  end,
+  desc = 'Disable focus autoresize for BufType',
+})
+autocmd('FileType', {
+  group = augroup('FocusDisable', { clear = true }),
+  callback = function(_)
+    local ignore_filetypes = { 'neo-tree' }
+
+    if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
+      vim.b.focus_disable = true
+    end
+  end,
+  desc = 'Disable focus autoresize for FileType',
+})
