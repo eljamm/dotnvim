@@ -1,6 +1,6 @@
 return {
   'folke/trouble.nvim',
-  branch = 'dev', -- IMPORTANT!
+  branch = 'main',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     local actions = require 'telescope.actions'
