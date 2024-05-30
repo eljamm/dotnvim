@@ -25,13 +25,13 @@ return {
     {
       '<A-m>',
       '<cmd>FocusMaximise<cr>',
-      mode = 'n',
+      mode = { 'n', 't' },
       desc = '[F]ocus [M]aximize',
     },
     {
       '<A-r>',
       '<cmd>FocusAutoresize<cr>',
-      mode = 'n',
+      mode = { 'n', 't' },
       desc = 'Focus [R]eset',
     },
     {
