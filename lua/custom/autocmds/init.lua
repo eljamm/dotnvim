@@ -58,7 +58,7 @@ autocmd('WinEnter', {
 autocmd('FileType', {
   group = augroup('FocusDisable', { clear = true }),
   callback = function(_)
-    local ignore_filetypes = { 'neo-tree' }
+    local ignore_filetypes = { 'neo-tree', 'trouble' }
 
     if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
       vim.b.focus_disable = true
