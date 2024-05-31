@@ -438,8 +438,9 @@ require('lazy').setup({
               ['<c-enter>'] = 'to_fuzzy_refine',
               ['<C-j>'] = 'move_selection_next',
               ['<C-k>'] = 'move_selection_previous',
+              ['<ESC>'] = 'close',
             },
-            n = { ['<C-i>'] = 'select_default' },
+            n = { ['<C-i>'] = 'select_default', ['q'] = 'close' },
           },
         },
         -- pickers = {}
