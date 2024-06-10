@@ -19,6 +19,7 @@
   "fzf": { "branch": "master", "commit": "124cd70710cb7c94ef2282773494bb0d727598d8" },
   "fzf.vim": { "branch": "master", "commit": "0a80e43f9027ec64213d602dbb0b22d65a072ca8" },
   "gitsigns.nvim": { "branch": "main", "commit": "75dc649106827183547d3bedd4602442340d2f7f" },
+  "hmts.nvim": { "branch": "main", "commit": "ba1239972a1f56b94252d4f85a43e777ac419662" },
   "indent-blankline.nvim": { "branch": "master", "commit": "d98f537c3492e87b6dc6c2e3f66ac517528f406f" },
   "joshuto.nvim": { "branch": "master", "commit": "68be5740d32a1a5bb4ed5f8a3df3f9ca2be725fb" },
   "lazy.nvim": { "branch": "main", "commit": "eab487c2520f0fe9e54eb5e3ea0606e20512492e" },
