@@ -15,7 +15,7 @@ return {
       desc = 'Toggle Floating Terminal',
     },
     {
-      '<A-h>',
+      '<A-b>',
       function()
         require('nvterm.terminal').toggle 'horizontal'
       end,

@@ -17,3 +17,5 @@ map('n', '<leader>ct', function()
     end
   end
 end, { desc = 'Blankline Jump to current context' })
+
+map('n', '<leader>re', '<cmd> set rnu! <CR>', { desc = 'Toggle relative number' })
