@@ -39,12 +39,6 @@ return {
             diagnostics = {
               enable = true,
             },
-            inlayHints = {
-              enable = false,
-              showParameterNames = true,
-              parameterHintsPrefix = '<- ',
-              otherHintsPrefix = '=> ',
-            },
           },
         },
       },
