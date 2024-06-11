@@ -819,13 +819,19 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-
-        javascript = { { 'prettierd', 'prettier' } },
         css = { { 'prettierd', 'prettier' } },
         html = { { 'prettierd', 'prettier' } },
-
+        javascript = { { 'prettierd', 'prettier' } },
         sh = { 'shfmt' },
-
+        sql = { 'sql_formatter' },
+        gdscript = { 'gdformat' },
+        nix = { 'nixfmt' },
+        rust = { 'rustfmt' },
+        go = {
+          'golines',
+          'gofumpt',
+          'goimports',
+        },
         python = function(bufnr)
           if require('conform').get_formatter_info('ruff_format', bufnr).available then
             return { 'ruff_format' }
@@ -834,18 +840,8 @@ require('lazy').setup({
           end
         end,
 
-        go = {
-          'golines',
-          'gofumpt',
-          'goimports',
-        },
-
-        gdscript = { 'gdformat' },
-
-        -- nix = { 'nixpkgs_fmt' },
-        nix = { 'nixfmt' },
-
-        rust = { 'rustfmt' },
+        -- Format embedded code blocks
+        ['*'] = { 'injected' },
 
         -- -- Fix common misspellings in source code on all filetypes
         -- ['*'] = { 'codespell' },
@@ -853,6 +849,23 @@ require('lazy').setup({
       formatters = {
         shfmt = {
           prepend_args = { '-i', '4' },
+        },
+        injected = {
+          options = {
+            ignore_errors = false,
+            lang_to_ext = {
+              bash = 'sh',
+              javascript = 'js',
+              latex = 'tex',
+              markdown = 'md',
+              nix = 'nix',
+              python = 'py',
+              ruby = 'rb',
+              rust = 'rs',
+              sql = 'sql',
+              typescript = 'ts',
+            },
+          },
         },
       },
     },
