@@ -2,7 +2,7 @@ return {
   'NvChad/nvterm',
   opts = {
     terminals = {
-      shell = 'tmux',
+      shell = 'zellij',
     },
   },
   keys = {
