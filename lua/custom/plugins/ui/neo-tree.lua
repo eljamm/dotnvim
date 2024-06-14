@@ -14,7 +14,8 @@ return {
       mappings = {
         ['l'] = 'open',
         ['h'] = 'open_split',
-        ['v'] = 'open_vsplit',
+        -- TODO: `v` is for select. Find another key for vsplit
+        -- ['v'] = 'open_vsplit',
       },
     },
     filesystem = {
