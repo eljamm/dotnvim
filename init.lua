@@ -1068,6 +1068,10 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     event = { 'BufReadPost', 'BufNewFile' },
+    dependencies = {
+      -- additional parsers
+      { 'nushell/tree-sitter-nu' },
+    },
     build = ':TSUpdate',
     opts = {
       ensure_installed = {
