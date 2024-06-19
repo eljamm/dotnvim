@@ -825,6 +825,7 @@ require('lazy').setup({
         sh = { 'shfmt' },
         sql = { 'sql_formatter' },
         gdscript = { 'gdformat' },
+        markdown = { 'mdformat', 'cbfmt' },
         nix = { 'nixfmt' },
         rust = { 'rustfmt' },
         go = {
