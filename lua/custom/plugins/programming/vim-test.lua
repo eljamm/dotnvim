@@ -3,7 +3,7 @@ local map = vim.keymap.set
 return {
   'vim-test/vim-test',
   dependencies = {
-    'preservim/vimux',
+    'NvChad/nvterm',
   },
   config = function()
     local nvt = require 'nvterm.terminal'
