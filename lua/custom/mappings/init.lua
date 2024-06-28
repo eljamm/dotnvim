@@ -82,3 +82,5 @@ map('t', '<C-l>', '<C-\\><C-N><C-w>l', { desc = 'Terminal Window Right' })
 map('t', '<C-j>', '<C-\\><C-N><C-w>j', { desc = 'Terminal Window Down' })
 map('t', '<C-k>', '<C-\\><C-N><C-w>k', { desc = 'Terminal Window Up' })
 map('t', '<C-x>', vim.api.nvim_replace_termcodes('<C-\\><C-N>', true, true, true), { desc = 'Escape Terminal Mode' })
+
+map('n', '<leader>cs', ':norm! ggVG<CR>:lua vim.cmd("CodeSnapSave " .. vim.bo.filetype)<CR>', { desc = 'Snap Code' })
