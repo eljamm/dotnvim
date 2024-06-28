@@ -84,3 +84,11 @@ map('t', '<C-k>', '<C-\\><C-N><C-w>k', { desc = 'Terminal Window Up' })
 map('t', '<C-x>', vim.api.nvim_replace_termcodes('<C-\\><C-N>', true, true, true), { desc = 'Escape Terminal Mode' })
 
 map('n', '<leader>cs', ':norm! ggVG<CR>:lua vim.cmd("CodeSnapSave " .. vim.bo.filetype)<CR>', { desc = 'Snap Code' })
+
+map(
+  'n',
+  '<leader>fd',
+  '<cmd>FormatDisable<cr><cmd>echo "Disabled Formatting"<cr>',
+  { desc = '[F]ormatting [D]Disabled' }
+)
+map('n', '<leader>fe', '<cmd>FormatEnable<cr><cmd>echo "Enabled Formatting"<cr>', { desc = '[F]Formatting [E]nabled' })
