@@ -2,36 +2,39 @@ return {
   'romgrk/barbar.nvim',
   event = 'BufEnter',
   dependencies = {
-    'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-    'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    -- Optional
+    'lewis6991/gitsigns.nvim', -- git status
+    'nvim-tree/nvim-web-devicons', -- file icons
   },
   init = function()
     vim.g.barbar_auto_setup = false
 
     local map = vim.api.nvim_set_keymap
-    local opts = { noremap = true, silent = true }
+    local opts = function(desc)
+      return { desc = desc, noremap = true, silent = true }
+    end
 
     -- Move to previous/next
-    map('n', '<A-j>', '<Cmd>BufferPrevious<CR>', opts)
-    map('n', '<A-k>', '<Cmd>BufferNext<CR>', opts)
+    map('n', '<A-j>', '<Cmd>BufferPrevious<CR>', opts 'Go to Previous Buffer')
+    map('n', '<A-k>', '<Cmd>BufferNext<CR>', opts 'Go to Next Buffer')
     -- Re-order to previous/next
-    map('n', '<A-S-j>', '<Cmd>BufferMovePrevious<CR>', opts)
-    map('n', '<A-S-k>', '<Cmd>BufferMoveNext<CR>', opts)
+    map('n', '<A-S-j>', '<Cmd>BufferMovePrevious<CR>', opts 'Move Buffer Left')
+    map('n', '<A-S-k>', '<Cmd>BufferMoveNext<CR>', opts 'Move Buffer Right')
     -- Goto buffer in position...
-    map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
-    map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
-    map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
-    map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
-    map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts)
-    map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts)
-    map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
-    map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
-    map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
-    map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
+    map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts 'Go to Buffer 1')
+    map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts 'Go to Buffer 2')
+    map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts 'Go to Buffer 3')
+    map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts 'Go to Buffer 4')
+    map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts 'Go to Buffer 5')
+    map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts 'Go to Buffer 6')
+    map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts 'Go to Buffer 7')
+    map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts 'Go to Buffer 8')
+    map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts 'Go to Buffer 9')
+    map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts 'Go to Last Buffer')
     -- Pin/unpin buffer
-    map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
+    map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts '[P]in Buffer')
     -- Close buffer
-    map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
+    map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts '[C]lose Buffer')
     -- Wipeout buffer
     --                 :BufferWipeout
     -- Close commands
@@ -41,32 +44,12 @@ return {
     --                 :BufferCloseBuffersLeft
     --                 :BufferCloseBuffersRight
     -- Magic buffer-picking mode
-    map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
+    map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts '[P]ick Buffer')
     -- Sort automatically by...
-    map(
-      'n',
-      '<Space>bon',
-      '<Cmd>BufferOrderByBufferNumber<CR>',
-      { desc = '[B]uffer [O]rder [N]umber', noremap = true, silent = true }
-    )
-    map(
-      'n',
-      '<Space>bod',
-      '<Cmd>BufferOrderByDirectory<CR>',
-      { desc = '[B]uffer [O]rder [D]irectory', noremap = true, silent = true }
-    )
-    map(
-      'n',
-      '<Space>bol',
-      '<Cmd>BufferOrderByLanguage<CR>',
-      { desc = '[B]uffer [O]rder [L]anguage', noremap = true, silent = true }
-    )
-    map(
-      'n',
-      '<Space>bow',
-      '<Cmd>BufferOrderByWindowNumber<CR>',
-      { desc = '[B]uffer [O]rder [W]indow', noremap = true, silent = true }
-    )
+    map('n', '<Space>bon', '<Cmd>BufferOrderByBufferNumber<CR>', opts '[B]uffer [O]rder [N]umber')
+    map('n', '<Space>bod', '<Cmd>BufferOrderByDirectory<CR>', opts '[B]uffer [O]rder [D]irectory')
+    map('n', '<Space>bol', '<Cmd>BufferOrderByLanguage<CR>', opts '[B]uffer [O]rder [L]anguage')
+    map('n', '<Space>bow', '<Cmd>BufferOrderByWindowNumber<CR>', opts '[B]uffer [O]rder [W]indow')
 
     -- Other:
     -- :BarbarEnable - enables barbar (enabled by default)
