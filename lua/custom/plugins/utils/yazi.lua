@@ -2,10 +2,10 @@ return {
   ---@type LazySpec
   {
     'mikavilpas/yazi.nvim',
+    event = 'VeryLazy',
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
-    event = 'VeryLazy',
     keys = {
       {
         '<leader>yy',

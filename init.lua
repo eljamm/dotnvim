@@ -324,12 +324,12 @@ require('lazy').setup({
         map('n', '<leader>hu', gitsigns.undo_stage_hunk, { desc = 'Git: [H]hunk [U]nstage' })
         map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'Git: [R]est Buffer' })
         map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'Git: [H]unk [P]review' })
-        map('n', '<leader>gb', gitsigns.toggle_current_line_blame, { desc = 'Git: Toggle [B]lame' })
-        map('n', '<leader>gd', gitsigns.diffthis, { desc = 'Git: [D]iff' })
-        map('n', '<leader>gD', function()
-          gitsigns.diffthis '~'
-        end, { desc = 'Git: [D]iff Changed' })
-        map('n', '<leader>gr', gitsigns.toggle_deleted, { desc = 'Git: Toggle [R]removed' })
+
+        map('n', '<leader>gb', gitsigns.toggle_current_line_blame, { desc = '[B]lame' })
+        map('n', '<leader>gd', gitsigns.diffthis, { desc = '[D]iff' })
+        map('n', '<leader>gD', ':Gitsigns diffthis "~"<CR>', { desc = '[D]iff Changed' })
+        map('n', '<leader>gr', gitsigns.toggle_deleted, { desc = '[R]removed' })
+        map('n', '<leader>gp', gitsigns.preview_hunk, { desc = '[G]it [P]review Hunk' })
 
         -- Text object
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = '' })
@@ -360,13 +360,16 @@ require('lazy').setup({
 
       -- Document existing key chains
       require('which-key').register {
+        ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
+        ['<leader>bo'] = { name = '[O]rder', _ = 'which_key_ignore' },
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
         ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+        ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+        ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
+        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
       }
       -- visual mode
       require('which-key').register({
@@ -795,14 +798,20 @@ require('lazy').setup({
     'stevearc/conform.nvim',
     --  for users who want auto-save conform + lazyloading!
     event = 'BufWritePre',
+    cmd = { 'FormatEnable', 'FormatDisable' },
     keys = {
       {
         '<leader>f',
         function()
           require('conform').format { async = true, lsp_format = 'fallback' }
         end,
-        mode = '',
         desc = '[F]ormat buffer',
+      },
+      { '<leader>fe', '<cmd>FormatEnable<cr><cmd>echo "Enabled Formatting"<cr>', desc = '[F]Formatting [E]nabled' },
+      {
+        '<leader>fd',
+        '<cmd>FormatDisable<cr><cmd>echo "Disabled Formatting"<cr>',
+        desc = '[F]ormatting [D]isabled',
       },
     },
     opts = {

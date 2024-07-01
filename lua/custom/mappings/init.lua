@@ -43,7 +43,7 @@ map(
   "<cmd>let @+ = expand('%:p')<cr><cmd>echo 'Copied path:' @+<cr>",
   { desc = '[C]opy Full [P]ath to Clipboard' }
 )
-map('n', '<leader>gp', ':e <C-r>+<CR>', { desc = '[G]o to [P]ath from Clipboard' })
+map('n', '<leader>ep', ':e <C-r>+<CR>', { desc = '[E]dit [P]ath from Clipboard ' })
 
 map('v', '>', '>gv', { desc = 'Indent Right' })
 map('v', '<', '<gv', { desc = 'Indent Left' })
@@ -82,13 +82,3 @@ map('t', '<C-l>', '<C-\\><C-N><C-w>l', { desc = 'Terminal Window Right' })
 map('t', '<C-j>', '<C-\\><C-N><C-w>j', { desc = 'Terminal Window Down' })
 map('t', '<C-k>', '<C-\\><C-N><C-w>k', { desc = 'Terminal Window Up' })
 map('t', '<C-x>', vim.api.nvim_replace_termcodes('<C-\\><C-N>', true, true, true), { desc = 'Escape Terminal Mode' })
-
-map('n', '<leader>cs', ':norm! ggVG<CR>:lua vim.cmd("CodeSnapSave " .. vim.bo.filetype)<CR>', { desc = 'Snap Code' })
-
-map(
-  'n',
-  '<leader>fd',
-  '<cmd>FormatDisable<cr><cmd>echo "Disabled Formatting"<cr>',
-  { desc = '[F]ormatting [D]Disabled' }
-)
-map('n', '<leader>fe', '<cmd>FormatEnable<cr><cmd>echo "Enabled Formatting"<cr>', { desc = '[F]Formatting [E]nabled' })

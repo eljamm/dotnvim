@@ -2,13 +2,21 @@ return {
   {
     'nvim-neo-tree/neo-tree.nvim',
     version = '*',
+    cmd = { 'Neotree' },
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons', -- optional, but recommended
       'MunifTanjim/nui.nvim',
+      -- file operations using built-in LSP
+      {
+        'antosha417/nvim-lsp-file-operations',
+        config = true,
+        dependencies = {
+          'nvim-lua/plenary.nvim',
+          'nvim-neo-tree/neo-tree.nvim',
+        },
+      },
     },
-    event = { 'BufReadPost', 'BufNewFile' },
-    cmd = { 'Neotree' },
     opts = {
       close_if_last_window = true,
       window = {
@@ -24,7 +32,7 @@ return {
       },
     },
     keys = {
-      { '<C-n>', '<CMD>Neotree toggle<CR>', mode = { 'n', 'x', 't' }, desc = 'Toggle [N]eoTree', nowait = true },
+      { '<C-n>', ':Neotree toggle<CR>', mode = { 'n', 'x', 't' }, desc = 'Toggle [N]eoTree', nowait = true },
       -- {
       --   '<C-b>',
       --   '<CMD>Neotree toggle buffers<CR>',
@@ -34,20 +42,11 @@ return {
       -- },
       {
         '<C-f>',
-        '<CMD>Neotree toggle position=current<CR>',
+        ':Neotree toggle position=current<CR>',
         mode = { 'n', 'x' },
         desc = 'Toggle [F]ull NeoTree',
         nowait = true,
       },
-    },
-  },
-  -- file operations using built-in LSP
-  {
-    'antosha417/nvim-lsp-file-operations',
-    config = true,
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-neo-tree/neo-tree.nvim',
     },
   },
 }

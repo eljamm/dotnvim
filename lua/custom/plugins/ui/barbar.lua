@@ -1,6 +1,6 @@
 return {
   'romgrk/barbar.nvim',
-  event = { 'BufReadPost', 'BufNewFile' },
+  event = 'BufEnter',
   dependencies = {
     'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
     'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
@@ -43,10 +43,30 @@ return {
     -- Magic buffer-picking mode
     map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
     -- Sort automatically by...
-    map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
-    map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
-    map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
-    map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
+    map(
+      'n',
+      '<Space>bon',
+      '<Cmd>BufferOrderByBufferNumber<CR>',
+      { desc = '[B]uffer [O]rder [N]umber', noremap = true, silent = true }
+    )
+    map(
+      'n',
+      '<Space>bod',
+      '<Cmd>BufferOrderByDirectory<CR>',
+      { desc = '[B]uffer [O]rder [D]irectory', noremap = true, silent = true }
+    )
+    map(
+      'n',
+      '<Space>bol',
+      '<Cmd>BufferOrderByLanguage<CR>',
+      { desc = '[B]uffer [O]rder [L]anguage', noremap = true, silent = true }
+    )
+    map(
+      'n',
+      '<Space>bow',
+      '<Cmd>BufferOrderByWindowNumber<CR>',
+      { desc = '[B]uffer [O]rder [W]indow', noremap = true, silent = true }
+    )
 
     -- Other:
     -- :BarbarEnable - enables barbar (enabled by default)
