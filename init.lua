@@ -411,6 +411,9 @@ require('lazy').setup({
 
       -- View and search undo tree
       'debugloop/telescope-undo.nvim',
+
+      -- Nix documentation searcher
+      'mrcjkb/telescope-manix',
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -466,6 +469,7 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'ui-select')
       pcall(require('telescope').load_extension, 'persisted')
       pcall(require('telescope').load_extension, 'undo')
+      pcall(require('telescope').load_extension, 'manix')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -482,6 +486,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>ss', '<cmd>Telescope persisted<cr>', { desc = '[S]earch Latest [S]essions' })
       vim.keymap.set('n', '<leader>su', '<cmd>Telescope undo<cr>', { desc = '[S]earch [U]ndo Tree' })
+      vim.keymap.set('n', '<leader>sn', '<cmd>Telescope manix<cr>', { desc = '[S]earch [N]ix Docs' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
@@ -505,9 +510,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s+', '<leader>s/', { desc = '[S]earch [/] in Open Files', remap = true })
 
       -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set('n', '<leader>sn', function()
+      vim.keymap.set('n', '<leader>sv', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
-      end, { desc = '[S]earch [N]eovim files' })
+      end, { desc = '[S]earch Neo[V]im files' })
     end,
   },
 
