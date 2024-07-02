@@ -447,6 +447,8 @@ require('lazy').setup({
             },
             n = { ['<C-i>'] = 'select_default', ['q'] = 'close' },
           },
+          layout_strategy = 'vertical',
+          layout_config = { height = 0.95, width = 0.85 },
         },
         -- pickers = {}
         extensions = {
