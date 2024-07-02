@@ -805,7 +805,6 @@ require('lazy').setup({
     'stevearc/conform.nvim',
     --  for users who want auto-save conform + lazyloading!
     event = 'BufWritePre',
-    cmd = { 'FormatEnable', 'FormatDisable' },
     keys = {
       {
         '<leader>f',
