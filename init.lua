@@ -514,7 +514,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>se', '<CMD>Telescope grapple tags<CR>', { desc = '[S]earch Grappl[E]' })
       vim.keymap.set('n', '<leader>sn', '<CMD>Telescope manix<CR>', { desc = '[S]earch [N]ix Docs' })
       vim.keymap.set('n', '<leader>ss', '<CMD>Telescope persisted<CR>', { desc = '[S]earch Latest [S]essions' })
-      vim.keymap.set('n', '<leader>su', '<CMD>Telescope undo<CR>', { desc = '[S]earch [U]ndo Tree' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set(
         'n',
@@ -522,6 +521,10 @@ require('lazy').setup({
         "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
         { desc = '[S]earch [A]rgs Grep' }
       )
+
+      -- Undo tree
+      vim.keymap.set('n', '<leader>su', '<CMD>Telescope undo<CR>', { desc = '[S]earch [U]ndo Tree' })
+      vim.keymap.set('n', '<leader>ut', '<CMD>Telescope undo<CR>', { desc = '[U]ndo [T]ree' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
