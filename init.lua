@@ -1165,6 +1165,7 @@ require('lazy').setup({
         'markdown_inline',
         'vim',
         'vimdoc',
+        'regex',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
