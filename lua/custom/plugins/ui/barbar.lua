@@ -1,3 +1,13 @@
+local map = vim.api.nvim_set_keymap
+
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+local exec_autocmds = vim.api.nvim_exec_autocmds
+
+local opts = function(desc)
+  return { desc = desc, noremap = true, silent = true }
+end
+
 return {
   'romgrk/barbar.nvim',
   event = 'BufEnter',
@@ -8,11 +18,6 @@ return {
   },
   init = function()
     vim.g.barbar_auto_setup = false
-
-    local map = vim.api.nvim_set_keymap
-    local opts = function(desc)
-      return { desc = desc, noremap = true, silent = true }
-    end
 
     -- Move to previous/next
     map('n', '<A-j>', '<Cmd>BufferPrevious<CR>', opts 'Go to Previous Buffer')
@@ -54,6 +59,16 @@ return {
     -- Other:
     -- :BarbarEnable - enables barbar (enabled by default)
     -- :BarbarDisable - very bad command, should never be used
+
+    -- Save buffer location with persisted.nvim
+    vim.opt.sessionoptions:append 'globals'
+    autocmd({ 'User' }, {
+      pattern = 'PersistedSavePre',
+      group = augroup('PersistedHooks', {}),
+      callback = function()
+        exec_autocmds('User', { pattern = 'SessionSavePre' })
+      end,
+    })
   end,
   opts = {
     -- Enable/disable animations

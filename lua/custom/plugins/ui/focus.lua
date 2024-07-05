@@ -1,3 +1,6 @@
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
 return {
   'nvim-focus/focus.nvim',
   lazy = false,
@@ -41,4 +44,30 @@ return {
       desc = 'Focus [S]plit',
     },
   },
+  init = function()
+    --- disable for certain buffer and file types
+    autocmd('WinEnter', {
+      group = augroup('FocusDisable', { clear = true }),
+      callback = function(_)
+        local ignore_buftypes = { 'nofile', 'prompt', 'popup' }
+
+        if vim.tbl_contains(ignore_buftypes, vim.bo.buftype) then
+          vim.b.focus_disable = true
+        end
+      end,
+      desc = 'Disable focus autoresize for BufType',
+    })
+    --
+    autocmd('FileType', {
+      group = augroup('FocusDisable', { clear = true }),
+      callback = function(_)
+        local ignore_filetypes = { 'neo-tree', 'trouble', 'gitsigns.blame', 'noice' }
+
+        if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
+          vim.b.focus_disable = true
+        end
+      end,
+      desc = 'Disable focus autoresize for FileType',
+    })
+  end,
 }
