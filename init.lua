@@ -404,6 +404,12 @@ require('lazy').setup({
           return vim.fn.executable 'make' == 1
         end,
       },
+      {
+        'nvim-telescope/telescope-live-grep-args.nvim',
+        -- This will not install any breaking changes.
+        -- For major updates, this must be adjusted manually.
+        version = '^1.0.0',
+      },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
@@ -461,6 +467,22 @@ require('lazy').setup({
           ['persisted'] = {
             layout_config = { width = 0.55, height = 0.55 },
           },
+          ['live_grep_args'] = {
+            auto_quoting = true, -- enable/disable auto-quoting
+            -- define mappings, e.g.
+            mappings = { -- extend mappings
+              i = {
+                ['<C-k>'] = require('telescope-live-grep-args.actions').quote_prompt(),
+                ['<C-i>'] = require('telescope-live-grep-args.actions').quote_prompt { postfix = ' --iglob ' },
+                -- freeze the current list and start a fuzzy search in the frozen list
+                ['<C-space>'] = require('telescope-live-grep-args.actions').to_fuzzy_refine,
+              },
+            },
+            -- ... also accepts theme settings, for example:
+            -- theme = "dropdown", -- use dropdown theme
+            -- theme = { }, -- use own theme spec
+            -- layout_config = { mirror=true }, -- mirror preview pane
+          },
         },
       }
 
@@ -470,6 +492,7 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'persisted')
       pcall(require('telescope').load_extension, 'undo')
       pcall(require('telescope').load_extension, 'manix')
+      pcall(require('telescope').load_extension, 'live_grep_args')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -489,6 +512,12 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>ss', '<CMD>Telescope persisted<CR>', { desc = '[S]earch Latest [S]essions' })
       vim.keymap.set('n', '<leader>su', '<CMD>Telescope undo<CR>', { desc = '[S]earch [U]ndo Tree' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set(
+        'n',
+        '<leader>sa',
+        "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
+        { desc = '[S]earch [A]rgs Grep' }
+      )
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
