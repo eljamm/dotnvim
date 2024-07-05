@@ -772,7 +772,7 @@ require('lazy').setup({
           settings = {
             nixd = {
               formatting = {
-                command = { 'nixpkgs-fmt' },
+                command = { 'nixfmt' },
               },
             },
           },
