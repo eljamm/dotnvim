@@ -771,25 +771,6 @@ require('lazy').setup({
           },
         },
 
-        -- TODO:
-        nixd = {
-          capabilities = capabilities,
-          settings = {
-            nixd = {
-              formatting = {
-                command = { 'nixfmt' },
-              },
-            },
-          },
-        },
-
-        hls = {
-          capabilities = capabilities,
-          filetypes = { 'haskell', 'lhaskell', 'cabal' },
-        },
-      }
-
-      local disabled_servers = {
         nil_ls = {
           capabilities = capabilities,
           settings = {
@@ -802,6 +783,25 @@ require('lazy').setup({
                   autoArchive = true,
                   autoEvalInputs = false,
                 },
+              },
+            },
+          },
+        },
+
+        hls = {
+          capabilities = capabilities,
+          filetypes = { 'haskell', 'lhaskell', 'cabal' },
+        },
+      }
+
+      local disabled_servers = {
+        -- TODO:
+        nixd = {
+          capabilities = capabilities,
+          settings = {
+            nixd = {
+              formatting = {
+                command = { 'nixfmt' },
               },
             },
           },
