@@ -3,8 +3,10 @@ return {
   event = { 'BufRead Cargo.toml' },
   config = true,
   opts = {
-    src = {
-      cmp = { enabled = true },
+    completion = {
+      cmp = {
+        enabled = true,
+      },
     },
   },
   init = function()
