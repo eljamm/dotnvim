@@ -459,6 +459,9 @@ require('lazy').setup({
           layout_strategy = 'vertical',
           layout_config = { height = 0.95, width = 0.85 },
         },
+        file_previewer = require('telescope.previewers').cat.new,
+        grep_previewer = require('telescope.previewers').vimgrep.new,
+        qflist_previewer = require('telescope.previewers').qflist.new,
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
