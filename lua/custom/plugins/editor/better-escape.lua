@@ -1,8 +1,7 @@
 return {
-  'max397574/better-escape.nvim',
-  event = 'InsertEnter',
-  config = true,
-  opts = {
-    clear_empty_lines = true,
-  },
+  'nvim-zh/better-escape.vim',
+  init = function()
+    vim.g.better_escape_shortcut = { 'jj', 'jk' }
+    vim.g.better_escape_interval = 200
+  end,
 }
