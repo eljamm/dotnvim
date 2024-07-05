@@ -7,15 +7,6 @@ return {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons', -- optional, but recommended
       'MunifTanjim/nui.nvim',
-      -- file operations using built-in LSP
-      {
-        'antosha417/nvim-lsp-file-operations',
-        opts = {},
-        dependencies = {
-          'nvim-lua/plenary.nvim',
-          'nvim-neo-tree/neo-tree.nvim',
-        },
-      },
     },
     opts = {
       close_if_last_window = true,
