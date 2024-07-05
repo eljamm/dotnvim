@@ -13,10 +13,10 @@ return {
   init = function()
     local map = vim.keymap.set
 
-    map({ 'n' }, '<F3>', '<cmd>GodotRunFZF<cr>', { desc = 'Fuzzy Run Godot Scenes' })
-    map({ 'n' }, '<F4>', '<cmd>GodotRunLast<cr>', { desc = 'Run Last Godot Scene' })
-    map({ 'n' }, '<F5>', '<cmd>GodotRun<cr>', { desc = 'Run Godot Scene' })
-    map({ 'n' }, '<F6>', '<cmd>GodotRunCurrent<cr>', { desc = 'Run Current Godot Scene' })
+    map({ 'n' }, '<F3>', '<CMD>GodotRunFZF<CR>', { desc = 'Fuzzy Run Godot Scenes' })
+    map({ 'n' }, '<F4>', '<CMD>GodotRunLast<CR>', { desc = 'Run Last Godot Scene' })
+    map({ 'n' }, '<F5>', '<CMD>GodotRun<CR>', { desc = 'Run Godot Scene' })
+    map({ 'n' }, '<F6>', '<CMD>GodotRunCurrent<CR>', { desc = 'Run Current Godot Scene' })
 
     vim.g.godot_executable = 'godot4'
   end,

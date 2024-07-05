@@ -9,24 +9,24 @@ map({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true
 -- map({ 'n', 'x' }, '<Up>', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Move Lines
--- map('n', '<A-j>', '<cmd>m .+1<cr>==', { desc = 'Move Down' })
--- map('n', '<A-k>', '<cmd>m .-2<cr>==', { desc = 'Move Up' })
--- map('i', '<A-j>', '<esc><cmd>m .+1<cr>==gi', { desc = 'Move Down' })
--- map('i', '<A-k>', '<esc><cmd>m .-2<cr>==gi', { desc = 'Move Up' })
--- map('v', '<A-j>', ":m '>+1<cr>gv=gv", { desc = 'Move Down' })
--- map('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = 'Move Up' })
+-- map('n', '<A-j>', '<CMD>m .+1<CR>==', { desc = 'Move Down' })
+-- map('n', '<A-k>', '<CMD>m .-2<CR>==', { desc = 'Move Up' })
+-- map('i', '<A-j>', '<esc><CMD>m .+1<CR>==gi', { desc = 'Move Down' })
+-- map('i', '<A-k>', '<esc><CMD>m .-2<CR>==gi', { desc = 'Move Up' })
+-- map('v', '<A-j>', ":m '>+1<CR>gv=gv", { desc = 'Move Down' })
+-- map('v', '<A-k>', ":m '<-2<CR>gv=gv", { desc = 'Move Up' })
 
 -- Resize window using <ctrl> arrow keys
-map({ 'n', 't' }, '<C-Up>', '<cmd>resize +2<cr>', { desc = 'Increase Window Height' })
-map({ 'n', 't' }, '<C-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease Window Height' })
-map({ 'n', 't' }, '<C-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
-map({ 'n', 't' }, '<C-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
+map({ 'n', 't' }, '<C-Up>', '<CMD>resize +2<CR>', { desc = 'Increase Window Height' })
+map({ 'n', 't' }, '<C-Down>', '<CMD>resize -2<CR>', { desc = 'Decrease Window Height' })
+map({ 'n', 't' }, '<C-Left>', '<CMD>vertical resize -2<CR>', { desc = 'Decrease Window Width' })
+map({ 'n', 't' }, '<C-Right>', '<CMD>vertical resize +2<CR>', { desc = 'Increase Window Width' })
 
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
 map(
   'n',
   '<leader>ur',
-  '<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>',
+  '<CMD>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>',
   { desc = 'Redraw / Clear hlsearch / Diff Update' }
 )

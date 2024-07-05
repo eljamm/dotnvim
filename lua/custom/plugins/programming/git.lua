@@ -10,7 +10,7 @@ return {
       'nvim-telescope/telescope.nvim',
     },
     keys = {
-      { '<leader>gn', ':Neogit<CR>', desc = '[N]eogit' },
+      { '<leader>gn', '<CMD>Neogit<CR>', desc = '[N]eogit' },
     },
   },
 }

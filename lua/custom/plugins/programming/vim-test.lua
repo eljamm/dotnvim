@@ -20,10 +20,10 @@ return {
     -- vim.g['test#neovim#term_position'] = 'hor'
   end,
   keys = {
-    { '<leader>ti', ':TestNearest<cr>', desc = '[T]est Nearest' },
-    { '<leader>tf', ':TestFile<cr>', desc = '[T]est [F]ile' },
-    { '<leader>ta', ':TestSuite<cr>', desc = '[T]est [A]ll' },
-    { '<leader>tl', ':TestLast<cr>', desc = '[T]est [L]ast' },
-    { '<leader>tv', ':TestVisit<cr>', desc = '[T]est [V]isit' },
+    { '<leader>ti', '<CMD>TestNearest<CR>', desc = '[T]est Nearest' },
+    { '<leader>tf', '<CMD>TestFile<CR>', desc = '[T]est [F]ile' },
+    { '<leader>ta', '<CMD>TestSuite<CR>', desc = '[T]est [A]ll' },
+    { '<leader>tl', '<CMD>TestLast<CR>', desc = '[T]est [L]ast' },
+    { '<leader>tv', '<CMD>TestVisit<CR>', desc = '[T]est [V]isit' },
   },
 }

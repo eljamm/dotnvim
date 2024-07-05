@@ -25,24 +25,24 @@ return {
   keys = {
     {
       '<leader>tb',
-      '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+      '<CMD>Trouble diagnostics toggle filter.buf=0<CR>',
       mode = { 'n' },
       desc = '[T]rouble [B]buffer Toggle Diagnostics',
     },
     {
       '<leader>tt',
-      '<cmd>Trouble diagnostics toggle focus=true<cr>',
+      '<CMD>Trouble diagnostics toggle focus=true<CR>',
       mode = { 'n' },
       desc = '[T]rouble [T]oggle Diagnostics',
     },
-    { '<leader>tq', '<cmd>Trouble qflist toggle<cr>', mode = { 'n' }, desc = '[T]rouble [Q]uickfix List' },
-    { '<leader>tL', '<cmd>Trouble loclist toggle<cr>', mode = { 'n' }, desc = '[T]rouble [L]ocation List' },
+    { '<leader>tq', '<CMD>Trouble qflist toggle<CR>', mode = { 'n' }, desc = '[T]rouble [Q]uickfix List' },
+    { '<leader>tL', '<CMD>Trouble loclist toggle<CR>', mode = { 'n' }, desc = '[T]rouble [L]ocation List' },
     {
       '<leader>td',
-      '<cmd>Trouble loclist toggle<cr>',
+      '<CMD>Trouble loclist toggle<CR>',
       mode = { 'n' },
       desc = '[T]rouble LSP [D]efinitions/references/...',
     },
-    { '<leader>ts', '<cmd>Trouble symbols toggle focus=false<cr>', mode = { 'n' }, desc = '[T]rouble [S]ymbols' },
+    { '<leader>ts', '<CMD>Trouble symbols toggle focus=false<CR>', mode = { 'n' }, desc = '[T]rouble [S]ymbols' },
   },
 }

@@ -21,15 +21,15 @@ return {
 
     -- Buttons
     dashboard.section.buttons.val = {
-      dashboard.button('n', ' ' .. ' New file', '<cmd> ene <BAR> startinsert <cr>'),
-      dashboard.button('f', ' ' .. ' Find file', '<cmd> Telescope find_files <cr>'),
-      dashboard.button('g', ' ' .. ' Live grep', '<cmd> Telescope live_grep <cr>'),
-      dashboard.button('r', ' ' .. ' Recent files', '<cmd> Telescope oldfiles <cr>'),
-      -- dashboard.button('s', ' ' .. ' Restore Session', "<cmd>lua require('persistence').load()<cr>"),
-      dashboard.button('s', ' ' .. ' Restore Session', '<cmd>SessionLoad<cr>'),
-      dashboard.button('l', '󰒲 ' .. ' Lazy', '<cmd> Lazy <cr>'),
-      dashboard.button('h', '󱙤 ' .. ' Check Health', '<cmd>checkhealth<cr>'),
-      dashboard.button('q', ' ' .. ' Quit', '<cmd> qa <cr>'),
+      dashboard.button('n', ' ' .. ' New file', '<CMD> ene <BAR> startinsert <CR>'),
+      dashboard.button('f', ' ' .. ' Find file', '<CMD> Telescope find_files <CR>'),
+      dashboard.button('g', ' ' .. ' Live grep', '<CMD> Telescope live_grep <CR>'),
+      dashboard.button('r', ' ' .. ' Recent files', '<CMD> Telescope oldfiles <CR>'),
+      -- dashboard.button('s', ' ' .. ' Restore Session', "<CMD>lua require('persistence').load()<CR>"),
+      dashboard.button('s', ' ' .. ' Restore Session', '<CMD>SessionLoad<CR>'),
+      dashboard.button('l', '󰒲 ' .. ' Lazy', '<CMD> Lazy <CR>'),
+      dashboard.button('h', '󱙤 ' .. ' Check Health', '<CMD>checkhealth<CR>'),
+      dashboard.button('q', ' ' .. ' Quit', '<CMD> qa <CR>'),
     }
     for _, button in ipairs(dashboard.section.buttons) do
       button.opts.hl = 'AlphaButtons'

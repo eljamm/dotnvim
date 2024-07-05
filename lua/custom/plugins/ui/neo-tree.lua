@@ -32,17 +32,10 @@ return {
       },
     },
     keys = {
-      { '<C-n>', ':Neotree toggle<CR>', mode = { 'n', 'x', 't' }, desc = 'Toggle [N]eoTree', nowait = true },
-      -- {
-      --   '<C-b>',
-      --   '<CMD>Neotree toggle buffers<CR>',
-      --   mode = { 'n', 'x', 't' },
-      --   desc = 'Toggle Neotree [B]uffers',
-      --   nowait = true,
-      -- },
+      { '<C-n>', '<CMD>Neotree toggle<CR>', mode = { 'n', 'x', 't' }, desc = 'Toggle [N]eoTree', nowait = true },
       {
         '<C-f>',
-        ':Neotree toggle position=current<CR>',
+        '<CMD>Neotree toggle position=current<CR>',
         mode = { 'n', 'x' },
         desc = 'Toggle [F]ull NeoTree',
         nowait = true,

@@ -159,7 +159,7 @@ vim.opt.scrolloff = 10
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<Esc>', '<CMD>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -176,10 +176,10 @@ vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]i
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
-vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('n', '<left>', '<CMD>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<CMD>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<CMD>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<CMD>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -327,12 +327,12 @@ require('lazy').setup({
 
         map('n', '<leader>gb', gitsigns.toggle_current_line_blame, { desc = '[B]lame' })
         map('n', '<leader>gd', gitsigns.diffthis, { desc = '[D]iff' })
-        map('n', '<leader>gD', ':Gitsigns diffthis "~"<CR>', { desc = '[D]iff Changed' })
+        map('n', '<leader>gD', '<CMD>Gitsigns diffthis "~"<CR>', { desc = '[D]iff Changed' })
         map('n', '<leader>gr', gitsigns.toggle_deleted, { desc = '[R]removed' })
         map('n', '<leader>gp', gitsigns.preview_hunk, { desc = '[G]it [P]review Hunk' })
 
         -- Text object
-        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = '' })
+        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = '', silent = true })
       end,
     },
   },
@@ -484,9 +484,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = '[S]earch Select [T]elescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>ss', '<cmd>Telescope persisted<cr>', { desc = '[S]earch Latest [S]essions' })
-      vim.keymap.set('n', '<leader>su', '<cmd>Telescope undo<cr>', { desc = '[S]earch [U]ndo Tree' })
-      vim.keymap.set('n', '<leader>sn', '<cmd>Telescope manix<cr>', { desc = '[S]earch [N]ix Docs' })
+      vim.keymap.set('n', '<leader>se', '<CMD>Telescope grapple tags<CR>', { desc = '[S]earch Grappl[E]' })
+      vim.keymap.set('n', '<leader>sn', '<CMD>Telescope manix<CR>', { desc = '[S]earch [N]ix Docs' })
+      vim.keymap.set('n', '<leader>ss', '<CMD>Telescope persisted<CR>', { desc = '[S]earch Latest [S]essions' })
+      vim.keymap.set('n', '<leader>su', '<CMD>Telescope undo<CR>', { desc = '[S]earch [U]ndo Tree' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
@@ -827,10 +828,10 @@ require('lazy').setup({
         end,
         desc = '[F]ormat buffer',
       },
-      { '<leader>fe', '<cmd>FormatEnable<cr><cmd>echo "Enabled Formatting"<cr>', desc = '[F]Formatting [E]nabled' },
+      { '<leader>fe', '<CMD>FormatEnable<CR><CMD>echo "Enabled Formatting"<CR>', desc = '[F]Formatting [E]nabled' },
       {
         '<leader>fd',
-        '<cmd>FormatDisable<cr><cmd>echo "Disabled Formatting"<cr>',
+        '<CMD>FormatDisable<CR><CMD>echo "Disabled Formatting"<CR>',
         desc = '[F]ormatting [D]isabled',
       },
     },

@@ -3,10 +3,9 @@ return -- Lua
   'folke/zen-mode.nvim',
   keys = {
     {
-      '<leader>fc',
+      '<leader>nn',
       '<CMD>ZenMode<CR>',
-      mode = 'n',
-      desc = 'Focus (Zen Mode)',
+      desc = '[N]o [N]oise (Zen Mode)',
     },
   },
 }

@@ -5,19 +5,19 @@ return {
     keys = {
       {
         '<leader>mpt',
-        '<cmd>MarkdownPreviewToggle<cr>',
+        '<CMD>MarkdownPreviewToggle<CR>',
         mode = 'n',
         desc = '[M]arkdown [P]review [T]oggle',
       },
       {
         '<leader>mpb',
-        '<cmd>MarkdownPreview<cr>',
+        '<CMD>MarkdownPreview<CR>',
         mode = 'n',
         desc = '[M]arkdown [P]review [B]egin',
       },
       {
         '<leader>mps',
-        '<cmd>MarkdownPreview<cr>',
+        '<CMD>MarkdownPreview<CR>',
         mode = 'n',
         desc = '[M]arkdown [P]review [S]top',
       },

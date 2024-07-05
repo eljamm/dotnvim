@@ -12,38 +12,38 @@ require 'custom.mappings.vim-galore'
 --- General
 map('n', '+', '/', { desc = 'Forward search', nowait = true })
 map('n', '-', '?', { desc = 'Backward search', nowait = true })
-map('n', '<leader>n', '<cmd>enew<cr>', { desc = 'New Buffer' })
-map({ 'n', 't' }, '<A-w>', '<cmd>q<cr>', { desc = 'Close Window' })
+map('n', '<M-n>', '<CMD>enew<CR>', { desc = 'New Buffer' })
+map({ 'n', 't' }, '<A-w>', '<CMD>q<CR>', { desc = 'Close Window' })
 map({ 'n', 't' }, '<C-q>', close_nvim, { desc = 'Quick Quit' })
 map({ 'n', 'x' }, ',', ':', { desc = 'Enter command mode', nowait = true })
 
-map('n', '<leader>ll', '<cmd>Lazy<cr>', { desc = 'Open Lazy' })
-map('n', '<leader>mm', '<cmd>Mason<cr>', { desc = 'Open Mason' })
+map('n', '<leader>ll', '<CMD>Lazy<CR>', { desc = 'Open Lazy' })
+map('n', '<leader>mm', '<CMD>Mason<CR>', { desc = 'Open Mason' })
 
 map('i', '<C-v>', '<esc>p', { desc = 'Paste Clipboard' })
-map('n', '<C-c>', '<cmd> %y+ <CR>', { desc = 'Copy File to [C]lipboard' })
+map('n', '<C-c>', '<CMD> %y+ <CR>', { desc = 'Copy File to [C]lipboard' })
 
-map({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w "++p"<cr><esc>', { desc = 'Save File' })
+map({ 'i', 'x', 'n', 's' }, '<C-s>', '<CMD>w "++p"<CR><esc>', { desc = 'Save File' })
 map(
   { 'i', 'x', 'n', 's' },
   '<Esc><C-s>', -- <Alt>+<Control-s>
-  '<cmd>wa "++p"<cr><esc>',
+  '<CMD>wa "++p"<CR><esc>',
   { desc = 'Save All Files' }
 )
 
 map(
   'n',
   '<leader>cr',
-  "<cmd>let @+ = expand('%:~:.')<cr><cmd>echo 'Copied path:' @+<cr>",
+  "<CMD>let @+ = expand('%:~:.')<CR><CMD>echo 'Copied path:' @+<CR>",
   { desc = '[C]opy [R]elative Path to Clipboard' }
 )
 map(
   'n',
   '<leader>cp',
-  "<cmd>let @+ = expand('%:p')<cr><cmd>echo 'Copied path:' @+<cr>",
+  "<CMD>let @+ = expand('%:p')<CR><CMD>echo 'Copied path:' @+<CR>",
   { desc = '[C]opy Full [P]ath to Clipboard' }
 )
-map('n', '<leader>ep', ':e <C-r>+<CR>', { desc = '[E]dit [P]ath from Clipboard ' })
+map('n', '<leader>ep', ':e <C-r>+<CR>', { desc = '[E]dit [P]ath from Clipboard', silent = true })
 
 map('v', '>', '>gv', { desc = 'Indent Right' })
 map('v', '<', '<gv', { desc = 'Indent Left' })
@@ -56,24 +56,24 @@ map('x', 'p', 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = 'Dont copy replaced text
 map('v', 'p', 'P')
 
 --- Tab motions
--- map('n', '<C-t>s', '<cmd>tab split<cr>', { desc = 'Split Window to New Tab' })
+-- map('n', '<C-t>s', '<CMD>tab split<CR>', { desc = 'Split Window to New Tab' })
 -- map('n', '<C-t>t', '<C-w>T', { desc = 'Maximize Window' })
-map('n', '<ESC><C-j>', '<cmd>tabprevious<cr>', { desc = 'Previous Tab' })
-map('n', '<ESC><C-k>', '<cmd>tabnext<cr>', { desc = 'Next Tab' })
-map('n', '<leader>tc', '<cmd>tabclose<cr>', { desc = '[T]ab [C]lose' })
-map('n', '<leader>te', '<cmd>tabedit<cr>', { desc = '[T]ab [E]dit' })
-map('n', '<leader>tn', '<cmd>tabnew<cr>', { desc = '[T]ab [N]ew' })
+map('n', '<ESC><C-j>', '<CMD>tabprevious<CR>', { desc = 'Previous Tab' })
+map('n', '<ESC><C-k>', '<CMD>tabnext<CR>', { desc = 'Next Tab' })
+map('n', '<leader>tc', '<CMD>tabclose<CR>', { desc = '[T]ab [C]lose' })
+map('n', '<leader>te', '<CMD>tabedit<CR>', { desc = '[T]ab [E]dit' })
+map('n', '<leader>tn', '<CMD>tabnew<CR>', { desc = '[T]ab [N]ew' })
 
 -- Buffer Motions
--- map('n', '<A-j>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
--- map('n', '<A-k>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
--- map('n', '<A-c>', '<cmd>bdelete<cr>', { desc = 'Close Buffer' })
+-- map('n', '<A-j>', '<CMD>bprevious<CR>', { desc = 'Prev Buffer' })
+-- map('n', '<A-k>', '<CMD>bnext<CR>', { desc = 'Next Buffer' })
+-- map('n', '<A-c>', '<CMD>bdelete<CR>', { desc = 'Close Buffer' })
 
 --- Debugging
-map('n', '<leader>ms', '<cmd>messages<cr>', { desc = 'Show Messages' })
-map('n', '<leader>mn', '<cmd>Noice<cr>', { desc = 'Show Noice Messages' })
+map('n', '<leader>ms', '<CMD>messages<CR>', { desc = 'Show Messages' })
+map('n', '<leader>mn', '<CMD>Noice<CR>', { desc = 'Show Noice Messages' })
 
-map('x', '<M-s>', ':sort<cr>', { desc = 'Sort Selection' })
+map('x', '<M-s>', '<CMD>sort<CR>', { desc = 'Sort Selection' })
 
 --- Terminal
 -- switch between windows

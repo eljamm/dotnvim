@@ -9,13 +9,13 @@ return {
   keys = {
     {
       '<leader>cs',
-      '<cmd>Telescope cheat fd<cr>',
+      '<CMD>Telescope cheat fd<CR>',
       mode = 'n',
       desc = '[C]heat [S]heet',
     },
     {
       '<leader>cr',
-      '<cmd>Telescope cheat recache<cr>',
+      '<CMD>Telescope cheat recache<CR>',
       mode = 'n',
       desc = '[C]heat [R]ecache',
     },

@@ -6,37 +6,37 @@ return {
   keys = {
     {
       '<leader>ft',
-      '<cmd>FocusToggle<cr>',
+      '<CMD>FocusToggle<CR>',
       mode = 'n',
       desc = '[F]ocus [T]oggle',
     },
     {
       '<leader>fw',
-      '<cmd>FocusToggleWindow<cr>',
+      '<CMD>FocusToggleWindow<CR>',
       mode = 'n',
       desc = '[F]ocus Toggle [W]indow',
     },
     {
       '<leader>fb',
-      '<cmd>FocusToggleBuffer<cr>',
+      '<CMD>FocusToggleBuffer<CR>',
       mode = 'n',
       desc = '[F]ocus Toggle [B]uffer',
     },
     {
       '<A-m>',
-      '<cmd>FocusMaximise<cr>',
+      '<CMD>FocusMaximise<CR>',
       mode = { 'n', 't' },
       desc = '[F]ocus [M]aximize',
     },
     {
       '<A-r>',
-      '<cmd>FocusAutoresize<cr>',
+      '<CMD>FocusAutoresize<CR>',
       mode = { 'n', 't' },
       desc = 'Focus [R]eset',
     },
     {
       '<A-s>',
-      '<cmd>FocusSplitNicely<cr>',
+      '<CMD>FocusSplitNicely<CR>',
       mode = 'n',
       desc = 'Focus [S]plit',
     },
