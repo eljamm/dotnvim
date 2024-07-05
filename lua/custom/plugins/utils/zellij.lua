@@ -1,21 +1,13 @@
 return {
   {
-    'https://github.com/fresh2dev/zellij.vim.git',
-    lazy = false,
-    cmd = {
-      'ZellijNavigateLeft',
-      'ZellijNavigateDown',
-      'ZellijNavigateUp',
-      'ZellijNavigateRight',
-    },
+    'https://git.sr.ht/~swaits/zellij-nav.nvim',
+    event = 'VeryLazy',
     keys = {
-      { '<c-h>', '<cmd>ZellijNavigateLeft<cr>' },
-      { '<c-j>', '<cmd>ZellijNavigateDown<cr>' },
-      { '<c-k>', '<cmd>ZellijNavigateUp<cr>' },
-      { '<c-l>', '<cmd>ZellijNavigateRight<cr>' },
-      { '<m-I>', '<cmd>ZellijNewPane<cr>' },
-      { '<m-V>', '<cmd>ZellijNewPaneVSplit<cr>' },
-      { '<m-B>', '<cmd>ZellijNewPaneSplit<cr>' },
+      { '<c-h>', '<CMD>ZellijNavigateLeft<CR>', { silent = true, desc = 'navigate left' } },
+      { '<c-j>', '<CMD>ZellijNavigateDown<CR>', { silent = true, desc = 'navigate down' } },
+      { '<c-k>', '<CMD>ZellijNavigateUp<CR>', { silent = true, desc = 'navigate up' } },
+      { '<c-l>', '<CMD>ZellijNavigateRight<CR>', { silent = true, desc = 'navigate right' } },
     },
+    opts = {},
   },
 }

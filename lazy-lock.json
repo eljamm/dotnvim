@@ -71,6 +71,6 @@
   "vim-test": { "branch": "master", "commit": "34aab77f7a63f20a623df45684156915f6182a55" },
   "which-key.nvim": { "branch": "main", "commit": "0099511294f16b81c696004fa6a403b0ae61f7a0" },
   "yazi.nvim": { "branch": "master", "commit": "a2f7832af7462c79d57777dd8c36ad0edfb84b39" },
-  "zellij.vim": { "branch": "main", "commit": "97006b08342971fdee961a87491884ac4fec9d1d" },
   "zen-mode.nvim": { "branch": "main", "commit": "78557d972b4bfbb7488e17b5703d25164ae64e6a" }
+  "zellij-nav.nvim": { "branch": "main", "commit": "25930804397ef540bd2de62f9897bc2db61f9baa" },
 }
