@@ -6,5 +6,5 @@ return {
   },
   -- stable releases
   version = '*',
-  config = true,
+  opts = {},
 }

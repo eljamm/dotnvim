@@ -29,7 +29,6 @@ return {
     'stevearc/resession.nvim',
     enabled = false,
     event = 'VimEnter',
-    config = true,
     opts = {
       extensions = {
         grapple = {},

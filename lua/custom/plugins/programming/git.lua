@@ -1,7 +1,6 @@
 return {
   {
     'NeogitOrg/neogit',
-    config = true,
     event = 'VeryLazy',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -9,6 +8,7 @@ return {
       'sindrets/diffview.nvim', -- diff integration
       'nvim-telescope/telescope.nvim',
     },
+    opts = {},
     keys = {
       { '<leader>gn', '<CMD>Neogit<CR>', desc = '[N]eogit' },
     },

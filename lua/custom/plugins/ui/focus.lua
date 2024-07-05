@@ -5,7 +5,7 @@ return {
   'nvim-focus/focus.nvim',
   lazy = false,
   version = '*',
-  config = true,
+  opts = {},
   keys = {
     {
       '<leader>ft',

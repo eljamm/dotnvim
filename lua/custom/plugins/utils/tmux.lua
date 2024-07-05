@@ -42,7 +42,6 @@ return {
   {
     'aserowy/tmux.nvim',
     enabled = false,
-    config = true,
     lazy = false,
     opts = {
       navigation = {

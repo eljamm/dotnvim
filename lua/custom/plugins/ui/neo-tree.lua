@@ -10,7 +10,7 @@ return {
       -- file operations using built-in LSP
       {
         'antosha417/nvim-lsp-file-operations',
-        config = true,
+        opts = {},
         dependencies = {
           'nvim-lua/plenary.nvim',
           'nvim-neo-tree/neo-tree.nvim',
