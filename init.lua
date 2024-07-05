@@ -511,10 +511,12 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = '[S]earch Select [T]elescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
+      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+
+      -- Extensions
       vim.keymap.set('n', '<leader>se', '<CMD>Telescope grapple tags<CR>', { desc = '[S]earch Grappl[E]' })
       vim.keymap.set('n', '<leader>sn', '<CMD>Telescope manix<CR>', { desc = '[S]earch [N]ix Docs' })
       vim.keymap.set('n', '<leader>ss', '<CMD>Telescope persisted<CR>', { desc = '[S]earch Latest [S]essions' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set(
         'n',
         '<leader>sa',
