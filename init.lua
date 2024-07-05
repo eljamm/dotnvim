@@ -492,6 +492,7 @@ require('lazy').setup({
       pcall(require('telescope').load_extension, 'persisted')
       pcall(require('telescope').load_extension, 'undo')
       pcall(require('telescope').load_extension, 'manix')
+      pcall(require('telescope').load_extension, 'grapple')
       pcall(require('telescope').load_extension, 'live_grep_args')
 
       -- See `:help telescope.builtin`
