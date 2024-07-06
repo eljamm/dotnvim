@@ -73,7 +73,7 @@ map('n', '<leader>tn', '<CMD>tabnew<CR>', { desc = '[T]ab [N]ew' })
 map('n', '<leader>ms', '<CMD>messages<CR>', { desc = 'Show Messages' })
 map('n', '<leader>mn', '<CMD>Noice<CR>', { desc = 'Show Noice Messages' })
 
-map('x', '<M-s>', '<CMD>sort<CR>', { desc = 'Sort Selection' })
+map('x', '<M-s>', ':sort<CR>', { desc = 'Sort Selection', silent = true })
 
 --- Terminal
 -- switch between windows
