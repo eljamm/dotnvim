@@ -40,6 +40,7 @@ return {
     map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts '[P]in Buffer')
     -- Close buffer
     map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts '[C]lose Buffer')
+    map('n', '<A-x>', '<Cmd>BufferClose!<CR>', opts 'Exit Buffer')
     -- Wipeout buffer
     --                 :BufferWipeout
     -- Close commands
