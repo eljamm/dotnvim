@@ -1,8 +1,9 @@
 return {
   'mistricky/codesnap.nvim',
   build = 'make',
-  cmd = { 'CodeSnap', 'CodeSnapSave', 'CodeSnapHighlight', 'CodeSnapSaveHighlight' },
+  cmd = { 'CodeSnap', 'CodeSnapSave', 'CodeSnapHighlight', 'CodeSnapSaveHighlight', 'CodeSnapASCII' },
   keys = {
+    { '<leader>pa', '<CMD>CodeSnapASCII<CR>', mode = 'x', desc = '[P]rint Code to ASCII' },
     { '<leader>px', '<CMD>CodeSnap<CR>', mode = 'x', desc = '[P]rint Code into Clipboard' },
     { '<leader>ps', '<CMD>CodeSnapSave<CR>', mode = 'x', desc = '[P]rint and [S]ave Code' },
     {
