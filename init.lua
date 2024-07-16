@@ -863,11 +863,18 @@ require('lazy').setup({
         end,
         desc = '[F]ormat buffer',
       },
-      { '<leader>fe', '<CMD>FormatEnable<CR><CMD>echo "Enabled Formatting"<CR>', desc = '[F]Formatting [E]nabled' },
       {
-        '<leader>fd',
-        '<CMD>FormatDisable<CR><CMD>echo "Disabled Formatting"<CR>',
-        desc = '[F]ormatting [D]isabled',
+        '<leader>ff',
+        function()
+          if vim.g.disable_autoformat then
+            vim.print 'Enabled Formatting'
+            vim.cmd 'FormatEnable'
+          else
+            vim.print 'Disabled Formatting'
+            vim.cmd 'FormatDisable'
+          end
+        end,
+        desc = 'Toggle [F]ormatting',
       },
     },
     opts = {
