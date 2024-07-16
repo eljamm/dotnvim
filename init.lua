@@ -886,7 +886,7 @@ require('lazy').setup({
           return
         end
 
-        return { timeout_ms = 500, lsp_fallback = 'fallback' }
+        return { timeout_ms = 500, lsp_format = 'fallback' }
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
@@ -922,6 +922,9 @@ require('lazy').setup({
       formatters = {
         shfmt = {
           prepend_args = { '-i', '4' },
+        },
+        cbfmt = {
+          prepend_args = { '--config', os.getenv 'HOME' .. '/.config/cbfmt/cbfmt.toml' },
         },
         markdownlint = {
           command = 'markdownlint',
