@@ -500,12 +500,13 @@ require('lazy').setup({
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
+      local live_grep_args = require('telescope').extensions.live_grep_args
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch Open [B]uffers' })
       vim.keymap.set('n', '<leader>sc', builtin.command_history, { desc = '[S]earch [C]ommand History' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+      vim.keymap.set('n', '<leader>sa', builtin.live_grep, { desc = '[S]earch by [G]rep' }) -- TODO: change or remove?
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
@@ -517,12 +518,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>se', '<CMD>Telescope grapple tags<CR>', { desc = '[S]earch Grappl[E]' })
       vim.keymap.set('n', '<leader>sn', '<CMD>Telescope manix<CR>', { desc = '[S]earch [N]ix Docs' })
       vim.keymap.set('n', '<leader>ss', '<CMD>Telescope persisted<CR>', { desc = '[S]earch Latest [S]essions' })
-      vim.keymap.set(
-        'n',
-        '<leader>sa',
-        "<CMD>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-        { desc = '[S]earch [A]rgs Grep' }
-      )
+      vim.keymap.set('n', '<leader>sg', live_grep_args.live_grep_args, { desc = '[S]earch [A]rgs Grep' })
 
       -- Undo tree
       vim.keymap.set('n', '<leader>su', '<CMD>Telescope undo<CR>', { desc = '[S]earch [U]ndo Tree' })
@@ -541,7 +537,7 @@ require('lazy').setup({
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set('n', '<leader>s/', function()
-        builtin.live_grep {
+        live_grep_args.live_grep_args {
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
         }
