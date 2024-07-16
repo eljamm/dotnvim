@@ -885,6 +885,7 @@ require('lazy').setup({
         css = { { 'prettierd', 'prettier' } },
         html = { { 'prettierd', 'prettier' } },
         javascript = { { 'prettierd', 'prettier' } },
+        json = { { 'prettierd', 'prettier' } },
         sh = { 'shfmt' },
         sql = { 'sql_formatter' },
         gdscript = { 'gdformat' },
