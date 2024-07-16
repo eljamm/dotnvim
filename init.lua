@@ -767,6 +767,26 @@ require('lazy').setup({
           },
         },
 
+        -- NOTE: https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
+        nixd = {
+          capabilities = capabilities,
+          settings = {
+            nixd = {
+              formatting = {
+                command = { 'nixfmt' },
+              },
+            },
+          },
+        },
+
+        hls = {
+          capabilities = capabilities,
+          filetypes = { 'haskell', 'lhaskell', 'cabal' },
+        },
+      }
+
+      -- TODO: Refactor this
+      local disabled_servers = {
         nil_ls = {
           capabilities = capabilities,
           settings = {
@@ -779,25 +799,6 @@ require('lazy').setup({
                   autoArchive = true,
                   autoEvalInputs = false,
                 },
-              },
-            },
-          },
-        },
-
-        hls = {
-          capabilities = capabilities,
-          filetypes = { 'haskell', 'lhaskell', 'cabal' },
-        },
-      }
-
-      local disabled_servers = {
-        -- TODO:
-        nixd = {
-          capabilities = capabilities,
-          settings = {
-            nixd = {
-              formatting = {
-                command = { 'nixfmt' },
               },
             },
           },
