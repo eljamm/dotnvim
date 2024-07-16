@@ -478,7 +478,7 @@ require('lazy').setup({
                 ['<C-k>'] = require('telescope-live-grep-args.actions').quote_prompt(),
                 ['<C-i>'] = require('telescope-live-grep-args.actions').quote_prompt { postfix = ' --iglob ' },
                 -- freeze the current list and start a fuzzy search in the frozen list
-                ['<C-space>'] = require('telescope-live-grep-args.actions').to_fuzzy_refine,
+                ['<C-space>'] = require('telescope.actions').to_fuzzy_refine,
               },
             },
             -- ... also accepts theme settings, for example:
