@@ -814,6 +814,7 @@ require('lazy').setup({
         'jedi_language_server',
         'gdscript',
         'bashls',
+        'taplo', -- TOML
       }
 
       require('mason').setup()
