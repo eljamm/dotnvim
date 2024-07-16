@@ -5,6 +5,11 @@ return {
   opts = {},
   keys = {
     {
+      '<leader>fe',
+      '<CMD>FocusEqualise<CR>',
+      desc = '[F]ocus [E]qualise',
+    },
+    {
       '<leader>ft',
       '<CMD>FocusToggle<CR>',
       mode = 'n',
