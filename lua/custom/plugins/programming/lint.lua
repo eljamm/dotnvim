@@ -1,16 +1,40 @@
 return {
-
-  { -- Linting
+  {
     'mfussenegger/nvim-lint',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
+      local linters = require('lint').linters
+
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
         nix = { 'statix' },
         fish = { 'fish' },
         sh = { 'shellcheck' },
       }
+
+      -- ------------
+      -- markdownlint
+      -- ------------
+      local ctx = { filename = vim.api.nvim_buf_get_name(0) }
+
+      local config_path = vim.fs.find('config.yaml', { path = vim.env.HOME .. '/.config/markdownlint' })[1]
+      local local_config = vim.fs.find({
+        '.markdownlint.json',
+        '.markdownlint.jsonc',
+        '.markdownlint.yaml',
+        '.markdownlint.yml',
+      }, { path = ctx.filename, upward = true })[1]
+
+      if local_config then
+        config_path = local_config
+      end
+
+      -- use config if it exists
+      if config_path then
+        linters.markdownlint.args = { '--config', config_path }
+      end
+      -- ------------
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
       -- instead set linters_by_ft like this:
@@ -31,18 +55,6 @@ return {
       --   terraform = { "tflint" },
       --   text = { "vale" }
       -- }
-      --
-      -- You can disable the default linters by setting their filetypes to nil:
-      -- lint.linters_by_ft['clojure'] = nil
-      -- lint.linters_by_ft['dockerfile'] = nil
-      -- lint.linters_by_ft['inko'] = nil
-      -- lint.linters_by_ft['janet'] = nil
-      -- lint.linters_by_ft['json'] = nil
-      -- lint.linters_by_ft['markdown'] = nil
-      -- lint.linters_by_ft['rst'] = nil
-      -- lint.linters_by_ft['ruby'] = nil
-      -- lint.linters_by_ft['terraform'] = nil
-      -- lint.linters_by_ft['text'] = nil
 
       -- Create autocommand which carries out the actual linting
       -- on the specified events.
