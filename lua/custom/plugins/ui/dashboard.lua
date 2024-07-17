@@ -23,7 +23,7 @@ return {
     dashboard.section.buttons.val = {
       dashboard.button('n', ' ' .. ' New file', '<CMD> ene <BAR> startinsert <CR>'),
       dashboard.button('f', ' ' .. ' Find file', '<CMD> Telescope find_files <CR>'),
-      dashboard.button('g', ' ' .. ' Live grep', '<CMD> Telescope live_grep <CR>'),
+      dashboard.button('g', ' ' .. ' Live grep', '<CMD> Telescope live_grep_args <CR>'),
       dashboard.button('r', ' ' .. ' Recent files', '<CMD> Telescope oldfiles <CR>'),
       -- dashboard.button('s', ' ' .. ' Restore Session', "<CMD>lua require('persistence').load()<CR>"),
       dashboard.button('s', ' ' .. ' Restore Session', '<CMD>SessionLoad<CR>'),
