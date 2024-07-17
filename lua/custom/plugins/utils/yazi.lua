@@ -12,15 +12,14 @@ return {
         function()
           require('yazi').yazi()
         end,
-        desc = 'Open file manager',
+        desc = 'Open Yazi',
       },
       {
-        -- Open in the current working directory
-        '<leader>cw',
+        '<leader>ya',
         function()
           require('yazi').yazi(nil, vim.fn.getcwd())
         end,
-        desc = "Open file manager in nvim's working directory",
+        desc = 'Open Yazi in working directory',
       },
     },
     ---@type YaziConfig

@@ -315,24 +315,24 @@ require('lazy').setup({
         end)
 
         -- Actions
-        map('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'Git: [H]unk [S]tage' })
-        map('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'Git: [H]unk [R]eset' })
+        map('n', '<leader>hs', gitsigns.stage_hunk, { desc = '[S]tage' })
+        map('n', '<leader>hr', gitsigns.reset_hunk, { desc = '[R]eset' })
         map('v', '<leader>hs', function()
           gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
         end, { desc = 'Git: [H]unk [S]tage' })
         map('v', '<leader>hr', function()
           gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
         end, { desc = 'Git: [H]unk [R]eset' })
-        map('n', '<leader>hS', gitsigns.stage_buffer, { desc = 'Git: [S]tage Buffer' })
-        map('n', '<leader>hu', gitsigns.undo_stage_hunk, { desc = 'Git: [H]hunk [U]nstage' })
-        map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'Git: [R]est Buffer' })
-        map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'Git: [H]unk [P]review' })
+        map('n', '<leader>hS', gitsigns.stage_buffer, { desc = '[S]tage Buffer' })
+        map('n', '<leader>hu', gitsigns.undo_stage_hunk, { desc = '[U]nstage' })
+        map('n', '<leader>hR', gitsigns.reset_buffer, { desc = '[R]est Buffer' })
+        map('n', '<leader>hp', gitsigns.preview_hunk, { desc = '[P]review' })
 
         map('n', '<leader>gb', gitsigns.toggle_current_line_blame, { desc = '[B]lame' })
         map('n', '<leader>gd', gitsigns.diffthis, { desc = '[D]iff' })
         map('n', '<leader>gD', '<CMD>Gitsigns diffthis "~"<CR>', { desc = '[D]iff Changed' })
         map('n', '<leader>gr', gitsigns.toggle_deleted, { desc = '[R]removed' })
-        map('n', '<leader>gp', gitsigns.preview_hunk, { desc = '[G]it [P]review Hunk' })
+        map('n', '<leader>gp', gitsigns.preview_hunk, { desc = '[P]review Hunk' })
 
         -- Text object
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = '', silent = true })
@@ -370,6 +370,16 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+      }
+
+      -- Extra
+      require('which-key').add {
+        { '<leader>bo', group = '[B]uffer [O]rder' },
+        { '<leader>g', group = '[G]it' },
+        { '<leader>l', group = '[L]azy' },
+        { '<leader>mp', group = '[M]arkdown [P]review' },
+        { '<leader>p', group = '[P]rint' },
+        { '<leader>y', group = '[Y]azi' },
       }
     end,
   },
@@ -644,7 +654,7 @@ require('lazy').setup({
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          map('<leader>rn', vim.lsp.buf.rename, '[R]ename')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
@@ -657,6 +667,8 @@ require('lazy').setup({
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
+          -- TODO: Add keymaps for starting, stopping, logs, ...
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.

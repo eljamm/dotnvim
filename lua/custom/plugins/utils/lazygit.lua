@@ -12,6 +12,6 @@ return {
     'nvim-lua/plenary.nvim', -- optional for floating window border decoration
   },
   keys = {
-    { '<leader>lg', '<CMD>LazyGit<CR>', desc = 'Open [L]azy[G]it' },
+    { '<leader>lg', '<CMD>LazyGit<CR>', desc = 'Open LazyGit' },
   },
 }
