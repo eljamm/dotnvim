@@ -24,12 +24,13 @@ map('i', '<C-v>', '<esc>p', { desc = 'Paste Clipboard' })
 map('n', '<C-c>', '<CMD> %y+ <CR>', { desc = 'Copy File to [C]lipboard' })
 
 map({ 'i', 'x', 'n', 's' }, '<C-s>', '<CMD>w "++p"<CR><esc>', { desc = 'Save File' })
-map(
-  { 'i', 'x', 'n', 's' },
-  '<Esc><C-s>', -- <Alt>+<Control-s>
-  '<CMD>wa "++p"<CR><esc>',
-  { desc = 'Save All Files' }
-)
+-- TODO: change this (not optimal)
+-- map(
+--   { 'i', 'x', 'n', 's' },
+--   '<Esc><C-s>', -- <Alt>+<Control-s>
+--   '<CMD>wa "++p"<CR><esc>',
+--   { desc = 'Save All Files' }
+-- )
 
 map(
   'n',
@@ -70,8 +71,9 @@ map('n', '<leader>tn', '<CMD>tabnew<CR>', { desc = '[T]ab [N]ew' })
 -- map('n', '<A-c>', '<CMD>bdelete<CR>', { desc = 'Close Buffer' })
 
 --- Debugging
-map('n', '<leader>ms', '<CMD>messages<CR>', { desc = 'Show Messages' })
-map('n', '<leader>mn', '<CMD>Noice<CR>', { desc = 'Show Noice Messages' })
+map('n', '<leader>ms', '<CMD>messages<CR>', { desc = '[M]essages' })
+map('n', '<leader>mn', '<CMD>Noice<CR>', { desc = '[N]oice [M]essages' })
+map('n', '<leader>nd', '<CMD>Noice dismiss<CR>', { desc = '[N]oice [D]ismiss' })
 
 map('x', '<M-s>', ':sort<CR>', { desc = 'Sort Selection', silent = true })
 
