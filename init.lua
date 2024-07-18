@@ -937,7 +937,7 @@ require('lazy').setup({
         sql = { 'sql_formatter' },
         gdscript = { 'gdformat' },
         markdown = { 'markdownlint', 'cbfmt' },
-        nix = { 'nixfmt' },
+        nix = { 'statix', 'nixfmt' },
         rust = { 'rustfmt' },
         go = {
           'golines',
@@ -964,6 +964,11 @@ require('lazy').setup({
         },
         cbfmt = {
           prepend_args = { '--config', os.getenv 'HOME' .. '/.config/cbfmt/cbfmt.toml' },
+        },
+        statix = {
+          command = 'statix',
+          args = { 'fix', '--stdin' },
+          stdin = true,
         },
         markdownlint = {
           command = 'markdownlint',
