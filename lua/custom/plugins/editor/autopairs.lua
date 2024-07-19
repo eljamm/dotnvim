@@ -1,6 +1,8 @@
 return {
+  -- TODO: remove in favor of mini.pairs
   {
     'windwp/nvim-autopairs',
+    enabled = false,
     event = 'InsertEnter',
     dependencies = { 'hrsh7th/nvim-cmp' },
     opts = {
@@ -15,7 +17,7 @@ return {
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
     end,
   },
-  -- TEST:
+  -- TODO: remove in favor of mini.pairs
   {
     'cohama/lexima.vim',
     enabled = false,
