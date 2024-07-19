@@ -231,6 +231,14 @@ if system_name == 'Linux' then
   end
 end
 
+-- Add support for the LazyFile event
+-- NOTE: Be careful when using this as it can break stuff
+-- See https://github.com/LazyVim/LazyVim/discussions/1583
+local Event = require 'lazy.core.handler.event'
+
+Event.mappings.LazyFile = { id = 'LazyFile', event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' } }
+Event.mappings['User LazyFile'] = Event.mappings.LazyFile
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -278,8 +286,7 @@ require('lazy').setup({
   -- See `:help gitsigns` to understand what the configuration keys do
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
-    -- event = 'User FilePost',
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = 'LazyFile',
     opts = {
       signs = {
         add = { text = '│' },
@@ -394,7 +401,7 @@ require('lazy').setup({
 
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
-    event = 'VimEnter',
+    event = { 'LazyFile', 'VeryLazy' },
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -590,7 +597,7 @@ require('lazy').setup({
 
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+    event = 'LazyFile',
     cmd = { 'LspInfo', 'LspLog', 'LspRestart', 'LspStart', 'LspStop' },
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
@@ -1236,7 +1243,7 @@ require('lazy').setup({
   },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = { 'LazyFile', 'VeryLazy' },
     build = ':TSUpdate',
     opts = {
       ensure_installed = {

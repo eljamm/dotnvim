@@ -4,7 +4,7 @@ return {
     opts = {
       scope = 'git_branch', -- 'global', 'static', 'cwd', 'lsp', 'git', 'git_branch'
     },
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = 'LazyFile',
     cmd = 'Grapple',
     keys = {
       { '<M-a>', '<CMD>Grapple toggle<CR><CMD>echo "Grappled Buffer"<CR>', desc = 'Grapple Toggle Tag' },

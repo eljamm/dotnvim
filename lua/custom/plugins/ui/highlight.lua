@@ -11,7 +11,7 @@ local cl = require('catppuccin.palettes').get_palette(vim.g.catppuccin_flavor) o
 -- Highlight todo, notes, etc in comments
 return {
   'folke/todo-comments.nvim',
-  event = { 'BufReadPost', 'BufNewFile' },
+  event = 'LazyFile',
   dependencies = { 'nvim-lua/plenary.nvim' },
   opts = {
     signs = true,
