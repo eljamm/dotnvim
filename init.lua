@@ -154,6 +154,8 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+vim.opt.sessionoptions = { 'buffers', 'curdir', 'globals', 'tabpages', 'winsize' }
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -481,9 +483,6 @@ require('lazy').setup({
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
-          ['persisted'] = {
-            layout_config = { width = 0.55, height = 0.55 },
-          },
           ['live_grep_args'] = {
             auto_quoting = true, -- enable/disable auto-quoting
             -- define mappings, e.g.
@@ -536,7 +535,6 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
-      pcall(require('telescope').load_extension, 'persisted')
       pcall(require('telescope').load_extension, 'undo')
       pcall(require('telescope').load_extension, 'manix')
       pcall(require('telescope').load_extension, 'grapple')
@@ -561,7 +559,6 @@ require('lazy').setup({
       -- Extensions
       vim.keymap.set('n', '<leader>se', '<CMD>Telescope grapple tags<CR>', { desc = '[S]earch Grappl[E]' })
       vim.keymap.set('n', '<leader>sn', '<CMD>Telescope manix<CR>', { desc = '[S]earch [N]ix Docs' })
-      vim.keymap.set('n', '<leader>ss', '<CMD>Telescope persisted<CR>', { desc = '[S]earch Latest [S]essions' })
       vim.keymap.set('n', '<leader>sg', live_grep_args.live_grep_args, { desc = '[S]earch [A]rgs Grep' })
 
       -- Undo tree
