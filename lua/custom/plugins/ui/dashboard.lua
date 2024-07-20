@@ -1,82 +1,66 @@
 return {
-  'goolord/alpha-nvim',
-  event = 'VimEnter',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
-  config = function()
-    local alpha = require 'alpha'
-    local dashboard = require 'alpha.themes.dashboard'
+  {
+    'nvimdev/dashboard-nvim',
+    lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin
+    opts = function()
+      local logo = [[
+                                                                    
+      ████ ██████           █████      ██                     
+     ███████████             █████                             
+     █████████ ███████████████████ ███   ███████████   
+    █████████  ███    █████████████ █████ ██████████████   
+   █████████ ██████████ █████████ █████ █████ ████ █████   
+ ███████████ ███    ███ █████████ █████ █████ ████ █████  
+██████  █████████████████████ ████ █████ █████ ████ ██████ 
+       ]]
 
-    -- Header
-    local logo = [[
-                                             
-      ████ ██████           █████      ██
-     ███████████             █████ 
-     █████████ ███████████████████ ███   ███████████
-    █████████  ███    █████████████ █████ ██████████████
-   █████████ ██████████ █████████ █████ █████ ████ █████
- ███████████ ███    ███ █████████ █████ █████ ████ █████
-██████  █████████████████████ ████ █████ █████ ████ ██████
-]]
-    dashboard.section.header.val = vim.split(logo, '\n')
+      logo = string.rep('\n', 8) .. logo .. '\n\n'
 
-    -- Buttons
-    dashboard.section.buttons.val = {
-      dashboard.button('n', ' ' .. ' New file', '<CMD> ene <BAR> startinsert <CR>'),
-      dashboard.button('f', ' ' .. ' Find file', '<CMD> Telescope find_files <CR>'),
-      dashboard.button('g', ' ' .. ' Live grep', '<CMD> Telescope live_grep_args <CR>'),
-      dashboard.button('r', ' ' .. ' Recent files', '<CMD> Telescope oldfiles <CR>'),
-      -- dashboard.button('s', ' ' .. ' Restore Session', "<CMD>lua require('persistence').load()<CR>"),
-      dashboard.button('s', ' ' .. ' Restore Session', '<CMD>SessionLoad<CR>'),
-      dashboard.button('l', '󰒲 ' .. ' Lazy', '<CMD> Lazy <CR>'),
-      dashboard.button('h', '󱙤 ' .. ' Check Health', '<CMD>checkhealth<CR>'),
-      dashboard.button('q', ' ' .. ' Quit', '<CMD> qa <CR>'),
-    }
-    for _, button in ipairs(dashboard.section.buttons) do
-      button.opts.hl = 'AlphaButtons'
-      button.opts.hl_shortcut = 'AlphaShortcut'
-    end
-    dashboard.section.header.opts.hl = 'AlphaHeader'
-    dashboard.section.buttons.opts.hl = 'AlphaButtons'
-    dashboard.section.footer.opts.hl = 'AlphaFooter'
-    dashboard.opts.layout[1].val = 8
+      local opts = {
+        theme = 'doom',
+        hide = {
+          statusline = true, -- WARN: disable if using lualine
+        },
+        config = {
+          header = vim.split(logo, '\n'),
+          -- stylua: ignore
+          center = {
+            { action = "ene | startinsert",                              desc = " New File",        icon = " ", key = "n" },
+            { action = 'Telescope find_files',                           desc = " Find File",       icon = " ", key = "f" },
+            { action = 'Telescope live_grep_args',                       desc = " Live Grep",       icon = " ", key = "g" },
+            { action = 'Telescope oldfiles',                             desc = " Recent Files",    icon = " ", key = "r" },
+            { action = 'lua require("persistence").load()',              desc = " Restore Session", icon = " ", key = "s" },
+            { action = "Lazy",                                           desc = " Lazy",            icon = "󰒲 ", key = "l" },
+            { action = "checkhealth",                                    desc = " Check Health",    icon = "󱙤 ", key = "h" },
+            { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit",            icon = " ", key = "q" },
+          },
+          footer = function()
+            local stats = require('lazy').stats()
+            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+            return { '⚡ Neovim loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms' }
+          end,
+        },
+      }
 
-    -- Footer (Lazy statistics)
-    vim.api.nvim_create_autocmd('User', {
-      callback = function()
-        local stats = require('lazy').stats()
-        local ms = math.floor(stats.startuptime * 100) / 100
-        dashboard.section.footer.val = '󱐌 Lazy-loaded '
-          .. stats.loaded
-          .. '/'
-          .. stats.count
-          .. ' plugins in '
-          .. ms
-          .. 'ms'
-        pcall(vim.cmd.AlphaRedraw)
-      end,
-    })
+      for _, button in ipairs(opts.config.center) do
+        button.desc = button.desc .. string.rep(' ', 43 - #button.desc)
+        button.key_format = '  %s'
+      end
 
-    -- -- Fortune
-    -- local fortune = ""
-    -- if vim.fn.executable "fortune" == 1 then
-    --   local handle = io.popen "fortune"
-    --   if handle ~= nil then
-    --     fortune = handle:read "*a"
-    --     handle:close()
-    --   end
-    -- end
-    -- local buttons = {
-    --   type = "group",
-    --   val = {
-    --     { type = "padding", val = 2 },
-    --     { type = "text", val = fortune, opts = { position = "center" } },
-    --     { type = "padding", val = 2 },
-    --   },
-    --   position = "center",
-    -- }
-    -- dashboard.opts.layout[6] = buttons
+      -- open dashboard after closing lazy
+      if vim.o.filetype == 'lazy' then
+        vim.api.nvim_create_autocmd('WinClosed', {
+          pattern = tostring(vim.api.nvim_get_current_win()),
+          once = true,
+          callback = function()
+            vim.schedule(function()
+              vim.api.nvim_exec_autocmds('UIEnter', { group = 'dashboard' })
+            end)
+          end,
+        })
+      end
 
-    dashboard.config.opts.noautocmd = true
-    alpha.setup(dashboard.config)
-  end,
+      return opts
+    end,
+  },
 }
