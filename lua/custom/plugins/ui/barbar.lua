@@ -1,7 +1,3 @@
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-local exec_autocmds = vim.api.nvim_exec_autocmds
-
 return {
   {
     'romgrk/barbar.nvim',
@@ -57,25 +53,6 @@ return {
     },
     init = function()
       vim.g.barbar_auto_setup = false
-
-      -- Save buffer location
-      vim.opt.sessionoptions:append 'globals'
-      if vim.g.loaded_persisted then
-        autocmd({ 'User' }, {
-          pattern = 'PersistedSavePre',
-          group = augroup('PersistedHooks', {}),
-          callback = function()
-            exec_autocmds('User', { pattern = 'SessionSavePre' })
-          end,
-        })
-      else
-        autocmd({ 'User' }, {
-          pattern = 'PersistenceSavePre',
-          callback = function()
-            exec_autocmds('User', { pattern = 'SessionSavePre' })
-          end,
-        })
-      end
     end,
     opts = {
       -- Enable/disable animations
