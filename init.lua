@@ -290,6 +290,8 @@ require('lazy').setup({
     'lewis6991/gitsigns.nvim',
     event = 'LazyFile',
     opts = {
+      watch_gitdir = { interval = 1000, follow_files = true },
+      update_debounce = 100,
       signs = {
         add = { text = '│' },
         change = { text = '│' },
