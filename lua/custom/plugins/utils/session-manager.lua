@@ -1,6 +1,8 @@
 return {
+  -- TODO: clean up
   {
     'olimorris/persisted.nvim',
+    enabled = false,
     event = 'VimEnter',
     opts = {
       autoload = false,
@@ -25,10 +27,10 @@ return {
     },
     priority = 500,
   },
+  -- TODO: clean up
   {
     'stevearc/resession.nvim',
     enabled = false,
-    event = 'VimEnter',
     opts = {
       extensions = {
         grapple = {},
@@ -55,43 +57,25 @@ return {
         end
         return vim.bo[bufnr].buflisted
       end,
+      options = { 'buffers', 'curdir', 'globals', 'tabpages', 'winsize' },
     },
     init = function()
-      -- WIP: barbar save buffer position
-      require('resession').add_hook('pre_save', function()
-        vim.opt.sessionoptions:append 'globals'
-        vim.api.nvim_exec_autocmds('User', { pattern = 'SessionSavePre' })
-      end)
+      local resession = require 'resession'
+      resession.setup()
 
-      -- Create one session per git branch
-      local function get_session_name()
-        local name = vim.fn.getcwd()
-        local branch = vim.trim(vim.fn.system 'git branch --show-current')
-        if vim.v.shell_error == 0 then
-          return name .. branch
-        else
-          return name
-        end
-      end
-      vim.api.nvim_create_autocmd('VimEnter', {
-        callback = function()
-          local resession = require 'resession'
-          -- Only load the session if nvim was started with no args
-          if vim.fn.argc(-1) == 0 then
-            resession.load(get_session_name(), { dir = 'dirsession', silence_errors = true })
-          end
-        end,
-      })
+      -- Resession does NOTHING automagically, so we have to set up some keymaps
+      vim.keymap.set('n', '<leader>ss', resession.save)
+      vim.keymap.set('n', '<leader>sl', resession.load)
+      vim.keymap.set('n', '<leader>sd', resession.delete)
+
       vim.api.nvim_create_autocmd('VimLeavePre', {
         callback = function()
-          local resession = require 'resession'
-          resession.save(get_session_name(), { dir = 'dirsession', notify = false })
+          resession.save 'last'
         end,
       })
-
-      -- Keymaps
-      vim.keymap.set('n', '<leader>ss', require('resession').save_tab)
-      vim.keymap.set('n', '<leader>sl', require('resession').load)
+      resession.add_hook('pre_save', function()
+        vim.api.nvim_exec_autocmds('User', { pattern = 'SessionSavePre' })
+      end)
     end,
   },
 }
