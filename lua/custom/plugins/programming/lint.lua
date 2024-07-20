@@ -1,3 +1,4 @@
+-- TODO: move into lsp folder
 return {
   {
     'mfussenegger/nvim-lint',

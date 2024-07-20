@@ -300,6 +300,7 @@ require('lazy').setup({
         changedelete = { text = '~' },
         untracked = { text = '│' },
       },
+      -- TODO: slows things down?
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
 
@@ -594,6 +595,7 @@ require('lazy').setup({
     end,
   },
 
+  -- TODO: move into lsp folder
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     event = 'LazyFile',
