@@ -545,7 +545,7 @@ require('lazy').setup({
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
-      local live_grep_args = require('telescope').extensions.live_grep_args
+      local extensions = require('telescope').extensions
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch Open [B]uffers' })
       vim.keymap.set('n', '<leader>sc', builtin.command_history, { desc = '[S]earch [C]ommand History' })
@@ -563,7 +563,7 @@ require('lazy').setup({
       -- Extensions
       vim.keymap.set('n', '<leader>se', '<CMD>Telescope grapple tags<CR>', { desc = '[S]earch Grappl[E]' })
       vim.keymap.set('n', '<leader>sn', '<CMD>Telescope manix<CR>', { desc = '[S]earch [N]ix Docs' })
-      vim.keymap.set('n', '<leader>sg', live_grep_args.live_grep_args, { desc = '[S]earch [A]rgs Grep' })
+      vim.keymap.set('n', '<leader>sg', extensions.live_grep_args.live_grep_args, { desc = '[S]earch [A]rgs Grep' })
 
       -- Undo tree
       vim.keymap.set('n', '<leader>su', '<CMD>Telescope undo<CR>', { desc = '[S]earch [U]ndo Tree' })
@@ -582,7 +582,7 @@ require('lazy').setup({
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set('n', '<leader>s/', function()
-        live_grep_args.live_grep_args {
+        extensions.live_grep_args.live_grep_args {
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
         }
