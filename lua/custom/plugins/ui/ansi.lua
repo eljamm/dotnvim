@@ -25,6 +25,14 @@ return {
   },
   {
     'MTDL9/vim-log-highlighting',
+    init = function()
+      vim.api.nvim_create_autocmd('BufRead', {
+        pattern = '*.dump',
+        callback = function()
+          vim.bo.filetype = 'log'
+        end,
+      })
+    end,
   },
   {
     'fei6409/log-highlight.nvim',
