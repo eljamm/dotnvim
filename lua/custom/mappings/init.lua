@@ -12,9 +12,9 @@ require 'custom.mappings.vim-galore'
 --- General
 map('n', '+', '/', { desc = 'Forward search', nowait = true })
 map('n', '-', '?', { desc = 'Backward search', nowait = true })
+map('n', '<C-q>', close_nvim, { desc = 'Quick Quit' })
 map('n', '<M-n>', '<CMD>enew<CR>', { desc = 'New Buffer' })
 map({ 'n', 't' }, '<A-w>', '<CMD>q<CR>', { desc = 'Close Window' })
-map({ 'n', 't' }, '<C-q>', close_nvim, { desc = 'Quick Quit' })
 map({ 'n', 'x' }, ',', ':', { desc = 'Enter command mode', nowait = true })
 
 map('n', '<leader>ll', '<CMD>Lazy<CR>', { desc = 'Open Lazy' })
