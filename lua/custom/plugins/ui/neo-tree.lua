@@ -13,9 +13,13 @@ return {
       window = {
         mappings = {
           ['l'] = 'open',
-          ['h'] = 'open_split',
-          -- TODO: `v` is for select. Find another key for vsplit
-          -- ['v'] = 'open_vsplit',
+          ['S'] = 'open_split',
+          ['V'] = 'open_vsplit',
+          -- preview
+          ['p'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
+          ['P'] = 'focus_preview',
+          ['<M-p>'] = { 'scroll_preview', config = { direction = 10 } },
+          ['<M-n>'] = { 'scroll_preview', config = { direction = -10 } },
         },
       },
       filesystem = {
@@ -38,6 +42,7 @@ return {
     },
     keys = {
       { '<C-n>', '<CMD>Neotree toggle<CR>', mode = { 'n', 'x', 't' }, desc = 'Toggle [N]eoTree', nowait = true },
+      -- TODO: use <C-f> for fullscreen?
       {
         '<C-f>',
         '<CMD>Neotree toggle position=current<CR>',
