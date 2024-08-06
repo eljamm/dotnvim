@@ -54,9 +54,24 @@ return {
       mkTerminal('lazygit -p ' .. get_git_dir()):toggle()
     end, { desc = 'Lazygit (Buffer)', noremap = true, silent = true })
 
+    -- Lazygit History
+    vim.keymap.set('n', '<leader>lh', function()
+      mkTerminal('lazygit log'):toggle()
+    end, { desc = 'Lazygit History', noremap = true, silent = true })
+
     -- Taskwarrior
     vim.keymap.set('n', '<leader>tw', function()
       mkTerminal('taskwarrior-tui'):toggle()
     end, { desc = 'Taskwarrior', noremap = true, silent = true })
+
+    -- Gitu
+    vim.keymap.set('n', '<leader>gu', function()
+      mkTerminal('gitu'):toggle()
+    end, { desc = 'Gitu', noremap = true, silent = true })
+
+    -- Tig
+    vim.keymap.set('n', '<leader>tg', function()
+      mkTerminal('tig'):toggle()
+    end, { desc = 'Tig', noremap = true, silent = true })
   end,
 }
