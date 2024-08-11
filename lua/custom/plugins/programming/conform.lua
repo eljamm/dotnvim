@@ -1,3 +1,21 @@
+---@param bufnr integer
+---@param ... string
+---@return string
+local function first(bufnr, ...)
+  local conform = require 'conform'
+  for i = 1, select('#', ...) do
+    local formatter = select(i, ...)
+    if conform.get_formatter_info(formatter, bufnr).available then
+      return formatter
+    end
+  end
+  return select(1, ...)
+end
+
+local prettyInject = function(bufnr)
+  return { first(bufnr, 'prettierd', 'prettier'), 'injected' }
+end
+
 return {
   'stevearc/conform.nvim',
   --  for users who want auto-save conform + lazyloading!
@@ -14,16 +32,16 @@ return {
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      css = { 'prettierd', 'prettier', stop_after_first = true },
-      html = { 'prettierd', 'prettier', stop_after_first = true },
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      json = { 'prettierd', 'prettier', stop_after_first = true },
-      yaml = { 'prettierd', 'prettier', stop_after_first = true },
+      css = prettyInject,
+      html = prettyInject,
+      javascript = prettyInject,
+      json = prettyInject,
+      yaml = prettyInject,
       sh = { 'shfmt' },
       sql = { 'sql_formatter' },
       gdscript = { 'gdformat' },
       markdown = { 'markdownlint', 'cbfmt' },
-      nix = { 'statix', 'nixfmt' },
+      nix = { 'statix', 'nixfmt', 'injected' },
       rust = { 'rustfmt' },
       go = {
         'golines',
@@ -39,10 +57,13 @@ return {
       end,
 
       -- Format embedded code blocks
-      ['*'] = { 'injected' },
+      -- ['*'] = { 'injected' },
 
       -- -- Fix common misspellings in source code on all filetypes
       -- ['*'] = { 'codespell' },
+
+      -- Filetypes that don't have other formatters configured
+      ['_'] = { 'trim_whitespace' },
     },
     formatters = {
       shfmt = {
@@ -127,7 +148,7 @@ return {
   end,
   keys = {
     {
-      '<leader>f',
+      '<leader>fm',
       function()
         require('conform').format { async = true, lsp_format = 'fallback' }
       end,
