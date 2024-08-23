@@ -29,7 +29,7 @@ return {
             { action = 'Telescope find_files',                           desc = " Find File",       icon = " ", key = "f" },
             { action = 'Telescope live_grep_args',                       desc = " Live Grep",       icon = " ", key = "g" },
             { action = 'Telescope oldfiles',                             desc = " Recent Files",    icon = " ", key = "r" },
-            { action = 'lua require("persistence").load()',              desc = " Restore Session", icon = " ", key = "s" },
+            { action = 'SessionLoad',                                    desc = " Restore Session", icon = " ", key = "s" },
             { action = "Lazy",                                           desc = " Lazy",            icon = "󰒲 ", key = "l" },
             { action = "checkhealth",                                    desc = " Check Health",    icon = "󱙤 ", key = "h" },
             { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit",            icon = " ", key = "q" },
