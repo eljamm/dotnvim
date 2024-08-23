@@ -16,7 +16,7 @@ return {
           ['S'] = 'open_split',
           ['V'] = 'open_vsplit',
           -- preview
-          ['p'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
+          -- ['p'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
           ['P'] = 'focus_preview',
           ['<M-p>'] = { 'scroll_preview', config = { direction = 10 } },
           ['<M-n>'] = { 'scroll_preview', config = { direction = -10 } },
@@ -31,8 +31,9 @@ return {
           event = 'neo_tree_popup_input_ready',
           ---@param args { bufnr: integer, winid: integer }
           handler = function(args)
-            -- enter input popup with normal mode by default.
-            vim.cmd 'stopinsert'
+            -- -- enter input popup with normal mode by default.
+            -- vim.cmd 'stopinsert'
+
             -- map <esc> to enter normal mode (by default closes prompt)
             -- don't forget `opts.buffer` to specify the buffer of the popup.
             vim.keymap.set('i', '<esc>', vim.cmd.stopinsert, { noremap = true, buffer = args.bufnr })
