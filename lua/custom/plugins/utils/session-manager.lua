@@ -44,6 +44,10 @@ return {
         if vim.api.nvim_buf_get_name(0):match 'COMMIT_EDITMSG' then
           return false
         end
+        -- session launched from file
+        if #vim.fn.argv() ~= 0 then
+          return false
+        end
         return true
       end,
     },
