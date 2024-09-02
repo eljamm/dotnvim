@@ -818,6 +818,9 @@ require('lazy').setup({
         -- NOTE: https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
         nixd = {
           capabilities = capabilities,
+          on_init = function(client, _)
+            client.server_capabilities.documentHighlightProvider = nil
+          end,
           settings = {
             nixd = {
               formatting = {
