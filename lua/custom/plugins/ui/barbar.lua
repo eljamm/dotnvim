@@ -61,6 +61,10 @@ return {
       -- -- Hide inactive buffers and file extensions. Other options are `alternate`, `current`, and `visible`.
       -- hide = { extensions = true },
 
+      -- Automatically hide the tabline when there are this many buffers left.
+      -- Set to any value >=0 to enable.
+      auto_hide = 1,
+
       -- If true, new buffers will be inserted at the start/end of the list.
       -- Default is to insert after current buffer.
       insert_at_end = true,
