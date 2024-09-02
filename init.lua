@@ -863,6 +863,7 @@ require('lazy').setup({
         'gdscript',
         'bashls',
         'taplo', -- TOML
+        'hyprls', -- hyprland
       }
 
       require('mason').setup()
@@ -1185,6 +1186,10 @@ require('lazy').setup({
     },
   },
 })
+
+vim.filetype.add {
+  pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
+}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et tw=81
