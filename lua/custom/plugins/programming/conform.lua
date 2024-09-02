@@ -36,6 +36,7 @@ return {
       html = prettyInject,
       javascript = prettyInject,
       json = prettyInject,
+      jsonc = prettyInject,
       yaml = prettyInject,
       sh = { 'shfmt' },
       sql = { 'sql_formatter' },
