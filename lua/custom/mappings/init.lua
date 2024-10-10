@@ -80,7 +80,7 @@ map('x', '<M-s>', ':sort<CR>', { desc = 'Sort Selection', silent = true })
 --- Terminal
 -- switch between windows
 map('t', '<C-h>', '<C-\\><C-N><C-w>h', { desc = 'Terminal Window Left' })
-map('t', '<C-l>', '<C-\\><C-N><C-w>l', { desc = 'Terminal Window Right' })
+-- map('t', '<C-l>', '<C-\\><C-N><C-w>l', { desc = 'Terminal Window Right' })
 map('t', '<C-j>', '<C-\\><C-N><C-w>j', { desc = 'Terminal Window Down' })
 map('t', '<C-k>', '<C-\\><C-N><C-w>k', { desc = 'Terminal Window Up' })
 
