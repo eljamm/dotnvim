@@ -44,6 +44,7 @@ return {
       markdown = { 'markdownlint', 'cbfmt' },
       nix = { 'statix', 'nixfmt', 'injected' },
       rust = { 'rustfmt' },
+      toml = { 'taplo' },
       go = {
         'golines',
         'gofumpt',
