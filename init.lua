@@ -867,6 +867,8 @@ require('lazy').setup({
         'bashls',
         'taplo', -- TOML
         'hyprls', -- hyprland
+        -- TODO: enable for md/txt only
+        -- 'harper_ls', -- https://github.com/elijah-potter/harper
       }
 
       require('mason').setup()
