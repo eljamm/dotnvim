@@ -859,7 +859,7 @@ require('lazy').setup({
       local default_servers = {
         'html',
         'cssls',
-        'tsserver',
+        'ts_ls',
         'clangd',
         'typst_lsp',
         'jedi_language_server',
