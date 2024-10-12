@@ -26,10 +26,10 @@ return {
       { '<A-9>', '<Cmd>BufferGoto 9<CR>', desc = 'Go to Buffer 9', noremap = true, silent = true },
       { '<A-0>', '<Cmd>BufferLast<CR>', desc = 'Go to Last Buffer', noremap = true, silent = true },
       -- Pin/unpin buffer
-      { '<A-p>', '<Cmd>BufferPin<CR>', desc = '[P]in Buffer', noremap = true, silent = true },
+      { '<A-i>', '<Cmd>BufferPin<CR>', desc = '[P]in Buffer', noremap = true, silent = true },
       -- Close buffer
       { '<A-c>', '<Cmd>BufferClose<CR>', desc = '[C]lose Buffer', noremap = true, silent = true },
-      { '<A-x>', '<Cmd>BufferClose!<CR>', desc = 'Exit Buffer', noremap = true, silent = true },
+      { '<A-C>', '<Cmd>BufferClose!<CR>', desc = 'Exit Buffer', noremap = true, silent = true },
       -- Wipeout buffer
       --                 :BufferWipeout
       -- Close commands
