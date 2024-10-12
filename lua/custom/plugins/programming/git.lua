@@ -1,4 +1,5 @@
 return {
+  { 'tpope/vim-fugitive' },
   {
     'NeogitOrg/neogit',
     dependencies = {

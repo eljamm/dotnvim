@@ -48,7 +48,7 @@ return {
   },
   init = function()
     local ignore_buftypes = { 'nofile', 'prompt', 'popup' }
-    local ignore_filetypes = { 'neo-tree', 'trouble', 'gitsigns.blame', 'noice', 'Outline' }
+    local ignore_filetypes = { 'neo-tree', 'trouble', 'gitsigns.blame', 'noice', 'Outline', 'fugitiveblame' }
 
     --- disable for certain buffer and file types
     local augroup = vim.api.nvim_create_augroup('FocusDisable', { clear = true })
