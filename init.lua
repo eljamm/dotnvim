@@ -833,6 +833,12 @@ require('lazy').setup({
         hls = {
           filetypes = { 'haskell', 'lhaskell', 'cabal' },
         },
+
+        -- Grammar Checker
+        -- https://github.com/elijah-potter/harper
+        harper_ls = {
+          filetypes = { 'markdown' },
+        },
       }
 
       -- TODO: Refactor this
@@ -865,8 +871,6 @@ require('lazy').setup({
         'bashls',
         'taplo', -- TOML
         'hyprls', -- hyprland
-        -- TODO: enable for md/txt only
-        -- 'harper_ls', -- https://github.com/elijah-potter/harper
       }
 
       require('mason').setup()
