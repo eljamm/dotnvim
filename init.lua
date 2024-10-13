@@ -909,7 +909,6 @@ require('lazy').setup({
     end,
   },
 
-
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',

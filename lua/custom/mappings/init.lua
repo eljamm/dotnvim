@@ -57,12 +57,12 @@ map('x', 'p', 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = 'Dont copy replaced text
 map('v', 'p', 'P')
 
 --- Tab motions
--- map('n', '<C-t>s', '<CMD>tab split<CR>', { desc = 'Split Window to New Tab' })
--- map('n', '<C-t>t', '<C-w>T', { desc = 'Maximize Window' })
 map('n', '<A-n>', '<CMD>tabprevious<CR>', { desc = 'Previous Tab' })
 map('n', '<A-p>', '<CMD>tabnext<CR>', { desc = 'Next Tab' })
-map('n', '<A-x>', '<CMD>tabclose<CR>', { desc = '[T]ab [C]lose' })
-map('n', '<A-d>', '<CMD>tabnew<CR>', { desc = '[T]ab [N]ew' })
+map('n', '<A-x>', '<CMD>tabclose<CR>', { desc = 'Close Tab' })
+map('n', '<A-d>', '<CMD>tabnew<CR>', { desc = 'New Tab' })
+-- map('n', '<C-t>s', '<CMD>tab split<CR>', { desc = 'Split Window to New Tab' })
+-- map('n', '<C-t>t', '<C-w>T', { desc = 'Maximize Window' })
 
 -- Buffer Motions
 -- map('n', '<A-j>', '<CMD>bprevious<CR>', { desc = 'Prev Buffer' })
