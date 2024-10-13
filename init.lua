@@ -830,6 +830,12 @@ require('lazy').setup({
           },
         },
 
+        typst_lsp = {
+          -- Workaround for semantic_tokens bug in nvim 0.10.2
+          -- See: https://github.com/nix-community/nixvim/issues/2390
+          offset_encoding = 'utf-8',
+        },
+
         hls = {
           filetypes = { 'haskell', 'lhaskell', 'cabal' },
         },
@@ -865,7 +871,6 @@ require('lazy').setup({
         'cssls',
         'ts_ls',
         'clangd',
-        'typst_lsp',
         'jedi_language_server',
         'gdscript',
         'bashls',
