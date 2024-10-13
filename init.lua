@@ -784,7 +784,6 @@ require('lazy').setup({
         --
 
         lua_ls = {
-          capabilities = capabilities,
           settings = {
             Lua = {
               completion = {
@@ -804,7 +803,6 @@ require('lazy').setup({
         },
 
         gopls = {
-          capabilities = capabilities,
           cmd = { 'gopls' },
           filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
           root_dir = require('lspconfig/util').root_pattern('go.work', 'go.mod'),
@@ -817,7 +815,6 @@ require('lazy').setup({
 
         -- NOTE: https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
         nixd = {
-          capabilities = capabilities,
           on_init = function(client, _)
             client.server_capabilities.documentHighlightProvider = nil
           end,
@@ -834,7 +831,6 @@ require('lazy').setup({
         },
 
         hls = {
-          capabilities = capabilities,
           filetypes = { 'haskell', 'lhaskell', 'cabal' },
         },
       }
@@ -842,7 +838,6 @@ require('lazy').setup({
       -- TODO: Refactor this
       local disabled_servers = {
         nil_ls = {
-          capabilities = capabilities,
           settings = {
             ['nil'] = {
               formatting = {
