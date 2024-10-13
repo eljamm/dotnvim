@@ -16,6 +16,7 @@ map('n', '<C-q>', close_nvim, { desc = 'Quick Quit' })
 map('n', '<M-a>', '<CMD>enew<CR>', { desc = 'New Buffer' })
 map({ 'n', 't' }, '<A-w>', '<CMD>q<CR>', { desc = 'Close Window' })
 map({ 'n', 'x' }, ',', ':', { desc = 'Enter command mode', nowait = true })
+map({ 'n', 'x' }, ';', ':', { desc = 'Enter command mode', nowait = true })
 
 map('n', '<leader>ll', '<CMD>Lazy<CR>', { desc = 'Open Lazy' })
 map('n', '<leader>mm', '<CMD>Mason<CR>', { desc = 'Open Mason' })
