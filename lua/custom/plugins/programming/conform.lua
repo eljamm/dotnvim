@@ -45,6 +45,7 @@ return {
       nix = { 'statix', 'nixfmt', 'injected' },
       rust = { 'rustfmt' },
       toml = { 'taplo' },
+      typst = { 'typstyle' },
       go = {
         'golines',
         'gofumpt',
