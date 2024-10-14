@@ -830,7 +830,7 @@ require('lazy').setup({
           },
         },
 
-        typst_lsp = {
+        tinymist = {
           -- Workaround for semantic_tokens bug in nvim 0.10.2
           -- See: https://github.com/nix-community/nixvim/issues/2390
           offset_encoding = 'utf-8',
