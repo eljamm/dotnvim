@@ -7,14 +7,14 @@ return {
     },
     keys = {
       {
-        '<leader>yy',
+        '<leader>ya',
         function()
           require('yazi').yazi()
         end,
         desc = 'Open Yazi',
       },
       {
-        '<leader>ya',
+        '<leader>yy',
         function()
           require('yazi').yazi(nil, vim.fn.getcwd())
         end,
