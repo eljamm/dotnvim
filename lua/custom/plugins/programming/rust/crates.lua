@@ -2,21 +2,18 @@ return {
   'saecki/crates.nvim',
   event = { 'BufRead Cargo.toml' },
   opts = {
+    lsp = {
+      enabled = true,
+      actions = true,
+      completion = true,
+      hover = true,
+    },
     completion = {
-      cmp = {
-        enabled = true,
+      crates = {
+        enabled = true, -- disabled by default
+        max_results = 8, -- maximum number of search results to display
+        min_chars = 3, -- minimum number of charaters to type before completions begin appearing
       },
     },
   },
-  init = function()
-    local map = vim.keymap.set
-
-    map({ 'n' }, 'K', function()
-      if vim.fn.expand '%:t' == 'Cargo.toml' and require('crates').popup_available() then
-        require('crates').show_popup()
-      else
-        vim.lsp.buf.hover()
-      end
-    end, { desc = 'Show Create Documentation' })
-  end,
 }
