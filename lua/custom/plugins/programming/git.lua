@@ -23,10 +23,8 @@ return {
       'DiffviewRefresh',
       'DiffviewFileHistory',
     },
-    -- TODO: rewrite as a toggle
     keys = {
-      { '<leader>do', '<CMD>DiffviewOpen<CR>', desc = '[D]iffview [O]pen' },
-      { '<leader>dc', '<CMD>DiffviewClose<CR>', desc = '[D]iffview [C]lose' },
+      { '<leader>gd', '<CMD>DiffviewOpen<CR>', desc = '[D]iffview' },
     },
   },
 }

@@ -342,7 +342,7 @@ require('lazy').setup({
         map('n', '<leader>hp', gitsigns.preview_hunk, { desc = '[P]review' })
 
         map('n', '<leader>gb', gitsigns.toggle_current_line_blame, { desc = '[B]lame' })
-        map('n', '<leader>gd', gitsigns.diffthis, { desc = '[D]iff' })
+        -- map('n', '<leader>gd', gitsigns.diffthis, { desc = '[D]iff' })
         map('n', '<leader>gD', '<CMD>Gitsigns diffthis "~"<CR>', { desc = '[D]iff Changed' })
         map('n', '<leader>gr', gitsigns.toggle_deleted, { desc = '[R]removed' })
         map('n', '<leader>gp', gitsigns.preview_hunk, { desc = '[P]review Hunk' })
