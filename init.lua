@@ -759,11 +759,11 @@ require('lazy').setup({
           filetypes = { 'haskell', 'lhaskell', 'cabal' },
         },
 
-        -- Grammar Checker
-        -- https://github.com/elijah-potter/harper
-        harper_ls = {
-          filetypes = { 'markdown' },
-        },
+        -- -- Grammar Checker
+        -- -- https://github.com/elijah-potter/harper
+        -- harper_ls = {
+        --   filetypes = { 'markdown' },
+        -- },
       }
 
       -- TODO: Refactor this
@@ -793,7 +793,6 @@ require('lazy').setup({
         'jedi_language_server',
         'gdscript',
         'bashls',
-        'taplo', -- TOML
         'hyprls', -- hyprland
         'tinymist', -- typst
       }
