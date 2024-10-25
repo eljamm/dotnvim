@@ -746,9 +746,6 @@ require('lazy').setup({
           on_init = function(client, _)
             client.server_capabilities.documentHighlightProvider = nil
           end,
-          -- Workaround for semantic_tokens bug in nvim 0.10.2
-          -- See: https://github.com/nix-community/nixvim/issues/2390
-          offset_encoding = 'utf-8',
           settings = {
             nixd = {
               formatting = {
@@ -756,12 +753,6 @@ require('lazy').setup({
               },
             },
           },
-        },
-
-        tinymist = {
-          -- Workaround for semantic_tokens bug in nvim 0.10.2
-          -- See: https://github.com/nix-community/nixvim/issues/2390
-          offset_encoding = 'utf-8',
         },
 
         hls = {
@@ -804,6 +795,7 @@ require('lazy').setup({
         'bashls',
         'taplo', -- TOML
         'hyprls', -- hyprland
+        'tinymist', -- typst
       }
 
       require('mason').setup()
