@@ -46,11 +46,7 @@ return {
       rust = { 'rustfmt' },
       toml = { 'taplo' },
       typst = { 'typstyle' },
-      go = {
-        'golines',
-        'gofumpt',
-        'goimports',
-      },
+      go = { 'golines', 'gofumpt', 'goimports' },
       python = function(bufnr)
         if require('conform').get_formatter_info('ruff_format', bufnr).available then
           return { 'ruff_format' }
@@ -69,17 +65,9 @@ return {
       ['_'] = { 'trim_whitespace' },
     },
     formatters = {
-      shfmt = {
-        prepend_args = { '-i', '4' },
-      },
-      cbfmt = {
-        prepend_args = { '--config', os.getenv 'HOME' .. '/.config/cbfmt/cbfmt.toml' },
-      },
-      statix = {
-        command = 'statix',
-        args = { 'fix', '--stdin' },
-        stdin = true,
-      },
+      shfmt = { prepend_args = { '-i', '4' } },
+      cbfmt = { prepend_args = { '--config', os.getenv 'HOME' .. '/.config/cbfmt/cbfmt.toml' } },
+      statix = { command = 'statix', args = { 'fix', '--stdin' }, stdin = true },
       markdownlint = {
         command = 'markdownlint',
         stdin = false,
@@ -133,9 +121,7 @@ return {
     usercmd('FormatEnable', function()
       vim.b.disable_autoformat = false
       vim.g.disable_autoformat = false
-    end, {
-      desc = 'Re-enable autoformat-on-save',
-    })
+    end, { desc = 'Re-enable autoformat-on-save' })
     --
     usercmd('FormatDisable', function(args)
       if args.bang then
@@ -144,10 +130,7 @@ return {
       else
         vim.g.disable_autoformat = true
       end
-    end, {
-      desc = 'Disable autoformat-on-save',
-      bang = true,
-    })
+    end, { desc = 'Disable autoformat-on-save', bang = true })
   end,
   keys = {
     {

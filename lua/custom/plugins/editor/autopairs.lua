@@ -22,7 +22,7 @@ return {
     enabled = false,
     event = 'InsertEnter',
     config = function()
-      vim.cmd [[ 
+      vim.cmd [[
         call lexima#add_rule({'char': '{', 'input_after': '},', 'filetype': ['lua']})
         " nix
         call lexima#add_rule({'char': '{', 'input_after': '};', 'filetype': ['nix']})
