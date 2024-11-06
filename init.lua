@@ -114,6 +114,18 @@ vim.opt.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
+vim.g.clipboard = { -- TODO: check if tool is available
+  name = 'xclip',
+  copy = {
+    ['+'] = { 'xclip', '-quiet', '-i', '-selection', 'clipboard' },
+    ['*'] = { 'xclip', '-quiet', '-i', '-selection', 'primary' },
+  },
+  paste = {
+    ['+'] = { 'xclip', '-o', '-selection', 'clipboard' },
+    ['*'] = { 'xclip', '-o', '-selection', 'primary' },
+  },
+  cache_enabled = 1, -- cache MUST be enabled, or else it hangs on dd/y/x and all other copy operations
+}
 
 -- Enable break indent
 vim.opt.breakindent = true
