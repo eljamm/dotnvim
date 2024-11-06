@@ -7,11 +7,11 @@ return {
   },
   keys = {
     {
-      '<A-i>',
+      '<A-f>',
       function()
         require('nvterm.terminal').toggle 'float'
       end,
-      mode = { 'n', 't' },
+      mode = { 'n' },
       desc = 'Toggle Floating Terminal',
     },
     {
