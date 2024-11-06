@@ -86,3 +86,13 @@ map('t', '<C-k>', '<C-\\><C-N><C-w>k', { desc = 'Terminal Window Up' })
 
 -- Set semicolon at the end
 map('n', '<leader>;', [[A;<Esc>]], { desc = 'Custom: Add semicolon to end of line' })
+
+-- Source snippets
+map('n', '<leader><leader>s', function()
+  for _, ft_path in ipairs(vim.api.nvim_get_runtime_file('lua/custom/snippets/*.lua', true)) do
+    loadfile(ft_path)()
+  end
+  -- re-source cleared friendly-snippets
+  require('luasnip.loaders.from_vscode').lazy_load()
+  vim.print 'Sourced Snippets'
+end, { desc = 'Source snippets' })
