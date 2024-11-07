@@ -8,6 +8,20 @@ local t = ls.text_node
 local i = ls.insert_node
 
 ls.add_snippets('nix', {
+  s(
+    'l',
+    fmt(
+      [[
+      let
+        <>
+      in
+      <>
+      ]],
+      { i(1), i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+
   -- attribute Set
   s(
     'at',
@@ -39,6 +53,21 @@ ls.add_snippets('nix', {
       }
       ]],
       { inputs = i(1, 'inputs,'), i(2), name = i(3, 'name'), let = i(4), i(5), i(6), i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+
+  -- empty module
+  s(
+    'em',
+    fmt(
+      [[
+      { <inputs> ... }:
+      <let>{
+        <>
+      }
+      ]],
+      { inputs = i(1, 'pkgs, lib,'), let = i(2), i(0) },
       { delimiters = '<>' }
     )
   ),
