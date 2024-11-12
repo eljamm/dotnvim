@@ -15,6 +15,7 @@ return {
           ['l'] = 'open',
           ['S'] = 'open_split',
           ['V'] = 'open_vsplit',
+          ['<M-l>'] = 'system_open',
           -- preview
           -- ['p'] = { 'toggle_preview', config = { use_float = true, use_image_nvim = true } },
           ['P'] = 'focus_preview',
@@ -24,6 +25,13 @@ return {
       },
       filesystem = {
         follow_current_file = { enabled = true },
+      },
+      commands = {
+        system_open = function(state)
+          local node = state.tree:get_node()
+          local path = node:get_id()
+          vim.fn.jobstart({ 'xdg-open', path }, { detach = true })
+        end,
       },
       event_handlers = {
         -- Use normal mode for renaming files
