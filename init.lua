@@ -114,18 +114,36 @@ vim.opt.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.opt.clipboard = 'unnamedplus'
-vim.g.clipboard = { -- TODO: check if tool is available
-  name = 'xclip',
-  copy = {
-    ['+'] = { 'xclip', '-quiet', '-i', '-selection', 'clipboard' },
-    ['*'] = { 'xclip', '-quiet', '-i', '-selection', 'primary' },
-  },
-  paste = {
-    ['+'] = { 'xclip', '-o', '-selection', 'clipboard' },
-    ['*'] = { 'xclip', '-o', '-selection', 'primary' },
-  },
-  cache_enabled = 1, -- cache MUST be enabled, or else it hangs on dd/y/x and all other copy operations
-}
+
+-- Set neovim clipboard
+-- NOTE: your terminal emulator must support the OSC 52 control sequence for SSH
+-- See `:help 'clipboard-osc52'`
+if vim.env.SSH_TTY then
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+      ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+    },
+    paste = {
+      ['+'] = require('vim.ui.clipboard.osc52').paste '+',
+      ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+    },
+  }
+else
+  vim.g.clipboard = { -- TODO: check if tool is available
+    name = 'xclip',
+    copy = {
+      ['+'] = { 'xclip', '-quiet', '-i', '-selection', 'clipboard' },
+      ['*'] = { 'xclip', '-quiet', '-i', '-selection', 'primary' },
+    },
+    paste = {
+      ['+'] = { 'xclip', '-o', '-selection', 'clipboard' },
+      ['*'] = { 'xclip', '-o', '-selection', 'primary' },
+    },
+    cache_enabled = 1, -- cache MUST be enabled, or else it hangs on dd/y/x and all other copy operations
+  }
+end
 
 -- Enable break indent
 vim.opt.breakindent = true
