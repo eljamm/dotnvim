@@ -119,6 +119,14 @@ vim.opt.clipboard = 'unnamedplus'
 -- NOTE: your terminal emulator must support the OSC 52 control sequence for SSH
 -- See `:help 'clipboard-osc52'`
 if vim.env.SSH_TTY then
+  -- Pasting with OSC52 is really slow. Use Neovim's paste instead.
+  local function paste()
+    return {
+      vim.split(vim.fn.getreg '', '\n'),
+      vim.fn.getregtype '',
+    }
+  end
+
   vim.g.clipboard = {
     name = 'OSC 52',
     copy = {
@@ -126,8 +134,8 @@ if vim.env.SSH_TTY then
       ['*'] = require('vim.ui.clipboard.osc52').copy '*',
     },
     paste = {
-      ['+'] = require('vim.ui.clipboard.osc52').paste '+',
-      ['*'] = require('vim.ui.clipboard.osc52').paste '*',
+      ['+'] = paste,
+      ['*'] = paste,
     },
   }
 else
