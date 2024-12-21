@@ -1,4 +1,4 @@
-require('luasnip.session.snippet_collection').clear_snippets 'nix'
+-- require('luasnip.session.snippet_collection').clear_snippets 'nix'
 
 local ls = require 'luasnip'
 local fmt = require('luasnip.extras.fmt').fmt
@@ -69,6 +69,38 @@ ls.add_snippets('nix', {
       ]],
       { inputs = i(1, 'pkgs, lib,'), let = i(2), i(0) },
       { delimiters = '<>' }
+    )
+  ),
+
+  -- lib.mkOption
+  s(
+    'opt',
+    fmt(
+      [[
+      <name> = lib.mkOption {
+        type = lib.types.<>str;
+        default = "<>";
+        defaultText = "<>";
+        description = "<>";
+      };
+      ]],
+      { name = i(1), i(2), i(3), i(4), i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+
+  s(
+    'ov',
+    fmt(
+      [[
+      (final: prev: {
+        <name> = prev.<name>.overrideAttrs (oldAttrs: {
+          <>
+        });
+      })
+      ]],
+      { name = i(1), i(0) },
+      { delimiters = '<>', repeat_duplicates = true }
     )
   ),
 })
