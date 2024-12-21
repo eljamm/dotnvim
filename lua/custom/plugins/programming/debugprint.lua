@@ -1,6 +1,6 @@
 return {
   'andrewferrier/debugprint.nvim',
-  keys = { 'g?' },
+  event = 'LazyFile',
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
   },
