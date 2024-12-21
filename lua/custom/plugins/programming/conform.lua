@@ -43,7 +43,7 @@ return {
       sql = { 'sql_formatter' },
       gdscript = { 'gdformat' },
       markdown = { 'markdownlint', 'cbfmt' },
-      nix = { 'statix', 'nixfmt', 'injected' },
+      nix = { 'nixfmt', 'injected' },
       rust = { 'rustfmt' },
       toml = { 'taplo' },
       typst = { 'typstyle' },
