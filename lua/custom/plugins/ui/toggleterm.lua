@@ -6,7 +6,14 @@ return {
     local Terminal = require('toggleterm.terminal').Terminal
     local term_count = 0
 
-    local mkTerminal = function(command, disable_count)
+    local function map(mode, lhs, rhs, opts)
+      opts = vim.tbl_extend('force', { noremap = true, silent = true }, opts or {})
+      vim.keymap.set(mode, lhs, rhs, opts)
+    end
+
+    ---@param opts { quick_toggle: boolean, disable_count: boolean }
+    local mkTerminal = function(command, opts)
+      local t_opts = opts or {}
       local terminal = Terminal:new {
         cmd = command,
         dir = 'git_dir',
@@ -17,22 +24,24 @@ return {
           width = math.ceil(vim.o.columns * 0.9),
           height = math.ceil(vim.o.lines * 0.9) - 1,
         },
-        -- function to run on opening the terminal
         on_open = function(term)
           vim.cmd 'startinsert!'
 
-          local opts = { noremap = true, silent = true, buffer = term.bufnr }
-          vim.keymap.set('t', '<C-x>', [[<C-\><C-n>]], opts)
-          vim.keymap.set({ 'n', 't' }, '<C-q>', '<CMD>' .. term.id .. 'ToggleTerm<CR>', opts)
-          vim.keymap.set({ 'n', 't' }, '<M-c>', '<CMD>close<CR>', opts)
+          local toggleCmd = '<CMD>' .. term.id .. 'ToggleTerm<CR>'
+          map('t', '<C-x>', [[<C-\><C-n>]], { buffer = term.bufnr })
+          map({ 'n', 't' }, '<M-q>', toggleCmd, { buffer = term.bufnr })
+          map({ 'n', 't' }, '<M-c>', '<CMD>close<CR>', { buffer = term.bufnr })
+
+          if t_opts.quick_toggle then
+            map({ 'n', 't' }, 'q', toggleCmd, { buffer = term.bufnr })
+          end
         end,
-        -- function to run on closing the terminal
         on_close = function(_)
           vim.cmd 'startinsert!'
         end,
       }
 
-      if not disable_count then
+      if not t_opts.disable_count then
         term_count = term_count + 1
         terminal.count = term_count
       end
@@ -40,46 +49,43 @@ return {
       return terminal
     end
 
-    -- Return git directory from file path
     local get_git_dir = function(file_path)
       local buf_dir = file_path or vim.fn.expand '%:p:h'
-      local git_dir_cmd = 'git -C ' .. buf_dir .. ' rev-parse --show-toplevel'
+      local git_dir = vim.fn.system('git -C ' .. buf_dir .. ' rev-parse --show-toplevel')
       if vim.v.shell_error == 0 then
-        return vim.trim(vim.fn.system(git_dir_cmd))
+        return vim.trim(git_dir)
       end
       return nil
     end
 
-    local function toggle_term(term, cmd)
+    local function toggle_term(term, cmd, topts)
       if term == nil or term.cmd ~= cmd then
-        term = mkTerminal(cmd)
+        term = mkTerminal(cmd, topts or {})
       end
       term:toggle()
       return term
     end
 
-    -- LazyGit
-    local lazygit = mkTerminal 'lazygit'
-    vim.keymap.set({ 'n', 't' }, '<M-l>', function()
-      lazygit:toggle()
-    end, { desc = 'Lazygit', noremap = true, silent = true })
+    local M = {}
 
-    -- Lazygit Filter (Buffer)
-    local lazygit_filter
-    vim.keymap.set('n', '<leader>lf', function()
+    --- ------- ---
+    --- LazyGit ---
+    --- ------- ---
+
+    map({ 'n', 't' }, '<M-l>', function()
+      M.lazygit = toggle_term(M.lazygit, 'lazygit')
+    end, { desc = 'Lazygit' })
+
+    -- Filter (Buffer)
+    map('n', '<leader>lf', function()
       local file_path = vim.fn.expand '%:p'
       local cmd = 'lazygit -f ' .. file_path
 
-      if lazygit_filter == nil or lazygit_filter.cmd ~= cmd then
-        lazygit_filter = mkTerminal(cmd, true)
-      end
+      M.lazygit_filter = toggle_term(M.lazygit_filter, cmd, { disable_count = true })
+    end, { desc = 'Lazygit Filter (Buffer)' })
 
-      lazygit_filter:toggle()
-    end, { desc = 'Lazygit Filter (Buffer)', noremap = true, silent = true })
-
-    -- Lazygit (Buffer)
-    local lazygit_buf
-    vim.keymap.set('n', '<leader>lb', function()
+    -- Repo (Buffer)
+    map('n', '<leader>lb', function()
       local cmd = 'lazygit'
       local git_dir = get_git_dir()
 
@@ -87,41 +93,31 @@ return {
         cmd = cmd .. ' -p ' .. git_dir
       end
 
-      if lazygit_buf == nil or lazygit_buf.cmd ~= cmd then
-        lazygit_buf = mkTerminal(cmd)
-      end
+      M.lazygit_buf = toggle_term(M.lazygit_buf, cmd)
+    end, { desc = 'Lazygit Repo (Buffer)' })
 
-      lazygit_buf:toggle()
-    end, { desc = 'Lazygit (Buffer)', noremap = true, silent = true })
+    -- History
+    map('n', '<leader>lh', function()
+      M.lazygit_hist = toggle_term(M.lazygit_hist, 'lazygit log')
+    end, { desc = 'Lazygit History' })
 
-    -- Lazygit History
-    local lazygit_hist
-    vim.keymap.set('n', '<leader>lh', function()
-      local cmd = 'lazygit log'
-
-      if lazygit_hist == nil or lazygit_hist.cmd ~= cmd then
-        lazygit_hist = mkTerminal(cmd)
-      end
-
-      lazygit_hist:toggle()
-    end, { desc = 'Lazygit History', noremap = true, silent = true })
+    --- ---- ---
+    --- Misc ---
+    --- ---- ---
 
     -- Taskwarrior
-    local twui
-    vim.keymap.set('n', '<leader>tw', function()
-      twui = toggle_term(twui, 'taskwarrior-tui')
-    end, { desc = 'Taskwarrior', noremap = true, silent = true })
+    map('n', '<leader>tw', function()
+      M.twui = toggle_term(M.twui, 'taskwarrior-tui', { quick_toggle = true })
+    end, { desc = 'Taskwarrior' })
 
     -- Gitu
-    local gitu
-    vim.keymap.set('n', '<leader>gu', function()
-      gitu = toggle_term(gitu, 'gitu')
-    end, { desc = 'Gitu', noremap = true, silent = true })
+    map({ 'n', 't' }, '<M-u>', function()
+      M.gitu = toggle_term(M.gitu, 'gitu', { quick_toggle = true })
+    end, { desc = 'Gitu' })
 
     -- Tig
-    local tig
-    vim.keymap.set('n', '<leader>tg', function()
-      tig = toggle_term(tig, 'tig')
-    end, { desc = 'Tig', noremap = true, silent = true })
+    map('n', '<leader>tg', function()
+      M.tig = toggle_term(M.tig, 'tig')
+    end, { desc = 'Tig' })
   end,
 }
