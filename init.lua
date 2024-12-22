@@ -579,14 +579,14 @@ require('lazy').setup({
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      -- TODO: Replace neodev with lazydev? (https://github.com/folke/lazydev.nvim)
       {
-        'folke/neodev.nvim',
+        'folke/lazydev.nvim',
+        ft = 'lua', -- only load on lua files
         opts = {
           library = {
-            runtime = false, -- runtime path
-            types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-            plugins = false, -- installed opt or start plugins in packpath
+            -- See the configuration section for more details
+            -- Load luvit types when the `vim.uv` word is found
+            { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
           },
         },
       },
