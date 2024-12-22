@@ -1,6 +1,6 @@
 # Check Lua Formatting
 name: Check Lua Formatting
-on: pull_request_target
+on: pull_request
 
 jobs:
   stylua-check:
@@ -11,6 +11,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
         with:
+          persist-credentials: false
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Stylua Check
         uses: JohnnyMorganz/stylua-action@v3
@@ -18,4 +19,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: latest
           args: --check .
-
