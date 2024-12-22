@@ -60,7 +60,7 @@ return {
 
     -- LazyGit
     local lazygit = mkTerminal 'lazygit'
-    vim.keymap.set({ 'n', 't' }, '<leader>lg', function()
+    vim.keymap.set({ 'n', 't' }, '<M-l>', function()
       lazygit:toggle()
     end, { desc = 'Lazygit', noremap = true, silent = true })
 

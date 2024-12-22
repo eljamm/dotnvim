@@ -9,7 +9,8 @@ return {
     keys = {
       { '<M-o>', '<CMD>Grapple toggle<CR><CMD>echo "Grappled Buffer"<CR>', desc = 'Grapple Toggle Tag' },
       { '<M-e>', '<CMD>Grapple toggle_tags<CR>', desc = 'Grapple Open Tags Window' },
-      { '<M-l>', '<CMD>Grapple cycle_tags next<CR>', desc = 'Grapple Cycle Next Tag' },
+      -- TODO:
+      -- { '<M-l>', '<CMD>Grapple cycle_tags next<CR>', desc = 'Grapple Cycle Next Tag' },
       { '<M-h>', '<CMD>Grapple cycle_tags prev<CR>', desc = 'Grapple Cycle Previous Tag' },
     },
   },
