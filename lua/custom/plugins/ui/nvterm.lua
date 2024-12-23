@@ -7,14 +7,6 @@ return {
   },
   keys = {
     {
-      '<A-f>',
-      function()
-        require('nvterm.terminal').toggle 'float'
-      end,
-      mode = { 'n' },
-      desc = 'Toggle Floating Terminal',
-    },
-    {
       '<A-b>',
       function()
         require('nvterm.terminal').toggle 'horizontal'

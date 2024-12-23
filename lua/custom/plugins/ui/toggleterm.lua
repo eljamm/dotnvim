@@ -119,5 +119,9 @@ return {
     map('n', '<leader>tg', function()
       M.tig = toggle_term(M.tig, 'tig')
     end, { desc = 'Tig' })
+
+    map({ 'n', 't' }, '<M-f>', function()
+      M.float = toggle_term(M.float, 'zellij')
+    end, { desc = 'Floating Terminal' })
   end,
 }
