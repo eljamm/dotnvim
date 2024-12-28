@@ -11,7 +11,6 @@ return {
         markdown = { 'markdownlint' },
         nix = { 'statix' },
         fish = { 'fish' },
-        sh = { 'shellcheck' },
       }
 
       -- ------------
