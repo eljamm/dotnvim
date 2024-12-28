@@ -72,7 +72,7 @@ return {
 
       -- A buffer to this direction will be focused (if it exists) when closing the current buffer.
       -- Valid options are 'left' (the default), 'previous', and 'right'
-      focus_on_close = 'right',
+      focus_on_close = 'left',
 
       sidebar_filetypes = {
         -- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}

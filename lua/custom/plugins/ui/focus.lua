@@ -1,6 +1,6 @@
 return {
   'nvim-focus/focus.nvim',
-  lazy = false,
+  event = 'LazyFile',
   version = '*',
   opts = {},
   keys = {
