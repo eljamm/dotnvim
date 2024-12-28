@@ -120,7 +120,7 @@ return {
       M.tig = toggle_term(M.tig, 'tig')
     end, { desc = 'Tig' })
 
-    map({ 'n', 't' }, '<M-f>', function()
+    map({ 'n', 't' }, '<M-d>', function()
       M.float = toggle_term(M.float, 'zellij')
     end, { desc = 'Floating Terminal' })
   end,

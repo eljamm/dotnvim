@@ -49,16 +49,19 @@ return {
         },
       },
     },
-    keys = {
-      { '<C-n>', '<CMD>Neotree toggle<CR>', mode = { 'n', 'x', 't' }, desc = 'Toggle [N]eoTree', nowait = true },
-      -- TODO: use <C-f> for fullscreen?
-      {
-        '<C-f>',
-        '<CMD>Neotree toggle position=current<CR>',
-        mode = { 'n', 'x' },
-        desc = 'Toggle [F]ull NeoTree',
-        nowait = true,
-      },
-    },
+    init = function()
+      vim.keymap.set(
+        { 'n', 'x', 't' },
+        '<C-n>',
+        '<CMD>Neotree toggle position=left<CR>',
+        { desc = 'Toggle [N]eoTree', nowait = true }
+      )
+      -- vim.keymap.set(
+      --   { 'n', 'x', 't' },
+      --   '<C-f>',
+      --   '<CMD>Neotree float reveal toggle<CR>',
+      --   { desc = 'Toggle [F]ull NeoTree' }
+      -- )
+    end,
   },
 }
