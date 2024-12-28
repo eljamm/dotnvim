@@ -426,6 +426,29 @@ require('lazy').setup({
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
 
+      -- https://github.com/nvim-telescope/telescope-live-grep-args.nvim/issues/54#issuecomment-1693968095
+      local action_state = require 'telescope.actions.state'
+      local default_opts = {
+        quote_char = '"',
+        postfix = ' ',
+        trim = true,
+      }
+      local function quote_prompt(opts)
+        opts = opts or {}
+        opts = vim.tbl_extend('force', default_opts, opts)
+
+        return function(bufnr)
+          local picker = action_state.get_current_picker(bufnr)
+          local prompt = picker:_get_prompt()
+          if opts.trim then
+            prompt = vim.trim(prompt)
+          end
+          prompt = opts.postfix .. '-- "' .. prompt:gsub('"', '\\"') .. '"'
+          picker:set_prompt(prompt)
+          vim.cmd.normal { 'I', bang = true }
+        end
+      end
+
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
@@ -438,6 +461,8 @@ require('lazy').setup({
               ['<c-enter>'] = 'to_fuzzy_refine',
               ['<C-j>'] = 'move_selection_next',
               ['<C-k>'] = 'move_selection_previous',
+              -- freeze the current list and start a fuzzy search in the frozen list
+              ['<C-space>'] = require('telescope.actions').to_fuzzy_refine,
             },
             n = { ['<C-i>'] = 'select_default', ['q'] = 'close' },
           },
@@ -457,10 +482,8 @@ require('lazy').setup({
             -- define mappings, e.g.
             mappings = { -- extend mappings
               i = {
-                ['<C-k>'] = require('telescope-live-grep-args.actions').quote_prompt(),
-                ['<C-i>'] = require('telescope-live-grep-args.actions').quote_prompt { postfix = ' --iglob ' },
-                -- freeze the current list and start a fuzzy search in the frozen list
-                ['<C-space>'] = require('telescope.actions').to_fuzzy_refine,
+                ['<C-k>'] = quote_prompt {},
+                ['<C-i>'] = quote_prompt { postfix = ' --iglob ' },
               },
               n = {
                 -- Re-grep
@@ -517,7 +540,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sc', builtin.command_history, { desc = '[S]earch [C]ommand History' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>sa', builtin.live_grep, { desc = '[S]earch by [G]rep' }) -- TODO: change or remove?
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
