@@ -14,6 +14,16 @@ return {
       { '<M-h>', '<CMD>Grapple cycle_tags prev<CR>', desc = 'Grapple Cycle Previous Tag' },
     },
   },
+  {
+    -- Enhanced f/t motions for Leap
+    'ggandor/flit.nvim',
+    event = 'VeryLazy',
+    dependencies = { 'ggandor/leap.nvim', 'tpope/vim-repeat' },
+    opts = {},
+    init = function()
+      vim.keymap.set('n', '<C-;>', 'za', { desc = 'Toggle fold under cursor' })
+    end,
+  },
   -- TODO:
   {
     'mg979/vim-visual-multi',
