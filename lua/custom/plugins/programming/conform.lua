@@ -12,8 +12,8 @@ local function first(bufnr, ...)
   return select(1, ...)
 end
 
-local prettyInject = function(bufnr)
-  return { first(bufnr, 'prettierd', 'prettier'), 'injected' }
+local prettyFormat = function(bufnr)
+  return { first(bufnr, 'prettierd', 'prettier') }
 end
 
 return {
@@ -32,18 +32,18 @@ return {
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      css = prettyInject,
-      html = prettyInject,
-      javascript = prettyInject,
-      json = prettyInject,
-      jsonc = prettyInject,
-      scss = prettyInject,
-      yaml = prettyInject,
+      css = prettyFormat,
+      html = prettyFormat,
+      javascript = prettyFormat,
+      json = prettyFormat,
+      jsonc = prettyFormat,
+      scss = prettyFormat,
+      yaml = prettyFormat,
       sh = { 'shfmt' },
       sql = { 'sql_formatter' },
       gdscript = { 'gdformat' },
       markdown = { 'markdownlint', 'cbfmt' },
-      nix = { 'nixfmt', 'injected' },
+      nix = { 'nixfmt' },
       rust = { 'rustfmt' },
       toml = { 'taplo' },
       typst = { 'typstyle' },
