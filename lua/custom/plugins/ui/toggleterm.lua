@@ -81,7 +81,7 @@ return {
       local file_path = vim.fn.expand '%:p'
       local cmd = 'lazygit -f ' .. file_path
 
-      M.lazygit_filter = toggle_term(M.lazygit_filter, cmd, { disable_count = true })
+      M.lazygit_filter = toggle_term(M.lazygit_filter, cmd, { disable_count = true, quick_toggle = true })
     end, { desc = 'Lazygit Filter (Buffer)' })
 
     -- Repo (Buffer)
