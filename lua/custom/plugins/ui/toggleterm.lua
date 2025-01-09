@@ -11,12 +11,11 @@ return {
       vim.keymap.set(mode, lhs, rhs, opts)
     end
 
-    ---@param opts { quick_toggle: boolean, disable_count: boolean }
+    ---@param opts { quick_toggle: boolean, disable_count: boolean, git_dir: string }
     local mkTerminal = function(command, opts)
       local t_opts = opts or {}
       local terminal = Terminal:new {
         cmd = command,
-        dir = 'git_dir',
         direction = 'float',
         hidden = true,
         float_opts = {
@@ -44,6 +43,10 @@ return {
       if not t_opts.disable_count then
         term_count = term_count + 1
         terminal.count = term_count
+      end
+
+      if t_opts.git_dir ~= nil then
+        terminal.dir = 'git_dir'
       end
 
       return terminal
@@ -121,7 +124,7 @@ return {
     end, { desc = 'Tig' })
 
     map({ 'n', 't' }, '<M-d>', function()
-      M.float = toggle_term(M.float, 'zellij')
+      M.float = toggle_term(M.float, 'zellij', { git_dir = get_git_dir() })
     end, { desc = 'Floating Terminal' })
   end,
 }
