@@ -7,6 +7,7 @@ local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
 
+-- Nix --
 ls.add_snippets('nix', {
   s(
     'l',
@@ -101,6 +102,35 @@ ls.add_snippets('nix', {
       ]],
       { name = i(1), i(0) },
       { delimiters = '<>', repeat_duplicates = true }
+    )
+  ),
+
+  s(
+    'phase',
+    fmt(
+      [[
+      <name> = ''
+        <>
+      '';<>
+      ]],
+      { name = i(1), i(2), i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+})
+
+-- Python --
+ls.add_snippets('nix', {
+  s(
+    'pyrelax',
+    fmt(
+      [[
+      pythonRelaxDeps = [
+        "<>"
+      ];<>
+      ]],
+      { i(1), i(0) },
+      { delimiters = '<>' }
     )
   ),
 })
