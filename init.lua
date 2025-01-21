@@ -815,6 +815,7 @@ require('lazy').setup({
           },
         },
 
+        -- Haskell
         hls = {
           filetypes = { 'haskell', 'lhaskell', 'cabal' },
         },
@@ -843,25 +844,6 @@ require('lazy').setup({
         -- harper_ls = {
         --   filetypes = { 'markdown' },
         -- },
-      }
-
-      -- TODO: Refactor this
-      local disabled_servers = {
-        nil_ls = {
-          settings = {
-            ['nil'] = {
-              formatting = {
-                command = { 'nixfmt' },
-              },
-              nix = {
-                flake = {
-                  autoArchive = true,
-                  autoEvalInputs = false,
-                },
-              },
-            },
-          },
-        },
       }
 
       local default_servers = {
