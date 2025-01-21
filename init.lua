@@ -819,6 +819,25 @@ require('lazy').setup({
           filetypes = { 'haskell', 'lhaskell', 'cabal' },
         },
 
+        -- Python
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = 'openFilesOnly',
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = 'standard',
+              },
+            },
+          },
+        },
+        ruff = {
+          on_init = function(client, _)
+            client.server_capabilities.hoverProvider = false
+          end,
+        },
+
         -- -- Grammar Checker
         -- -- https://github.com/elijah-potter/harper
         -- harper_ls = {
@@ -850,7 +869,6 @@ require('lazy').setup({
         'cssls',
         'ts_ls',
         'clangd',
-        'jedi_language_server',
         'gdscript',
         'bashls',
         'hyprls', -- hyprland

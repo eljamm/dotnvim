@@ -49,8 +49,8 @@ return {
       typst = { 'typstyle' },
       go = { 'golines', 'gofumpt', 'goimports' },
       python = function(bufnr)
-        if require('conform').get_formatter_info('ruff_format', bufnr).available then
-          return { 'ruff_format' }
+        if require('conform').get_formatter_info('ruff', bufnr).available then
+          return { 'ruff_format', 'ruff_organize_imports' }
         else
           return { 'isort', 'black' }
         end
