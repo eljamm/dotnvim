@@ -797,6 +797,14 @@ require('lazy').setup({
           settings = {
             gopls = {
               usePlaceholders = true,
+              hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+              },
             },
           },
         },
