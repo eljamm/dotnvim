@@ -1207,5 +1207,12 @@ vim.filetype.add {
   pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
 }
 
+-- TODO: find a better place for this
+vim.diagnostic.config {
+  underline = true,
+  virtual_lines = false,
+  virtual_text = true,
+}
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et tw=81
