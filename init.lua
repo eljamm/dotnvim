@@ -376,7 +376,10 @@ require('lazy').setup({
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = { 'LazyFile', 'VeryLazy' },
-    branch = '0.1.x',
+    -- TODO: Use unstable for compatibility with neovim 0.11, until a new release is out
+    -- https://github.com/nvim-telescope/telescope.nvim/issues/3438
+    -- branch = '0.1.x',
+    branch = 'master',
     dependencies = {
       'nvim-lua/plenary.nvim',
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
