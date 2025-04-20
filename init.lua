@@ -1217,5 +1217,25 @@ vim.diagnostic.config {
   virtual_text = true,
 }
 
+-- TODO: convert all LSPs
+vim.lsp.config.yamlls = {
+  cmd = { 'yaml-language-server', '--stdio' },
+  filetypes = { 'yaml' },
+  settings = {
+    redhat = { telemetry = { enabled = false } },
+    yaml = {
+      schemaStore = { enable = true },
+      schemas = {
+        ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
+        ['https://ffizer.github.io/ffizer/ffizer.schema.json'] = '.ffizer.yaml',
+      },
+    },
+  },
+}
+
+if vim.fn.executable 'yaml-language-server' == 1 then
+  vim.lsp.enable { 'yamlls' }
+end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et tw=81
