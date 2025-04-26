@@ -872,7 +872,8 @@ require('lazy').setup({
         -- },
       }
 
-      local default_servers = {
+      -- servers that don't need extra configuration
+      local default_servers_names = {
         'html',
         'cssls',
         'ts_ls',
@@ -885,33 +886,36 @@ require('lazy').setup({
 
       require('mason').setup()
 
+      local servers_default = {}
+      for _, server_name in ipairs(default_servers_names) do
+        servers_default[server_name] = {}
+      end
+
+      servers = vim.list_extend(servers or {}, servers_default or {})
+
+      local ensure_installed = vim.tbl_keys(servers or {})
+      local extra_tools = {
+        'stylua', -- Used to format Lua code
+      }
+
       local setup_servers = function(server_name)
         local server = servers[server_name] or {}
         -- This handles overriding only values explicitly passed
         -- by the server configuration above. Useful when disabling
         -- certain features of an LSP (for example, turning off formatting for tsserver)
         server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-        lspconfig[server_name].setup(server)
-      end
 
-      for _, server in ipairs(default_servers) do
-        local cfg = vim.lsp.config[server]
+        -- TODO: refactor with default_servers
+        local cfg = vim.lsp.config[server_name]
 
         -- Don't enable LSPs that have not been installed
         if (type(cfg.cmd) == 'table') and (vim.fn.executable(cfg.cmd[1]) ~= 1) then
           goto continue
         end
 
-        lspconfig[server].setup {
-          capabilities = capabilities,
-        }
+        lspconfig[server_name].setup(server)
         ::continue::
       end
-
-      local ensure_installed = vim.tbl_keys(servers or {})
-      local extra_tools = {
-        'stylua', -- Used to format Lua code
-      }
 
       if vim.g.system_id == 'nixos' then
         for _, server_name in pairs(ensure_installed) do
