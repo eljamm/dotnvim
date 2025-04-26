@@ -1,6 +1,7 @@
 return {
   {
     'mikesmithgh/kitty-scrollback.nvim',
+    enabled = false, -- TODO: cleanup. I have a separate neovim config for this.
     cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth' },
     event = { 'User KittyScrollbackLaunch' },
     version = '^5.0.0',
