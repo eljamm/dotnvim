@@ -883,9 +883,17 @@ require('lazy').setup({
       end
 
       for _, server in ipairs(default_servers) do
+        local cfg = vim.lsp.config[server]
+
+        -- Don't enable LSPs that have not been installed
+        if (type(cfg.cmd) == 'table') and (vim.fn.executable(cfg.cmd[1]) ~= 1) then
+          goto continue
+        end
+
         lspconfig[server].setup {
           capabilities = capabilities,
         }
+        ::continue::
       end
 
       local ensure_installed = vim.tbl_keys(servers or {})
