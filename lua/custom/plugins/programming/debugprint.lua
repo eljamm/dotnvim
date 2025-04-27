@@ -11,12 +11,14 @@ return {
   },
   {
     'yarospace/lua-console.nvim',
-    enabled = false,
-    lazy = true,
     keys = {
       { '`', desc = 'Lua-console - toggle' },
       { '<Leader>`', desc = 'Lua-console - attach to buffer' },
     },
-    opts = {},
+    opts = {
+      buffer = {
+        clear_before_eval = true, -- clear output below result prefix before evaluation of the whole buffer
+      },
+    },
   },
 }
