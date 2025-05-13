@@ -5,6 +5,16 @@ local close_nvim = function()
   vim.cmd 'qa'
 end
 
+local function map_terminal(direction)
+  return function()
+    if vim.bo.filetype ~= 'toggleterm' then
+      return '<C-\\><C-N><C-w>' .. direction
+    else
+      return '<C-' .. direction .. '>'
+    end
+  end
+end
+
 require 'custom.mappings.nvchad'
 require 'custom.mappings.lazyvim'
 require 'custom.mappings.vim-galore'
@@ -79,10 +89,10 @@ map('x', '<M-s>', ':sort<CR>', { desc = 'Sort Selection', silent = true })
 
 --- Terminal
 -- switch between windows
-map('t', '<C-h>', '<C-\\><C-N><C-w>h', { desc = 'Terminal Window Left' })
--- map('t', '<C-l>', '<C-\\><C-N><C-w>l', { desc = 'Terminal Window Right' })
-map('t', '<C-j>', '<C-\\><C-N><C-w>j', { desc = 'Terminal Window Down' })
-map('t', '<C-k>', '<C-\\><C-N><C-w>k', { desc = 'Terminal Window Up' })
+map('t', '<C-h>', map_terminal 'h', { expr = true, desc = 'Terminal Window Left' })
+map('t', '<C-l>', map_terminal 'l', { expr = true, desc = 'Terminal Window Right' })
+map('t', '<C-j>', map_terminal 'j', { expr = true, desc = 'Terminal Window Down' })
+map('t', '<C-k>', map_terminal 'k', { expr = true, desc = 'Terminal Window Up' })
 
 -- Set semicolon at the end
 map('n', '<leader>;', [[A;<Esc>]], { desc = 'Custom: Add semicolon to end of line' })
