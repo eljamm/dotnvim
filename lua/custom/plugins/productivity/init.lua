@@ -25,4 +25,8 @@ return {
       vim.keymap.set({ 'x', 'n' }, '<leader>y', '<Plug>(YANoMove)', { silent = true })
     end,
   },
+  -- ActivityWatcher plugin for vim
+  {
+    'FilipHarald/aw-watcher-vim',
+  },
 }

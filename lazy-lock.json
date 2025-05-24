@@ -2,6 +2,7 @@
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "LuaSnip": { "branch": "master", "commit": "c1851d5c519611dfc451b6582961b2602e0af89b" },
   "YankAssassin.nvim": { "branch": "main", "commit": "4074b307bec6bb8c92b59fb3544e3dc3e43fcf6d" },
+  "aw-watcher-vim": { "branch": "master", "commit": "b2319d5a9bbf71fab3e09e2bc38ab874ccc5ff3a" },
   "baleia.nvim": { "branch": "main", "commit": "880e97c02edf3148ba2bdc6305ac03eb3c3711e0" },
   "barbar.nvim": { "branch": "master", "commit": "53b5a2f34b68875898f0531032fbf090e3952ad7" },
   "better-escape.vim": { "branch": "master", "commit": "6b16a45a839727977277f6ab11bded63e9ed86bb" },
