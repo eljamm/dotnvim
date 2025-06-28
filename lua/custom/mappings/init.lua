@@ -106,3 +106,6 @@ map('n', '<leader><leader>s', function()
   require('luasnip.loaders.from_vscode').lazy_load()
   vim.print 'Sourced Snippets'
 end, { desc = 'Source snippets' })
+
+-- I don't need this in visual mode
+map('v', 'K', '<Nop>', { noremap = true, silent = true })
