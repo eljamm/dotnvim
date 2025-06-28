@@ -2,6 +2,7 @@ return {
   -- Visualize Ownership and Lifetimes in Rust
   {
     'cordx56/rustowl',
+    enabled = false,
     version = '*', -- Latest stable version
     lazy = false, -- This plugin is already lazy
     opts = {
