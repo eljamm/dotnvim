@@ -139,18 +139,19 @@ if vim.env.SSH_TTY then
     },
   }
 else
-  vim.g.clipboard = { -- TODO: check if tool is available
-    name = 'xclip',
-    copy = {
-      ['+'] = { 'xclip', '-quiet', '-i', '-selection', 'clipboard' },
-      ['*'] = { 'xclip', '-quiet', '-i', '-selection', 'primary' },
-    },
-    paste = {
-      ['+'] = { 'xclip', '-o', '-selection', 'clipboard' },
-      ['*'] = { 'xclip', '-o', '-selection', 'primary' },
-    },
-    cache_enabled = 1, -- cache MUST be enabled, or else it hangs on dd/y/x and all other copy operations
-  }
+  -- TODO: doesn't really work well ... investigate
+  -- vim.g.clipboard = { -- TODO: check if tool is available
+  --   name = 'xclip',
+  --   copy = {
+  --     ['+'] = { 'xclip', '-quiet', '-i', '-selection', 'clipboard' },
+  --     ['*'] = { 'xclip', '-quiet', '-i', '-selection', 'primary' },
+  --   },
+  --   paste = {
+  --     ['+'] = { 'xclip', '-o', '-selection', 'clipboard' },
+  --     ['*'] = { 'xclip', '-o', '-selection', 'primary' },
+  --   },
+  --   cache_enabled = 1, -- cache MUST be enabled, or else it hangs on dd/y/x and all other copy operations
+  -- }
 end
 
 -- Enable break indent
@@ -817,16 +818,17 @@ require('lazy').setup({
 
         -- NOTE: https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
         nixd = {
-          on_init = function(client, _)
-            client.server_capabilities.documentHighlightProvider = nil
-          end,
-          settings = {
-            nixd = {
-              formatting = {
-                command = { 'nixfmt' },
-              },
-            },
-          },
+          -- TODO: why did I disable this?
+          -- on_init = function(client, _)
+          --   client.server_capabilities.documentHighlightProvider = nil
+          -- end,
+          -- settings = {
+          --   nixd = {
+          --     formatting = {
+          --       command = { 'nixfmt' },
+          --     },
+          --   },
+          -- },
         },
 
         -- Haskell
