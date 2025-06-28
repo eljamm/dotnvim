@@ -78,14 +78,43 @@ ls.add_snippets('nix', {
     'opt',
     fmt(
       [[
-      <name> = lib.mkOption {
-        type = lib.types.<>str;
+      <name> = mkOption {
+        type = types.<>str;
         default = "<>";
         defaultText = "<>";
         description = "<>";
       };
       ]],
       { name = i(1), i(2), i(3), i(4), i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+
+  s(
+    'opt-sub',
+    fmt(
+      [[
+      <name> = mkOption {
+        type = <>types.submodule { options = { <> }; };
+        default = { <> };
+        description = "<>";
+      };
+      ]],
+      { name = i(1), i(2), i(3), i(4), i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+
+  s(
+    '__toString',
+    fmt(
+      [[
+      __toString = mkOption {
+        type = with types; functionTo str;
+        default = self: ''<>'';
+      };<>
+      ]],
+      { i(1), i(0) },
       { delimiters = '<>' }
     )
   ),
@@ -114,6 +143,19 @@ ls.add_snippets('nix', {
       '';<>
       ]],
       { name = i(1), i(2), i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+
+  s(
+    'pack',
+    fmt(
+      [[
+      packages = with pkgs<>; [
+        <>
+      ];<>
+      ]],
+      { i(1), i(2), i(0) },
       { delimiters = '<>' }
     )
   ),
