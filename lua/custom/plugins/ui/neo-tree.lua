@@ -17,7 +17,7 @@ return {
           ['V'] = 'open_vsplit',
           ['<M-l>'] = 'system_open',
           -- preview
-          ['p'] = { 'toggle_preview', config = { use_float = false, use_image_nvim = true } },
+          ['P'] = { 'toggle_preview', config = { use_float = false, use_image_nvim = true } },
           -- ['P'] = 'focus_preview',
           ['<M-p>'] = { 'scroll_preview', config = { direction = 10 } },
           ['<M-n>'] = { 'scroll_preview', config = { direction = -10 } },
