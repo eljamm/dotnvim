@@ -924,7 +924,7 @@ require('lazy').setup({
         servers_default[server_name] = {}
       end
 
-      servers = vim.list_extend(servers or {}, servers_default or {})
+      servers = vim.tbl_deep_extend('force', servers_default or {}, servers or {})
 
       local ensure_installed = vim.tbl_keys(servers or {})
       local extra_tools = {
