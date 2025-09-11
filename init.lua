@@ -869,6 +869,7 @@ require('lazy').setup({
           },
         },
 
+        -- TOML
         taplo = {
           settings = {
             -- Use the defaults that the VSCode extension uses: https://github.com/tamasfe/taplo/blob/2e01e8cca235aae3d3f6d4415c06fd52e1523934/editors/vscode/package.json
@@ -882,6 +883,17 @@ require('lazy').setup({
                   diskExpiration = 600,
                 },
               },
+            },
+          },
+        },
+
+        -- zig
+        zls = {
+          settings = {
+            zls = {
+              enable_inlay_hints = true,
+              enable_snippets = true,
+              warn_style = true,
             },
           },
         },
