@@ -64,6 +64,9 @@ return {
 
       -- Filetypes that don't have other formatters configured
       ['_'] = { 'trim_whitespace' },
+
+      --
+      ['*'] = { 'treefmt' },
     },
     formatters = {
       shfmt = { prepend_args = { '-i', '4' } },
