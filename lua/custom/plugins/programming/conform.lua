@@ -35,6 +35,7 @@ return {
       css = prettyFormat,
       html = prettyFormat,
       javascript = prettyFormat,
+      typescript = prettyFormat,
       json = prettyFormat,
       jsonc = prettyFormat,
       scss = prettyFormat,
