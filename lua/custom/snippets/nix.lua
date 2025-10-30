@@ -159,6 +159,66 @@ ls.add_snippets('nix', {
       { delimiters = '<>' }
     )
   ),
+
+  s(
+    'update',
+    fmt(
+      [[
+      passthru.updateScript = nix-update-script { <> };
+      ]],
+      { i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+
+  s(
+    'branchArgs',
+    fmt(
+      [[
+      extraArgs = [ "--version=branch"<> ];
+      ]],
+      { i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+
+  s(
+    'team',
+    fmt(
+      [[
+      teams = with lib.teams; [ <> ];
+      ]],
+      { i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+
+  s(
+    'ssh',
+    fmt(
+      [[
+      interactive.sshBackdoor.enable = <>true;
+      ]],
+      { i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+
+  s(
+    'sub',
+    fmt(
+      [[
+      subgrants = {
+        Commons = [ ];
+        Core = [ ];
+        Entrust = [ ];
+        Review = [ ];<>
+      };
+      ]],
+      { i(0) },
+      { delimiters = '<>' }
+    )
+  ),
 })
 
 -- Python --
