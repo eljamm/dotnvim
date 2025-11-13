@@ -47,6 +47,7 @@ wlib.wrapModule (
         "-u"
         "${config.nvim.path}/init.lua"
       ];
+      env.NVIM_DISABLE_MASON = "true";
       # TODO: filter
       nvim.path = "${self}";
     };

@@ -950,7 +950,7 @@ require('lazy').setup({
         ::continue::
       end
 
-      if vim.g.system_id == 'nixos' then
+      if vim.g.system_id == 'nixos' or vim.fn.getenv 'NVIM_DISABLE_MASON' then
         for _, server_name in pairs(ensure_installed) do
           setup_servers(server_name)
         end
