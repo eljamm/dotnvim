@@ -5,3 +5,8 @@ nvim
 
 spell/
 *.ignored
+
+## Nix ##
+result*
+.direnv*
+.pre-commit-config.yaml
