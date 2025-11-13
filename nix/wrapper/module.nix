@@ -43,15 +43,11 @@ wlib.wrapModule (
     config = {
       package = lib.mkDefault config.pkgs.neovim;
       extraPackages = with lib; flatten (attrValues config.packages);
+      args = [
+        "-u"
+        "${config.nvim.path}/init.lua"
+      ];
       # TODO: filter
-      env.XDG_CONFIG_HOME = toString (
-        config.pkgs.linkFarm "neovim-merged-config" [
-          {
-            name = "nvim";
-            path = config.nvim.path;
-          }
-        ]
-      );
       nvim.path = "${self}";
     };
   }
