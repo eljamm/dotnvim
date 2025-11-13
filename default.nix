@@ -21,13 +21,21 @@ let
 
     # Custom library. Contains helper functions, builders, ...
     devLib = sc.callPackage ./nix/lib.nix { };
+    # Wrappers library
+    wlib = inputs.wrappers.lib;
 
     format = sc.callPackage ./nix/formatter.nix { };
-    devPkgs = { };
     devShells.default = pkgs.mkShellNoCC {
       packages = [
         sc.format.formatter
       ];
+    };
+
+    neovimWrapper = sc.callPackage ./nix/wrapper { };
+
+    devPkgs = {
+      # nix run .#default -- default.nix
+      default = sc.neovimWrapper.wrapper;
     };
 
     overlays.default = final: prev: sc.devPkgs;

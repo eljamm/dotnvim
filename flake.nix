@@ -7,6 +7,8 @@
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     git-hooks.url = "github:fricklerhandwerk/git-hooks";
     git-hooks.flake = false;
+
+    wrappers.url = "github:lassulus/wrappers";
   };
 
   # construct flake from ./default.nix
