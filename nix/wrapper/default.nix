@@ -7,26 +7,25 @@
   inherit pkgs;
 
   packages = with pkgs; {
-    tools = [
+    essential = [
+      fishMinimal
       fswatch # File watcher utility, replacing libuv.fs_event for neovim 10.0
       fzf
       git
-      sqlite
+      lazygit
       tree-sitter
+      zellij
     ];
 
+    # may be needed to compile some plugins
+    # TODO: use `vimPlugins`, instead
     c = [
       cmake
       gcc
       gnumake
     ];
 
-    gamedev = [
-      # parser, linter and formatter for GDScript
-      gdtoolkit_4
-    ];
-
-    luaTools = [
+    lua = [
       lua-language-server
       lua51Packages.lua
       lua51Packages.luarocks-nix
@@ -67,13 +66,13 @@
       shfmt
     ];
 
-    config = [
+    actions = [
+      pinact
       yaml-language-server
+      zizmor
     ];
 
     web = [
-      deno
-      nodePackages.sql-formatter
       nodePackages.typescript-language-server
       nodejs
       prettierd # multi-language formatters
