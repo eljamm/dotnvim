@@ -12,6 +12,46 @@ A starting point for Neovim that is:
 
 ## Installation
 
+### Nix
+
+If you have [Nix](https://nixos.org/) installed, you can try out this configuration with:
+
+```shellSession
+nix run github:eljamm/dotnvim -- test.txt
+```
+
+And to install it in your Nix development environment or NixOS system, you can either use the default package:
+
+```nix
+{
+  dotnvim ? import (fetchTarball "https://github.com/eljamm/dotnvim/tarball/main") { },
+  pkgs ? import <nixpkgs> { },
+}:
+pkgs.mkShellNoCC {
+  packages = [
+    dotnvim.default
+  ];
+}
+```
+
+or apply it as an [overlay](https://wiki.nixos.org/wiki/Overlays) on top of your package set:
+
+```nix
+{
+  dotnvim ? import (fetchTarball "https://github.com/eljamm/dotnvim/tarball/main") { },
+  pkgs ? import <nixpkgs> {
+    overlays = [
+      dotnvim.overlays.default
+    ];
+  },
+}:
+pkgs.mkShellNoCC {
+  packages = [
+    pkgs.neovim
+  ];
+}
+```
+
 ### Install Neovim
 
 Kickstart.nvim targets *only* the latest
