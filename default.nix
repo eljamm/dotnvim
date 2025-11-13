@@ -38,7 +38,9 @@ let
       default = sc.neovimWrapper.wrapper;
     };
 
-    overlays.default = final: prev: sc.devPkgs;
+    overlays.default = final: prev: {
+      neovim = sc.devPkgs.default;
+    };
 
     flake.perSystem = {
       devShells = sc.devShells;
