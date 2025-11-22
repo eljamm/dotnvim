@@ -49,18 +49,24 @@ return {
       { '<leader>og', '<CMD>Obsidian search<CR>', desc = '[O]bsidian [G]rep' },
       { '<leader>of', '<CMD>Obsidian quick_switch<CR>', desc = '[O]bsidian [F]iles' },
       { '<leader>om', '<CMD>Obsidian open<CR>', desc = '[O]bsidian [M]ain Window' },
+      { '<leader>oc', '<CMD>Obsidian toc<CR>', desc = '[O]bsidian TOC' },
       { '<leader>ot', '<CMD>Obsidian new_from_template<CR>', desc = '[O]bsidian [T]emplate' },
+      { '<leader>ou', '<CMD>Obsidian tags<CR>', desc = '[O]bsidian Tags' },
       { '<leader>ow', '<CMD>Obsidian workspace<CR>', desc = '[O]bsidian [W]orkspace' },
 
       -- Notes
       { '<leader>oo', '<CMD>Obsidian follow_link<CR>', desc = '[O]bsidian [O]pen Link' },
+      { '<leader>ov', '<CMD>Obsidian follow_link vsplit<CR>', desc = '[O]bsidian [V]ertical Link Split' },
+      { '<leader>oh', '<CMD>Obsidian follow_link hsplit<CR>', desc = '[O]bsidian [H]orizontal Link Split' },
       { '<leader>ok', '<CMD>Obsidian links<CR>', desc = '[O]bsidian [O]pen Links' },
       { '<leader>op', '<CMD>Obsidian paste_img<CR>', desc = '[O]bsidian [P]paste Image' },
       { '<leader>or', '<CMD>Obsidian backlinks<CR>', desc = '[O]bsidian [R]references' },
       { '<leader>on', '<CMD>Obsidian rename<CR>', desc = '[O]bsidian Re[N]ame' },
 
-      -- TODO:
-      -- https://github.com/obsidian-nvim/obsidian.nvim/tree/v3.14.5?tab=readme-ov-file#visual-mode-commands
+      -- Visual
+      { '<leader>oe', '<CMD>Obsidian extract_note<CR>', mode = 'v', desc = '[O]bsidian [E]xtract Note' },
+      { '<leader>ol', '<CMD>Obsidian link<CR>', mode = 'v', desc = '[O]bsidian [L]ink' },
+      { '<leader>on', '<CMD>Obsidian link_new<CR>', mode = 'v', desc = '[O]bsidian Link [N]ew' },
     },
   },
   {
