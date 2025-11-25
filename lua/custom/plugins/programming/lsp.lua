@@ -2,7 +2,7 @@
 
 return {
   'neovim/nvim-lspconfig',
-  event = 'LazyFile',
+  event = { 'BufReadPre', 'BufNewFile' },
   cmd = { 'LspInfo', 'LspLog', 'LspRestart', 'LspStart', 'LspStop' },
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
@@ -339,22 +339,24 @@ return {
       'stylua', -- Used to format Lua code
     }
 
-    local setup_servers = function(server_name)
-      local server = servers[server_name] or {}
+    local setup_servers = function(name)
+      local server = servers[name] or {}
+
       -- This handles overriding only values explicitly passed
       -- by the server configuration above. Useful when disabling
       -- certain features of an LSP (for example, turning off formatting for tsserver)
       server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
 
       -- TODO: refactor with default_servers
-      local cfg = vim.lsp.config[server_name]
+      local cfg = vim.lsp.config[name]
 
       -- Don't enable LSPs that have not been installed
       if (type(cfg.cmd) == 'table') and (vim.fn.executable(cfg.cmd[1]) ~= 1) then
         goto continue
       end
 
-      lspconfig[server_name].setup(server)
+      vim.lsp.config(name, cfg)
+      vim.lsp.enable(name)
       ::continue::
     end
 
