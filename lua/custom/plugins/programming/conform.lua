@@ -26,7 +26,7 @@ return {
       yaml = prettyFormat,
       sh = { 'shfmt' },
       sql = { 'sql_formatter' },
-      gdscript = { 'gdformat' },
+      gdscript = { 'gdscript_formatter', 'gdformat', stop_after_first = true },
       markdown = { 'markdownlint', 'cbfmt' },
       nix = { 'nixfmt' },
       rust = { 'rustfmt' },
@@ -83,6 +83,11 @@ return {
 
           return args
         end,
+      },
+      gdscript_formatter = {
+        command = 'gdscript-formatter',
+        stdin = false,
+        args = { '$FILENAME', '--reorder-code' },
       },
       injected = {
         options = {
