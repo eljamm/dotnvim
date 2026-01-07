@@ -323,6 +323,7 @@ return {
       'bashls',
       'hyprls', -- hyprland
       'tinymist', -- typst
+      'just',
     }
 
     require('mason').setup()
