@@ -86,9 +86,9 @@ return {
           gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
         end, { desc = 'Git: [H]unk [R]eset' })
         map('n', '<leader>hS', gitsigns.stage_buffer, { desc = '[S]tage Buffer' })
-        map('n', '<leader>hu', gitsigns.undo_stage_hunk, { desc = '[U]nstage' })
         map('n', '<leader>hR', gitsigns.reset_buffer, { desc = '[R]est Buffer' })
         map('n', '<leader>hp', gitsigns.preview_hunk, { desc = '[P]review' })
+        map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = '[I]nline' })
 
         map('n', '<leader>gb', gitsigns.toggle_current_line_blame, { desc = '[B]lame' })
         -- map('n', '<leader>gd', gitsigns.diffthis, { desc = '[D]iff' })
