@@ -219,6 +219,18 @@ ls.add_snippets('nix', {
       { delimiters = '<>' }
     )
   ),
+
+  s(
+    'subst',
+    fmt(
+      [[
+      substituteInPlace <> \
+        --replace-fail "<>" "<>"<>
+      ]],
+      { i(1), i(2), i(3), i(0) },
+      { delimiters = '<>' }
+    )
+  ),
 })
 
 -- Python --
