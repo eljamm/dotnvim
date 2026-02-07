@@ -39,7 +39,7 @@ return {
       },
 
       attachments = {
-        img_folder = 'Media',
+        folder = 'Media',
       },
     },
     keys = {
