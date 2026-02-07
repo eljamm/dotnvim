@@ -24,7 +24,7 @@ return {
       jsonc = prettyFormat,
       scss = prettyFormat,
       yaml = prettyFormat,
-      sh = { 'shfmt' },
+      sh = { 'treefmt', 'shfmt', stop_after_first = true },
       sql = { 'sql_formatter' },
       gdscript = { 'gdscript_formatter', 'gdformat', stop_after_first = true },
       markdown = { 'markdownlint', 'cbfmt' },
