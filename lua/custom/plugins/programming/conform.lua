@@ -1,5 +1,16 @@
 local prettyFormat = { 'treefmt', 'prettierd', 'prettier', stop_after_first = true }
 
+-- If formatter is avaialble, use the specified formatters, else use the fallbacks.
+local function use_if_available(formatter, formatters, fallback)
+  return function(bufnr)
+    local formatter_info = require('conform').get_formatter_info(formatter, bufnr)
+    if formatter_info.available then
+      return formatters or { formatter }
+    end
+    return fallback or {}
+  end
+end
+
 return {
   'stevearc/conform.nvim',
   --  for users who want auto-save conform + lazyloading!
@@ -33,14 +44,8 @@ return {
       toml = { 'taplo' },
       typst = { 'typstyle' },
       go = { 'golines', 'gofumpt', 'goimports' },
-      elm = { 'elm_format' },
-      python = function(bufnr)
-        if require('conform').get_formatter_info('ruff', bufnr).available then
-          return { 'ruff_format', 'ruff_organize_imports' }
-        else
-          return { 'isort', 'black' }
-        end
-      end,
+      elm = use_if_available 'elm_format',
+      python = use_if_available('ruff', { 'ruff_format', 'ruff_organize_imports' }, { 'isort', 'black' }),
 
       -- Format embedded code blocks
       -- ['*'] = { 'injected' },
