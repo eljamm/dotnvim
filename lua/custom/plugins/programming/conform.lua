@@ -1,12 +1,18 @@
 local prettyFormat = { 'treefmt', 'prettierd', 'prettier', stop_after_first = true }
 
--- If formatter is avaialble, use the specified formatters, else use the fallbacks.
+-- Use formatter or treefmt if avaialble, else use fallbacks.
 local function use_if_available(formatter, formatters, fallback)
   return function(bufnr)
-    local formatter_info = require('conform').get_formatter_info(formatter, bufnr)
-    if formatter_info.available then
+    local cfm = require 'conform'
+
+    if cfm.get_formatter_info('treefmt', bufnr).available then
+      return { 'treefmt' }
+    end
+
+    if cfm.get_formatter_info(formatter, bufnr).available then
       return formatters or { formatter }
     end
+
     return fallback or {}
   end
 end
@@ -54,10 +60,10 @@ return {
       -- ['*'] = { 'codespell' },
 
       -- Filetypes that don't have other formatters configured
-      ['_'] = { 'trim_whitespace', 'treefmt' },
+      ['_'] = { 'trim_whitespace' },
 
       --
-      ['*'] = { 'treefmt' },
+      -- ['*'] = { 'treefmt' },
     },
     formatters = {
       shfmt = { prepend_args = { '-i', '4' } },
