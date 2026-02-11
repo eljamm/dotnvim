@@ -1,4 +1,4 @@
-local prettyFormat = { 'prettierd', 'prettier', stop_after_first = true }
+local prettyFormat = { 'treefmt', 'prettierd', 'prettier', stop_after_first = true }
 
 return {
   'stevearc/conform.nvim',
@@ -49,7 +49,7 @@ return {
       -- ['*'] = { 'codespell' },
 
       -- Filetypes that don't have other formatters configured
-      ['_'] = { 'trim_whitespace' },
+      ['_'] = { 'trim_whitespace', 'treefmt' },
 
       --
       ['*'] = { 'treefmt' },
