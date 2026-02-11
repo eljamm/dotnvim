@@ -33,6 +33,7 @@ return {
       toml = { 'taplo' },
       typst = { 'typstyle' },
       go = { 'golines', 'gofumpt', 'goimports' },
+      elm = { 'elm_format' },
       python = function(bufnr)
         if require('conform').get_formatter_info('ruff', bufnr).available then
           return { 'ruff_format', 'ruff_organize_imports' }

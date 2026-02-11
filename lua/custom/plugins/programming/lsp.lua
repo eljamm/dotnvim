@@ -324,6 +324,7 @@ return {
       'hyprls', -- hyprland
       'tinymist', -- typst
       'just',
+      'elmls',
     }
 
     require('mason').setup()
