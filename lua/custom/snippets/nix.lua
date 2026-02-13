@@ -231,6 +231,25 @@ ls.add_snippets('nix', {
       { delimiters = '<>' }
     )
   ),
+
+  s(
+    'shell',
+    fmt(
+      [[
+      shells.default = pkgs.mkShellNoCC {
+        packages = with pkgs; [
+          <>
+        ];
+        shellHook = ''
+          export PROJECT_ROOT="$(git rev-parse --show-toplevel)"
+          <>
+        '';
+      };<>
+      ]],
+      { i(1), i(2), i(0) },
+      { delimiters = '<>' }
+    )
+  ),
 })
 
 -- Python --
