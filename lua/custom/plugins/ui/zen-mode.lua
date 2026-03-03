@@ -1,5 +1,5 @@
--- 80% of current window's width
-local zen_width = math.floor(vim.api.nvim_win_get_width(0) * 0.8)
+local width_percentage = 50 -- relative to current window
+local zen_width = math.floor(vim.api.nvim_win_get_width(0) * (width_percentage / 100))
 
 return {
   'folke/zen-mode.nvim',
