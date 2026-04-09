@@ -78,8 +78,8 @@ ls.add_snippets('nix', {
     'opt',
     fmt(
       [[
-      <name> = mkOption {
-        type = types.<>str;
+      <name> = lib.mkOption {
+        type = lib.types.<>str;
         default = "<>";
         defaultText = "<>";
         description = "<>";
@@ -94,8 +94,8 @@ ls.add_snippets('nix', {
     'opt-sub',
     fmt(
       [[
-      <name> = mkOption {
-        type = <>types.submodule { options = { <> }; };
+      <name> = lib.mkOption {
+        type = <>lib.types.submodule { options = { <> }; };
         default = { <> };
         description = "<>";
       };
@@ -247,6 +247,34 @@ ls.add_snippets('nix', {
       };<>
       ]],
       { i(1), i(2), i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+
+  s(
+    'fetchnixpkgs',
+    fmt(
+      [[
+      nixpkgs ? fetchTarball {
+        url = "https://github.com/NixOS/nixpkgs/tarball/nixos-unstable<>";
+        sha256 = "";
+      },<>
+      ]],
+      { i(1), i(0) },
+      { delimiters = '<>' }
+    )
+  ),
+
+  s(
+    'inputs',
+    fmt(
+      [[
+      {
+        lib,<>
+        ...
+      }:<>
+      ]],
+      { i(1), i(0) },
       { delimiters = '<>' }
     )
   ),
