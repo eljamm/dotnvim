@@ -1,4 +1,5 @@
-local ObsidianVault = vim.fn.expand '~' .. '/Documents/Notes/Obsidian/Productivity'
+local ObsidianDir = vim.fn.expand '~' .. '/Documents/Notes/Obsidian'
+local MainVault = ObsidianDir .. '/Productivity'
 local ankiNotesDir = { notes_subdir = '6 - Notes/Anki/_tmp' }
 
 return {
@@ -7,7 +8,10 @@ return {
     -- -- switch back to releases after the bug with rename is fixed:
     -- -- https://github.com/obsidian-nvim/obsidian.nvim/issues/476
     -- version = '*',
-    event = { 'LazyFile', 'VeryLazy' },
+    event = {
+      'BufReadPre ' .. ObsidianDir .. '/**.md',
+      'BufNewFile ' .. ObsidianDir .. '/**.md',
+    },
     opts = {
       ui = { enable = false },
       frontmatter = { enabled = false },
@@ -16,7 +20,7 @@ return {
       workspaces = {
         {
           name = 'Productivity',
-          path = ObsidianVault,
+          path = MainVault,
         },
       },
 
@@ -75,8 +79,8 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('quickadd').setup {
-        daily_note_path = ObsidianVault .. '/1 - Temporary',
-        todo_path = ObsidianVault .. '/1 - Temporary/TODO.md',
+        daily_note_path = MainVault .. '/1 - Temporary',
+        todo_path = MainVault .. '/1 - Temporary/TODO.md',
       }
     end,
   },
