@@ -1,6 +1,6 @@
 return {
   'mrcjkb/rustaceanvim',
-  version = '^4',
+  version = '^9',
   ft = { 'rust' },
   init = function()
     vim.g.rustaceanvim = {

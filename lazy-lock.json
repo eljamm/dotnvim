@@ -78,7 +78,7 @@
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
   "quickadd.nvim": { "branch": "main", "commit": "508a3814ff33fbc12dc1e04384fe829a6af41db9" },
   "render-markdown.nvim": { "branch": "main", "commit": "e3c18ddd27a853f85a6f513a864cf4f2982b9f26" },
-  "rustaceanvim": { "branch": "master", "commit": "047f9c9d8cd2861745eb9de6c1570ee0875aa795" },
+  "rustaceanvim": { "branch": "master", "commit": "7b8dd7abb9a7f442b356aa03714aefce09610339" },
   "rustowl": { "branch": "main", "commit": "99bff662d029f41325d72cb43646bb888ca4015c" },
   "tabout.nvim": { "branch": "master", "commit": "9a3499480a8e53dcaa665e2836f287e3b7764009" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6fea601bd2b694c6f2ae08a6c6fab14930c60e2c" },
