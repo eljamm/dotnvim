@@ -50,9 +50,12 @@ return { -- Autocompletion
         auto_show_delay_ms = 500,
       },
 
-      list = { selection = { preselect = true, auto_insert = true } },
+      list = { selection = { preselect = true, auto_insert = false } },
 
       menu = {
+        max_height = 25,
+        min_width = 15,
+
         draw = {
           columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind' } },
         },
@@ -65,7 +68,7 @@ return { -- Autocompletion
       keymap = { preset = 'inherit' },
       completion = {
         list = { selection = { preselect = false, auto_insert = false } },
-        -- menu = { auto_show = true },
+        menu = { auto_show = false },
       },
     },
 
@@ -85,9 +88,6 @@ return { -- Autocompletion
     fuzzy = { implementation = 'prefer_rust_with_warning' },
 
     -- Shows a signature help window while you type arguments for a function
-    signature = {
-      enabled = true,
-      window = { border = 'rounded' },
-    },
+    signature = { enabled = true },
   },
 }
