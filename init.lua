@@ -245,7 +245,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
 })
 
@@ -400,7 +400,7 @@ require('lazy').setup({
         'nvim-telescope/telescope-live-grep-args.nvim',
         -- This will not install any breaking changes.
         -- For major updates, this must be adjusted manually.
-        version = '^1.0.0',
+        -- version = '^1.0.0',
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
