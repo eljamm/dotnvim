@@ -147,6 +147,19 @@ return {
         end,
       })
 
+      -- Create LspInfo and LspLog commands for Neovim 0.12+ (native :lsp doesn't provide these, yet)
+      -- https://github.com/neovim/nvim-lspconfig/issues/4255
+      -- https://github.com/neovim/nvim-lspconfig/pull/4234
+      if vim.fn.exists ':lsp' == 2 then
+        vim.api.nvim_create_user_command('LspInfo', function()
+          vim.cmd 'checkhealth vim.lsp'
+        end, { desc = 'Show LSP info (alias to :checkhealth vim.lsp)' })
+
+        vim.api.nvim_create_user_command('LspLog', function()
+          vim.cmd(string.format('tabnew %s', vim.lsp.log.get_filename()))
+        end, { desc = 'Open LSP log file' })
+      end
+
       local lspconfig = require 'lspconfig'
 
       -- LSP servers and clients are able to communicate to each other what features they support.
