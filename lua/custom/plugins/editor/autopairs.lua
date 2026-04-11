@@ -3,7 +3,6 @@ return {
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
-    dependencies = { 'hrsh7th/nvim-cmp' },
     opts = {
       fast_wrap = {},
       disable_filetype = { 'TelescopePrompt', 'vim' },
@@ -15,10 +14,15 @@ return {
 
         ignored_next_char = [=[[%w%%%'%[%"%.%`%$%{]]=],
       }
-      -- If you want to automatically add `(` after selecting a function or method
-      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-      local cmp = require 'cmp'
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+
+      -- conditional nvim-cmp integration
+      local has_cmp, cmp = pcall(require, 'cmp')
+
+      if has_cmp then
+        -- automatically add `(` after selecting a function or method
+        local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+        cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+      end
     end,
   },
   -- TODO: remove in favor of mini.pairs
