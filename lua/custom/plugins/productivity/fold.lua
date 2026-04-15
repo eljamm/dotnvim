@@ -17,6 +17,7 @@ return {
           vim.lsp.buf.hover()
         end
       end)
+      vim.keymap.set('n', '<C-;>', 'za', { desc = 'Toggle fold under cursor' })
 
       -- Use treesitter as a main provider instead
       -- NOTE:
