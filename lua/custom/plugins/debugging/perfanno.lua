@@ -1,8 +1,5 @@
 return {
-  -- Use personal fork, until the following PR is merged:
-  -- https://github.com/t-troebst/perfanno.nvim/pull/22
-  'eljamm/perfanno.nvim',
-  branch = 'nix-profiler',
+  't-troebst/perfanno.nvim',
   opts = {},
   keys = {
     { '<leader>plf', '<CMD>PerfLoadFlat<CR>', desc = 'Load Flat Profile' },
