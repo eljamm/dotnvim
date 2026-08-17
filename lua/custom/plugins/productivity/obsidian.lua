@@ -54,7 +54,8 @@ return {
       { '<leader>of', '<CMD>Obsidian quick_switch<CR>', desc = '[O]bsidian [F]iles' },
       { '<leader>om', '<CMD>Obsidian open<CR>', desc = '[O]bsidian [M]ain Window' },
       { '<leader>oc', '<CMD>Obsidian toc<CR>', desc = '[O]bsidian TOC' },
-      { '<leader>ot', '<CMD>Obsidian new_from_template<CR>', desc = '[O]bsidian [T]emplate' },
+      { '<leader>ot', '<CMD>Obsidian template<CR>', desc = '[O]bsidian [T]emplate' },
+      { '<leader>oz', '<CMD>Obsidian new_from_template<CR>', desc = '[O]bsidian From Template' },
       { '<leader>ou', '<CMD>Obsidian tags<CR>', desc = '[O]bsidian Tags' },
       { '<leader>ow', '<CMD>Obsidian workspace<CR>', desc = '[O]bsidian [W]orkspace' },
 
