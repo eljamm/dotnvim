@@ -1,5 +1,6 @@
 return { -- Autocompletion
   'saghen/blink.cmp',
+  enabled = false,
   event = 'InsertEnter',
   version = '1.*',
   dependencies = {
