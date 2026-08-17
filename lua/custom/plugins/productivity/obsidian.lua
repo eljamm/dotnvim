@@ -22,6 +22,15 @@ return {
           name = 'Productivity',
           path = MainVault,
         },
+        {
+          name = 'quartz',
+          path = ObsidianDir .. '/quartz',
+          overrides = {
+            templates = {
+              folder = 'templates',
+            },
+          },
+        },
       },
 
       -- https://github.com/obsidian-nvim/obsidian.nvim/wiki/Template
