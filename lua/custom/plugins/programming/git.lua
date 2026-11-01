@@ -2,6 +2,18 @@ return {
   { 'tpope/vim-fugitive' },
 
   {
+    'FabijanZulj/blame.nvim',
+    lazy = false,
+    opts = {},
+    cmd = {
+      'BlameToggle',
+    },
+    keys = {
+      { '<C-b>', '<CMD>BlameToggle<CR>', desc = '[B]lame Stack' },
+    },
+  },
+
+  {
     'NeogitOrg/neogit',
     dependencies = {
       'nvim-lua/plenary.nvim',
